@@ -1,17 +1,16 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Geist_Mono, Inter, Vazirmatn } from "next/font/google";
+import "@/styles/globals.css";
 import { QueryClientProvider } from "@/shared/providers/QueryClientProvider";
+import { ThemeProvider } from "next-themes";
+import { appConfig } from "@/core/config";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const vazirmatn = Vazirmatn({ variable: "--font-vazirmatn", subsets: ["arabic"] });
+const geistMono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const activeFont = appConfig.direction === "rtl" ? vazirmatn : inter;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,12 +24,19 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang={appConfig.locale}
+      dir={appConfig.direction}
+      className={`${activeFont.variable} ${geistMono.variable} h-full antialiased`}
+      style={{ "--font-sans": `var(${activeFont.variable})` } as CSSProperties}
+      suppressHydrationWarning
     >
-      <QueryClientProvider>
-        <body className="min-h-full flex flex-col">{children}</body>
-      </QueryClientProvider>
+      <body className="min-h-full flex flex-col">
+        <QueryClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
+        </QueryClientProvider>
+      </body>
     </html>
   );
 }
