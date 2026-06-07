@@ -10,3 +10,5 @@ export {
   type PublicEnvConfig,
   type PublicEnvKey,
 } from "./env";
+
+export { appConfig, type AppConfig, type Direction, type Locale } from "./app";

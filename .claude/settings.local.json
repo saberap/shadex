@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\node_modules\\\\tw-animate-css\\\\index.css\")",
+      "Bash(Select-Object -First 100)",
+      "PowerShell($pkg = Get-Content \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\node_modules\\\\radix-ui\\\\package.json\" -Raw | ConvertFrom-Json; Write-Output \"name: $\\($pkg.name\\) version: $\\($pkg.version\\)\")",
+      "PowerShell($pkg = Get-Content \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\node_modules\\\\shadcn\\\\package.json\" -Raw | ConvertFrom-Json; $pkg.exports | ConvertTo-Json -Depth 5)",
+      "PowerShell(Select-String -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\node_modules\\\\next-themes\\\\dist\\\\index.mjs\" -Pattern \"prefers-color-scheme|mediaQuery|colorScheme\" | ForEach-Object { $_.Line.Substring\\([Math]::Max\\(0, $_.Line.IndexOf\\(\"prefers-color-scheme\"\\) - 100\\), [Math]::Min\\(300, $_.Line.Length\\)\\) })"
+    ]
+  }
+}
