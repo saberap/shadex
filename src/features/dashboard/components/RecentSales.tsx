@@ -61,17 +61,28 @@ export function RecentSales() {
           className="flex items-center gap-3 rounded-lg px-2 py-2.5 hover:bg-muted/50 transition-colors"
         >
           <Avatar size="default">
-            <AvatarFallback className="text-xs font-semibold">{sale.initials}</AvatarFallback>
+            <AvatarFallback className="text-xs font-semibold">
+              {sale.initials}
+            </AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium leading-none truncate">{sale.name}</p>
-            <p className="text-xs text-muted-foreground mt-0.5 truncate">{sale.email}</p>
+            <p className="text-sm font-medium leading-none truncate">
+              {sale.name}
+            </p>
+            <p className="text-xs text-muted-foreground mt-0.5 truncate">
+              {sale.email}
+            </p>
           </div>
           <div className="flex items-center gap-2 shrink-0">
-            <Badge variant={statusVariant[sale.status]} className="text-[10px] h-5 px-1.5 capitalize">
+            <Badge
+              variant={statusVariant[sale.status]}
+              className="text-[10px] h-5 px-1.5 capitalize"
+            >
               {sale.status}
             </Badge>
-            <span className="text-sm font-semibold tabular-nums">{sale.amount}</span>
+            <span className="text-sm font-semibold tabular-nums">
+              {sale.amount}
+            </span>
           </div>
         </div>
       ))}

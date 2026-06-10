@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:3002/pricing)",
+      "Bash(curl -s -o /dev/null -w \"dashboard: %{http_code}\\\\n\" http://localhost:3002/dashboard)",
+      "Bash(curl -s -o /dev/null -w \"pricing:   %{http_code}\\\\n\" http://localhost:3002/pricing)",
+      "Bash(curl -s http://localhost:3002/dashboard)",
+      "Bash(Get-ChildItem -Path . -Recurse -Force)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(grep -E \"\\\\.tsx$\")",
+      "Bash(npm install *)",
+      "Bash(node -e \"require\\('framer-motion'\\); console.log\\('OK'\\)\")",
+      "Bash(npx next *)"
+    ]
+  }
+}

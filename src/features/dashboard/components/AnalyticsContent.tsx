@@ -1,14 +1,20 @@
 "use client";
 
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
-import { Progress } from "@/shared/components/ui/progress";
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/ui/card";
+import {
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-  type ChartConfig,
 } from "@/shared/components/ui/chart";
+import { Progress } from "@/shared/components/ui/progress";
 
 const weeklyTraffic = [
   { day: "Mon", visitors: 2400, pageviews: 4200 },
@@ -58,8 +64,12 @@ export function AnalyticsContent() {
           <Card key={m.label}>
             <CardContent className="pt-4 pb-4">
               <p className="text-xs text-muted-foreground">{m.label}</p>
-              <p className="mt-1 text-2xl font-bold tracking-tight">{m.value}</p>
-              <p className={`mt-0.5 text-xs font-medium ${m.up ? "text-emerald-600 dark:text-emerald-400" : "text-red-500"}`}>
+              <p className="mt-1 text-2xl font-bold tracking-tight">
+                {m.value}
+              </p>
+              <p
+                className={`mt-0.5 text-xs font-medium ${m.up ? "text-emerald-600 dark:text-emerald-400" : "text-red-500"}`}
+              >
                 {m.change} vs last week
               </p>
             </CardContent>
@@ -72,17 +82,48 @@ export function AnalyticsContent() {
         <Card className="xl:col-span-3">
           <CardHeader>
             <CardTitle>Weekly Traffic</CardTitle>
-            <CardDescription>Visitors and page views over the last 7 days</CardDescription>
+            <CardDescription>
+              Visitors and page views over the last 7 days
+            </CardDescription>
           </CardHeader>
           <CardContent className="pb-4">
             <ChartContainer config={chartConfig} className="h-[220px] w-full">
-              <BarChart data={weeklyTraffic} margin={{ top: 4, right: 4, left: -16, bottom: 0 }} barGap={4}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} className="stroke-border/40" />
-                <XAxis dataKey="day" tickLine={false} axisLine={false} tick={{ fontSize: 11 }} tickMargin={8} />
-                <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+              <BarChart
+                data={weeklyTraffic}
+                margin={{ top: 4, right: 4, left: -16, bottom: 0 }}
+                barGap={4}
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  vertical={false}
+                  className="stroke-border/40"
+                />
+                <XAxis
+                  dataKey="day"
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fontSize: 11 }}
+                  tickMargin={8}
+                />
+                <YAxis
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fontSize: 11 }}
+                  tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
+                />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="visitors" fill="var(--color-visitors)" radius={[3, 3, 0, 0]} maxBarSize={28} />
-                <Bar dataKey="pageviews" fill="var(--color-pageviews)" radius={[3, 3, 0, 0]} maxBarSize={28} />
+                <Bar
+                  dataKey="visitors"
+                  fill="var(--color-visitors)"
+                  radius={[3, 3, 0, 0]}
+                  maxBarSize={28}
+                />
+                <Bar
+                  dataKey="pageviews"
+                  fill="var(--color-pageviews)"
+                  radius={[3, 3, 0, 0]}
+                  maxBarSize={28}
+                />
               </BarChart>
             </ChartContainer>
           </CardContent>
@@ -101,7 +142,9 @@ export function AnalyticsContent() {
                     <span className={`size-2.5 rounded-full ${s.color}`} />
                     <span className="text-sm">{s.name}</span>
                   </div>
-                  <span className="text-sm font-semibold tabular-nums">{s.value}%</span>
+                  <span className="text-sm font-semibold tabular-nums">
+                    {s.value}%
+                  </span>
                 </div>
                 <Progress value={s.value} className="h-1.5" />
               </div>
@@ -123,11 +166,17 @@ export function AnalyticsContent() {
                 key={page.path}
                 className="flex items-center gap-3 rounded-md px-2 py-2.5 hover:bg-muted/50 transition-colors"
               >
-                <span className="w-5 text-center text-xs font-medium text-muted-foreground tabular-nums">{i + 1}</span>
-                <span className="flex-1 text-sm font-mono truncate">{page.path}</span>
+                <span className="w-5 text-center text-xs font-medium text-muted-foreground tabular-nums">
+                  {i + 1}
+                </span>
+                <span className="flex-1 text-sm font-mono truncate">
+                  {page.path}
+                </span>
                 <div className="hidden sm:flex items-center gap-3 w-32">
                   <Progress value={page.pct} className="h-1.5 flex-1" />
-                  <span className="text-xs text-muted-foreground w-8 text-right">{page.pct}%</span>
+                  <span className="text-xs text-muted-foreground w-8 text-right">
+                    {page.pct}%
+                  </span>
                 </div>
                 <span className="text-sm font-semibold tabular-nums shrink-0">
                   {page.views.toLocaleString()}

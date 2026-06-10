@@ -1,10 +1,22 @@
 "use client";
 
-import { Download, FileSpreadsheet, FileText, Plus, RefreshCw } from "lucide-react";
+import {
+  Download,
+  FileSpreadsheet,
+  FileText,
+  Plus,
+  RefreshCw,
+} from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/ui/card";
 
 type ReportStatus = "ready" | "generating" | "failed";
 
@@ -65,7 +77,10 @@ const reports = [
   },
 ];
 
-const statusConfig: Record<ReportStatus, { label: string; variant: "default" | "secondary" | "destructive" }> = {
+const statusConfig: Record<
+  ReportStatus,
+  { label: string; variant: "default" | "secondary" | "destructive" }
+> = {
   ready: { label: "Ready", variant: "default" },
   generating: { label: "Generating…", variant: "secondary" },
   failed: { label: "Failed", variant: "destructive" },
@@ -94,7 +109,9 @@ export function ReportsContent() {
           <Card key={s.label}>
             <CardContent className="pt-4 pb-4">
               <p className="text-xs text-muted-foreground">{s.label}</p>
-              <p className="mt-1 text-2xl font-bold tracking-tight">{s.value}</p>
+              <p className="mt-1 text-2xl font-bold tracking-tight">
+                {s.value}
+              </p>
             </CardContent>
           </Card>
         ))}
@@ -106,13 +123,26 @@ export function ReportsContent() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <CardTitle>All Reports</CardTitle>
-              <CardDescription className="mt-1">Download or regenerate your reports.</CardDescription>
+              <CardDescription className="mt-1">
+                Download or regenerate your reports.
+              </CardDescription>
             </div>
-            <Button size="sm" className="gap-1.5 self-start sm:self-auto" onClick={handleGenerate} disabled={generating}>
+            <Button
+              size="sm"
+              className="gap-1.5 self-start sm:self-auto"
+              onClick={handleGenerate}
+              disabled={generating}
+            >
               {generating ? (
-                <><RefreshCw className="size-3.5 animate-spin" />Generating…</>
+                <>
+                  <RefreshCw className="size-3.5 animate-spin" />
+                  Generating…
+                </>
               ) : (
-                <><Plus className="size-3.5" />New Report</>
+                <>
+                  <Plus className="size-3.5" />
+                  New Report
+                </>
               )}
             </Button>
           </div>
@@ -140,20 +170,34 @@ export function ReportsContent() {
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium truncate">{r.name}</p>
                   <div className="flex items-center gap-2 mt-0.5 sm:hidden">
-                    <span className="text-xs text-muted-foreground">{r.date}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {r.date}
+                    </span>
                     <span className="text-xs text-muted-foreground">·</span>
-                    <Badge variant={statusConfig[r.status].variant} className="h-4 px-1 text-[10px]">
+                    <Badge
+                      variant={statusConfig[r.status].variant}
+                      className="h-4 px-1 text-[10px]"
+                    >
                       {statusConfig[r.status].label}
                     </Badge>
                   </div>
                 </div>
 
                 {/* Desktop columns */}
-                <span className="hidden sm:block text-sm text-muted-foreground w-24 shrink-0">{r.type}</span>
-                <span className="hidden sm:block text-sm text-muted-foreground w-24 shrink-0">{r.date}</span>
-                <span className="hidden sm:block text-sm text-muted-foreground w-16 shrink-0 text-right">{r.size}</span>
+                <span className="hidden sm:block text-sm text-muted-foreground w-24 shrink-0">
+                  {r.type}
+                </span>
+                <span className="hidden sm:block text-sm text-muted-foreground w-24 shrink-0">
+                  {r.date}
+                </span>
+                <span className="hidden sm:block text-sm text-muted-foreground w-16 shrink-0 text-right">
+                  {r.size}
+                </span>
                 <div className="hidden sm:flex w-24 justify-center shrink-0">
-                  <Badge variant={statusConfig[r.status].variant} className="text-xs">
+                  <Badge
+                    variant={statusConfig[r.status].variant}
+                    className="text-xs"
+                  >
                     {statusConfig[r.status].label}
                   </Badge>
                 </div>
