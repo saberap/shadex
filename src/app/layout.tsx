@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { Geist_Mono, Inter, Vazirmatn } from "next/font/google";
 import "@/styles/globals.css";
@@ -27,10 +26,12 @@ export default function RootLayout({
       lang={appConfig.locale}
       dir={appConfig.direction}
       className={`${activeFont.variable} ${geistMono.variable} h-full antialiased`}
-      style={{ "--font-sans": `var(${activeFont.variable})` } as CSSProperties}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body
+        className="min-h-full flex flex-col"
+        style={{ fontFamily: activeFont.style.fontFamily }}
+      >
         <QueryClientProvider>
           <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
             {children}

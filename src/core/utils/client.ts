@@ -6,7 +6,7 @@ import axios, {
 } from "axios";
 import type { IError } from "@/core/types/api";
 import { createIErrorFromUnknown } from "@/core/types/api";
-import { toast } from "@/shared/components/ui/sonner";
+import { toast } from "sonner";
 import { deleteCookie } from "./client-cookie";
 
 export type MethodType = "get" | "post" | "put" | "delete" | "patch";
@@ -49,7 +49,7 @@ export class AxiosAdapter implements HttpAdapter {
           error?.response?.data ?? error,
         );
         try {
-          toast.error({ text: normalized.detail || normalized.title });
+          toast.error(normalized.detail || normalized.title);
         } catch (_) {
           // swallow toast errors
         }
@@ -88,7 +88,7 @@ export class AxiosAdapter implements HttpAdapter {
           error?.response?.data ?? error,
         );
         try {
-          toast.error({ text: normalized.detail || normalized.title });
+          toast.error(normalized.detail || normalized.title);
         } catch (_) {
           // swallow toast errors
         }

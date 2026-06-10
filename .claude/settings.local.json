@@ -5,7 +5,15 @@
       "Bash(Select-Object -First 100)",
       "PowerShell($pkg = Get-Content \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\node_modules\\\\radix-ui\\\\package.json\" -Raw | ConvertFrom-Json; Write-Output \"name: $\\($pkg.name\\) version: $\\($pkg.version\\)\")",
       "PowerShell($pkg = Get-Content \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\node_modules\\\\shadcn\\\\package.json\" -Raw | ConvertFrom-Json; $pkg.exports | ConvertTo-Json -Depth 5)",
-      "PowerShell(Select-String -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\node_modules\\\\next-themes\\\\dist\\\\index.mjs\" -Pattern \"prefers-color-scheme|mediaQuery|colorScheme\" | ForEach-Object { $_.Line.Substring\\([Math]::Max\\(0, $_.Line.IndexOf\\(\"prefers-color-scheme\"\\) - 100\\), [Math]::Min\\(300, $_.Line.Length\\)\\) })"
+      "PowerShell(Select-String -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\node_modules\\\\next-themes\\\\dist\\\\index.mjs\" -Pattern \"prefers-color-scheme|mediaQuery|colorScheme\" | ForEach-Object { $_.Line.Substring\\([Math]::Max\\(0, $_.Line.IndexOf\\(\"prefers-color-scheme\"\\) - 100\\), [Math]::Min\\(300, $_.Line.Length\\)\\) })",
+      "Bash(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\" -Recurse -Depth 2)",
+      "Bash(Select-Object FullName)",
+      "Bash(npm run *)",
+      "Bash(npx biome *)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\" -Recurse -File | Select-Object FullName | Where-Object {$_.FullName -match '\\\\.\\(tsx|ts|css|md\\)$'} | Select-Object -First 50)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\app\\\\dashboard\")",
+      "Bash(Out-Null)",
+      "Bash(Write-Output \"done\")"
     ]
   }
 }
