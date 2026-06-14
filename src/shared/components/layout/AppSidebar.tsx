@@ -9,6 +9,7 @@ import {
   Files,
   HelpCircle,
   LayoutDashboard,
+  LayoutGrid,
   MessageSquare,
   Package,
   Settings,
@@ -67,6 +68,12 @@ const pages: NavGroup = {
   label: "Pages",
   icon: Files,
   items: [{ label: "Pricing", href: "/pricing" }],
+};
+
+const components: NavGroup = {
+  label: "Components",
+  icon: LayoutGrid,
+  items: [{ label: "DataGrid", href: "/components/data-grid" }],
 };
 
 const auth: NavGroup = {
@@ -145,6 +152,11 @@ export function AppSidebar() {
           <SidebarGroupLabel>Pages</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
+              <CollapsibleNavGroup
+                group={components}
+                pathname={pathname}
+                defaultOpen={isSectionActive(components.items)}
+              />
               <CollapsibleNavGroup
                 group={pages}
                 pathname={pathname}
