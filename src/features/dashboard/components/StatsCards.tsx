@@ -6,8 +6,13 @@ import {
   DollarSign,
   Users,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { cn } from "@/core/utils/cn";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/ui/card";
 
 const stats = [
   {
@@ -65,7 +70,9 @@ export function StatsCards() {
               <span
                 className={cn(
                   "flex items-center gap-0.5 text-xs font-medium",
-                  stat.trend === "up" ? "text-emerald-600 dark:text-emerald-400" : "text-red-500"
+                  stat.trend === "up"
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : "text-red-500",
                 )}
               >
                 {stat.trend === "up" ? (

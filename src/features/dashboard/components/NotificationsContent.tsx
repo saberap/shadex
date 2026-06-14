@@ -12,10 +12,16 @@ import {
   X,
 } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/core/utils/cn";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
-import { cn } from "@/core/utils/cn";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/ui/card";
 
 type NotifType = "success" | "info" | "warning" | "error";
 
@@ -44,7 +50,8 @@ const initialNotifications: Notification[] = [
     type: "info",
     icon: Users,
     title: "New user registered",
-    description: "Jackson Lee created a new account and is waiting for approval.",
+    description:
+      "Jackson Lee created a new account and is waiting for approval.",
     time: "18 min ago",
     read: false,
   },
@@ -71,7 +78,8 @@ const initialNotifications: Notification[] = [
     type: "info",
     icon: Settings,
     title: "System maintenance",
-    description: "Scheduled maintenance is planned for Jun 10, 2026 at 02:00 UTC.",
+    description:
+      "Scheduled maintenance is planned for Jun 10, 2026 at 02:00 UTC.",
     time: "5 hr ago",
     read: true,
   },
@@ -80,7 +88,8 @@ const initialNotifications: Notification[] = [
     type: "error",
     icon: AlertTriangle,
     title: "Webhook delivery failed",
-    description: "3 webhook events failed to deliver to https://api.example.com/hook.",
+    description:
+      "3 webhook events failed to deliver to https://api.example.com/hook.",
     time: "Yesterday",
     read: true,
   },
@@ -105,10 +114,22 @@ const initialNotifications: Notification[] = [
 ];
 
 const typeStyle: Record<NotifType, { bg: string; icon: string }> = {
-  success: { bg: "bg-emerald-50 dark:bg-emerald-950/40", icon: "text-emerald-600 dark:text-emerald-400" },
-  info:    { bg: "bg-blue-50 dark:bg-blue-950/40",     icon: "text-blue-600 dark:text-blue-400" },
-  warning: { bg: "bg-amber-50 dark:bg-amber-950/40",   icon: "text-amber-600 dark:text-amber-400" },
-  error:   { bg: "bg-red-50 dark:bg-red-950/40",       icon: "text-red-600 dark:text-red-400" },
+  success: {
+    bg: "bg-emerald-50 dark:bg-emerald-950/40",
+    icon: "text-emerald-600 dark:text-emerald-400",
+  },
+  info: {
+    bg: "bg-blue-50 dark:bg-blue-950/40",
+    icon: "text-blue-600 dark:text-blue-400",
+  },
+  warning: {
+    bg: "bg-amber-50 dark:bg-amber-950/40",
+    icon: "text-amber-600 dark:text-amber-400",
+  },
+  error: {
+    bg: "bg-red-50 dark:bg-red-950/40",
+    icon: "text-red-600 dark:text-red-400",
+  },
 };
 
 export function NotificationsContent() {
@@ -123,7 +144,9 @@ export function NotificationsContent() {
     setItems((prev) => prev.filter((n) => n.id !== id));
 
   const markRead = (id: number) =>
-    setItems((prev) => prev.map((n) => n.id === id ? { ...n, read: true } : n));
+    setItems((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, read: true } : n)),
+    );
 
   const unread = items.filter((n) => !n.read);
   const read = items.filter((n) => n.read);
@@ -167,7 +190,11 @@ export function NotificationsContent() {
                   New
                 </p>
               </div>
-              <NotificationList items={unread} onDismiss={dismiss} onRead={markRead} />
+              <NotificationList
+                items={unread}
+                onDismiss={dismiss}
+                onRead={markRead}
+              />
             </>
           )}
 
@@ -178,7 +205,11 @@ export function NotificationsContent() {
                   Earlier
                 </p>
               </div>
-              <NotificationList items={read} onDismiss={dismiss} onRead={markRead} />
+              <NotificationList
+                items={read}
+                onDismiss={dismiss}
+                onRead={markRead}
+              />
             </>
           )}
 
@@ -214,17 +245,24 @@ function NotificationList({
             key={n.id}
             className={cn(
               "flex items-start gap-3 px-4 sm:px-6 py-4 transition-colors hover:bg-muted/30 cursor-pointer",
-              !n.read && "bg-muted/20"
+              !n.read && "bg-muted/20",
             )}
             onClick={() => onRead(n.id)}
           >
-            <div className={cn("mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full", style.bg)}>
+            <div
+              className={cn(
+                "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full",
+                style.bg,
+              )}
+            >
               <n.icon className={cn("size-4", style.icon)} />
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <p className={cn("text-sm truncate", !n.read && "font-semibold")}>
+                <p
+                  className={cn("text-sm truncate", !n.read && "font-semibold")}
+                >
                   {n.title}
                 </p>
                 {!n.read && (

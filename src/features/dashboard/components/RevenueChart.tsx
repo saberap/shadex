@@ -2,10 +2,10 @@
 
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-  type ChartConfig,
 } from "@/shared/components/ui/chart";
 
 const data = [
@@ -37,18 +37,41 @@ const chartConfig = {
 export function RevenueChart() {
   return (
     <ChartContainer config={chartConfig} className="h-[260px] w-full">
-      <AreaChart data={data} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
+      <AreaChart
+        data={data}
+        margin={{ top: 4, right: 4, left: -16, bottom: 0 }}
+      >
         <defs>
           <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="var(--color-revenue)" stopOpacity={0.15} />
-            <stop offset="95%" stopColor="var(--color-revenue)" stopOpacity={0} />
+            <stop
+              offset="5%"
+              stopColor="var(--color-revenue)"
+              stopOpacity={0.15}
+            />
+            <stop
+              offset="95%"
+              stopColor="var(--color-revenue)"
+              stopOpacity={0}
+            />
           </linearGradient>
           <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="var(--color-expenses)" stopOpacity={0.15} />
-            <stop offset="95%" stopColor="var(--color-expenses)" stopOpacity={0} />
+            <stop
+              offset="5%"
+              stopColor="var(--color-expenses)"
+              stopOpacity={0.15}
+            />
+            <stop
+              offset="95%"
+              stopColor="var(--color-expenses)"
+              stopOpacity={0}
+            />
           </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" vertical={false} className="stroke-border/40" />
+        <CartesianGrid
+          strokeDasharray="3 3"
+          vertical={false}
+          className="stroke-border/40"
+        />
         <XAxis
           dataKey="month"
           tickLine={false}
@@ -65,9 +88,7 @@ export function RevenueChart() {
         <ChartTooltip
           content={
             <ChartTooltipContent
-              formatter={(value) =>
-                `$${Number(value).toLocaleString()}`
-              }
+              formatter={(value) => `$${Number(value).toLocaleString()}`}
             />
           }
         />
