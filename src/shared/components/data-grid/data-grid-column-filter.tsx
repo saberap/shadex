@@ -23,6 +23,8 @@ type DataGridColumnFilterProps<TData, TValue> = {
 export function DataGridColumnFilter<TData, TValue>({
   column,
 }: DataGridColumnFilterProps<TData, TValue>) {
+  "use no memo";
+
   const meta = column.columnDef.meta;
   const filterType = meta?.filterType ?? "text";
   const value = column.getFilterValue();
@@ -56,12 +58,19 @@ export function DataGridColumnFilter<TData, TValue>({
           variant="ghost"
           size="icon-xs"
           aria-label={`Filter column ${column.id}`}
+          data-active={isActive ? "true" : undefined}
           className={cn(
-            "shrink-0",
-            isActive && "text-primary hover:text-primary",
+            "shrink-0 transition-colors",
+            isActive &&
+              "bg-primary/10 text-primary hover:bg-primary/15 hover:text-primary aria-expanded:bg-primary/15 aria-expanded:text-primary",
           )}
         >
-          <Filter className={cn(isActive && "fill-primary/20")} />
+          <Filter
+            className={cn(
+              "transition-[fill,stroke]",
+              isActive && "fill-primary",
+            )}
+          />
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-64">

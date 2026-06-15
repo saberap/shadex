@@ -15,7 +15,7 @@ import {
   useReactTable,
   type VisibilityState,
 } from "@tanstack/react-table";
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   DEFAULT_PAGE_INDEX,
   DEFAULT_PAGE_SIZE,
@@ -80,70 +80,74 @@ export function useDataGrid<TData>({
   enablePagination = true,
   enableSubRows = true,
 }: UseDataGridParams<TData>) {
-  const [uncontrolledPagination, setUncontrolledPagination] =
-    useState<PaginationState>({
+  // Internal state — TanStack pattern: useState setters double as OnChangeFn.
+  const [internalPagination, setInternalPagination] = useState<PaginationState>(
+    {
       pageIndex: DEFAULT_PAGE_INDEX,
       pageSize: initialPageSize,
-    });
-
-  const [uncontrolledSorting, setUncontrolledSorting] =
+    },
+  );
+  const [internalSorting, setInternalSorting] =
     useState<SortingState>(initialSorting);
-
-  const [uncontrolledFilters, setUncontrolledFilters] =
+  const [internalFilters, setInternalFilters] =
     useState<ColumnFiltersState>(initialFilters);
-
   const [columnVisibility, setColumnVisibility] =
     useState<VisibilityState>(initialVisibility);
-
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [expanded, setExpanded] = useState<ExpandedState>({});
   const [columnOrder, setColumnOrder] = useState<string[]>([]);
 
-  const effectivePagination: PaginationState = useMemo(
-    () => ({
-      pageIndex: pageIndex ?? uncontrolledPagination.pageIndex,
-      pageSize: pageSize ?? uncontrolledPagination.pageSize,
-    }),
-    [pageIndex, pageSize, uncontrolledPagination],
+  // Server-side controlled props take precedence over internal state.
+  const isPaginationControlled =
+    serverSide && pageIndex !== undefined && pageSize !== undefined;
+  const isSortingControlled = serverSide && sorting !== undefined;
+  const isFiltersControlled = serverSide && filters !== undefined;
+
+  const effectivePagination = useMemo<PaginationState>(
+    () =>
+      isPaginationControlled
+        ? { pageIndex: pageIndex as number, pageSize: pageSize as number }
+        : internalPagination,
+    [isPaginationControlled, pageIndex, pageSize, internalPagination],
   );
+  const effectiveSorting = isSortingControlled
+    ? (sorting as SortingState)
+    : internalSorting;
+  const effectiveFilters = isFiltersControlled
+    ? (filters as ColumnFiltersState)
+    : internalFilters;
 
-  const effectiveSorting = sorting ?? uncontrolledSorting;
-  const effectiveFilters = filters ?? uncontrolledFilters;
-
-  const handlePaginationChange = useCallback<OnChangeFn<PaginationState>>(
-    (updater) => {
-      const next =
-        typeof updater === "function" ? updater(effectivePagination) : updater;
-      if (pageIndex === undefined && pageSize === undefined) {
-        setUncontrolledPagination(next);
+  const handlePaginationChange: OnChangeFn<PaginationState> = (updater) => {
+    setInternalPagination((prev) => {
+      const base = isPaginationControlled ? effectivePagination : prev;
+      const next = typeof updater === "function" ? updater(base) : updater;
+      if (onPaginationChange) {
+        onPaginationChange({
+          pageIndex: next.pageIndex,
+          pageSize: next.pageSize,
+        });
       }
-      onPaginationChange?.({
-        pageIndex: next.pageIndex,
-        pageSize: next.pageSize,
-      });
-    },
-    [effectivePagination, onPaginationChange, pageIndex, pageSize],
-  );
+      return next;
+    });
+  };
 
-  const handleSortingChange = useCallback<OnChangeFn<SortingState>>(
-    (updater) => {
-      const next =
-        typeof updater === "function" ? updater(effectiveSorting) : updater;
-      if (sorting === undefined) setUncontrolledSorting(next);
-      onSortingChange?.(next);
-    },
-    [effectiveSorting, onSortingChange, sorting],
-  );
+  const handleSortingChange: OnChangeFn<SortingState> = (updater) => {
+    setInternalSorting((prev) => {
+      const base = isSortingControlled ? effectiveSorting : prev;
+      const next = typeof updater === "function" ? updater(base) : updater;
+      if (onSortingChange) onSortingChange(next);
+      return next;
+    });
+  };
 
-  const handleFiltersChange = useCallback<OnChangeFn<ColumnFiltersState>>(
-    (updater) => {
-      const next =
-        typeof updater === "function" ? updater(effectiveFilters) : updater;
-      if (filters === undefined) setUncontrolledFilters(next);
-      onFiltersChange?.(next);
-    },
-    [effectiveFilters, onFiltersChange, filters],
-  );
+  const handleFiltersChange: OnChangeFn<ColumnFiltersState> = (updater) => {
+    setInternalFilters((prev) => {
+      const base = isFiltersControlled ? effectiveFilters : prev;
+      const next = typeof updater === "function" ? updater(base) : updater;
+      if (onFiltersChange) onFiltersChange(next);
+      return next;
+    });
+  };
 
   const table = useReactTable<TData>({
     data,
@@ -170,6 +174,10 @@ export function useDataGrid<TData>({
     enableColumnFilters,
     enableMultiSort: true,
     enableExpanding: enableSubRows,
+    // Any row can be expanded when a sub-row renderer is provided. Without
+    // this, TanStack only allows expansion when the data itself has nested
+    // `subRows`, which our flat data does not.
+    getRowCanExpand: enableSubRows ? () => true : undefined,
     manualPagination: serverSide,
     manualSorting: serverSide,
     manualFiltering: serverSide,

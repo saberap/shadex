@@ -73,7 +73,10 @@ const pages: NavGroup = {
 const components: NavGroup = {
   label: "Components",
   icon: LayoutGrid,
-  items: [{ label: "DataGrid", href: "/components/data-grid" }],
+  items: [
+    { label: "DataGrid", href: "/components/data-grid" },
+    { label: "File Upload", href: "/components/file-upload" },
+  ],
 };
 
 const auth: NavGroup = {

@@ -127,4 +127,12 @@
   html {
     @apply font-sans;
   }
+
+  /* Radix ScrollArea wraps children in a `<div style="display: table; min-width: 100%">`
+     which breaks flex/grid layouts and lets content overflow horizontally. Force the
+     wrapper back to a normal block so children honor their parent's width. */
+  [data-radix-scroll-area-viewport] > div {
+    display: block !important;
+    min-width: 0 !important;
+  }
 }

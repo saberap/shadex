@@ -1,6 +1,10 @@
 "use client";
 
-import type { Table } from "@tanstack/react-table";
+import type {
+  ColumnFiltersState,
+  Table,
+  VisibilityState,
+} from "@tanstack/react-table";
 import { Download, FileSpreadsheet, FileText, Search, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/shared/components/ui/badge";
@@ -30,6 +34,11 @@ type DataGridToolbarProps<TData> = {
   enableSearch: boolean;
   enableColumnVisibility: boolean;
   enableExport: boolean;
+  /** Live state slices — passed through so React Compiler can't skip re-render
+   *  when TanStack updates state internally. */
+  columnVisibility: VisibilityState;
+  columnFilters: ColumnFiltersState;
+  selectedCount: number;
   bulkActions?: DataGridBulkAction<TData>[];
   slots?: DataGridToolbarSlot;
 };
@@ -42,9 +51,14 @@ export function DataGridToolbar<TData>({
   enableSearch,
   enableColumnVisibility,
   enableExport,
+  columnVisibility,
+  columnFilters,
+  selectedCount,
   bulkActions,
   slots,
 }: DataGridToolbarProps<TData>) {
+  "use no memo";
+
   const [draftSearch, setDraftSearch] = useState(search);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -62,10 +76,8 @@ export function DataGridToolbar<TData>({
     };
   }, [draftSearch, onSearchChange, search]);
 
-  const selectedRows = table.getSelectedRowModel().rows.map((r) => r.original);
-  const selectedCount = selectedRows.length;
-  const hasActiveFilters = table.getState().columnFilters.length > 0;
-  const filterCount = table.getState().columnFilters.length;
+  const hasActiveFilters = columnFilters.length > 0;
+  const filterCount = columnFilters.length;
 
   return (
     <div className="flex flex-col gap-3">
@@ -114,7 +126,10 @@ export function DataGridToolbar<TData>({
           {slots?.endContent}
 
           {enableColumnVisibility ? (
-            <DataGridViewOptions table={table} />
+            <DataGridViewOptions
+              table={table}
+              columnVisibility={columnVisibility}
+            />
           ) : null}
 
           {enableExport ? (
@@ -158,7 +173,11 @@ export function DataGridToolbar<TData>({
                 variant={
                   action.variant === "destructive" ? "destructive" : "outline"
                 }
-                onClick={() => action.onClick(selectedRows)}
+                onClick={() =>
+                  action.onClick(
+                    table.getSelectedRowModel().rows.map((r) => r.original),
+                  )
+                }
               >
                 {action.icon}
                 {action.label}

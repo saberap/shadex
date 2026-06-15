@@ -12,7 +12,12 @@
       "Bash(node -e \"require\\('framer-motion'\\); console.log\\('OK'\\)\")",
       "Bash(npx next *)",
       "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} - %{size_download} bytes\\\\n\" \"http://localhost:3000/components/data-grid\" --max-time 60)",
-      "Bash(curl -s \"http://localhost:3000/api/customers?page=1&pageSize=5&sort=name&direction=asc\" --max-time 30)"
+      "Bash(curl -s \"http://localhost:3000/api/customers?page=1&pageSize=5&sort=name&direction=asc\" --max-time 30)",
+      "Bash(curl -s \"http://localhost:3000/components/data-grid\" --max-time 30 -o /dev/null -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"http://localhost:3000/components/data-grid\" --max-time 30)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(echo \"exit=$?\")",
+      "Bash(npx eslint *)"
     ]
   }
 }

@@ -22,16 +22,24 @@ import { formatRecordsRange, getPageNumbers } from "./utils/table-utils";
 type DataGridPaginationProps<TData> = {
   table: Table<TData>;
   totalRows: number;
+  /** Live pagination state — passed as a prop so React Compiler can't skip
+   *  re-render when TanStack updates the table internally. */
+  pageIndex: number;
+  pageSize: number;
+  pageCount: number;
   pageSizes?: readonly number[];
 };
 
 export function DataGridPagination<TData>({
   table,
   totalRows,
+  pageIndex,
+  pageSize,
+  pageCount,
   pageSizes = DEFAULT_PAGE_SIZES,
 }: DataGridPaginationProps<TData>) {
-  const { pageIndex, pageSize } = table.getState().pagination;
-  const pageCount = table.getPageCount();
+  "use no memo";
+
   const current = pageIndex + 1;
   const numbers = getPageNumbers(current, pageCount);
 

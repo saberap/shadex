@@ -1,6 +1,6 @@
 "use client";
 
-import type { Table } from "@tanstack/react-table";
+import type { Table, VisibilityState } from "@tanstack/react-table";
 import { SlidersHorizontal } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -15,14 +15,16 @@ import { getColumnLabel } from "./utils/table-utils";
 
 type DataGridViewOptionsProps<TData> = {
   table: Table<TData>;
+  /** Live visibility state — passed in so React Compiler can't skip re-render
+   *  when the underlying TanStack state changes. */
+  columnVisibility: VisibilityState;
 };
 
 export function DataGridViewOptions<TData>({
   table,
+  columnVisibility,
 }: DataGridViewOptionsProps<TData>) {
-  // Reading visibility from state forces a re-subscribe to TanStack's
-  // state object so the checkbox indicators stay in sync with the table.
-  const visibility = table.getState().columnVisibility;
+  "use no memo";
 
   const toggleable = table
     .getAllColumns()
@@ -43,7 +45,7 @@ export function DataGridViewOptions<TData>({
         <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {toggleable.map((column) => {
-          const isVisible = visibility[column.id] ?? true;
+          const isVisible = columnVisibility[column.id] ?? true;
           return (
             <DropdownMenuCheckboxItem
               key={column.id}
