@@ -36,7 +36,7 @@ export function ChatLayout() {
             animate={{ width: 300, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.22, ease: "easeInOut" }}
-            className="hidden lg:flex flex-col overflow-hidden shrink-0"
+            className="hidden lg:flex h-full min-h-0 flex-col overflow-hidden shrink-0"
           >
             <ConversationSidebar />
           </motion.div>
@@ -56,15 +56,15 @@ export function ChatLayout() {
       {/* CENTER: Chat area */}
       <ChatArea />
 
-      {/* RIGHT: Details panel — xl+ only */}
+      {/* RIGHT: Details panel — lg+ only, sits at the right edge */}
       <AnimatePresence initial={false}>
         {detailsOpen && (
           <motion.div
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 288, opacity: 1 }}
+            animate={{ width: 320, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.22, ease: "easeInOut" }}
-            className="hidden xl:flex flex-col overflow-hidden shrink-0 border-l border-border"
+            className="hidden lg:flex h-full min-h-0 flex-col overflow-hidden shrink-0 border-l border-border"
           >
             <ConversationDetails />
           </motion.div>

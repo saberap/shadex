@@ -205,7 +205,7 @@ export function ConversationSidebar() {
   const isSearching = searchQuery.trim().length > 0;
 
   return (
-    <div className="flex h-full w-full flex-col border-r border-border/60 bg-muted/20">
+    <div className="flex h-full min-h-0 w-full flex-col border-r border-border/60 bg-muted/20">
       {/* Header */}
       <div className="flex shrink-0 flex-col gap-3 p-3 pt-4">
         <div className="flex items-center justify-between px-1">
@@ -243,7 +243,7 @@ export function ConversationSidebar() {
       <Separator />
 
       {/* Conversation list */}
-      <ScrollArea className="flex-1">
+      <ScrollArea className="flex-1 min-h-0">
         <div className="py-2">
           {!hasContent ? (
             isSearching ? <SearchEmptyState /> : <EmptyHistoryState />

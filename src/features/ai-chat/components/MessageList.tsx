@@ -30,7 +30,7 @@ export function MessageList() {
 
   return (
     <div className="flex-1 overflow-y-auto">
-      <div className="mx-auto max-w-3xl py-6 space-y-6">
+      <div className="w-full px-4 sm:px-6 py-6 space-y-6">
         <AnimatePresence initial={false}>
           {convMessages.map((message) => (
             <MessageBubble key={message.id} message={message} />

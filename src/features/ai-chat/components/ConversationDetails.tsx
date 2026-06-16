@@ -113,14 +113,14 @@ export function ConversationDetails() {
       : (tokensUsed * 0.0000005).toFixed(4);
 
   return (
-    <div className="flex h-full flex-col bg-muted/10">
+    <div className="flex h-full min-h-0 flex-col bg-muted/10">
       {/* Header */}
       <div className="flex shrink-0 items-center gap-2 border-b border-border/50 px-4 h-14">
         <Info className="size-4 text-muted-foreground" />
         <span className="text-sm font-semibold text-foreground">Details</span>
       </div>
 
-      <ScrollArea className="flex-1">
+      <ScrollArea className="flex-1 min-h-0">
         <div className="p-4 space-y-0.5">
           {!activeConversation ? (
             <div className="space-y-3 py-4">

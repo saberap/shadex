@@ -36,7 +36,7 @@ export function EmptyState() {
         </p>
       </motion.div>
 
-      <div className="w-full max-w-2xl">
+      <div className="w-full">
         <SuggestionCards />
       </div>
     </div>

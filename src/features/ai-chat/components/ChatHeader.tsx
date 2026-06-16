@@ -186,14 +186,14 @@ export function ChatHeader() {
         </DropdownMenu>
 
         {/* Details panel toggle */}
-        <VDivider className="mx-1 h-4 hidden xl:block" />
+        <VDivider className="mx-1 h-4 hidden lg:block" />
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
               variant="ghost"
               size="icon"
               className={cn(
-                "hidden size-8 xl:flex",
+                "hidden size-8 lg:flex",
                 detailsOpen ? "text-foreground" : "text-muted-foreground"
               )}
               onClick={toggleDetails}

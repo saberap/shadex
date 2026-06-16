@@ -202,7 +202,7 @@ export function ChatInput() {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         className={cn(
-          "relative mx-auto max-w-3xl rounded-2xl border bg-card shadow-sm transition-all duration-200",
+          "relative w-full rounded-2xl border bg-card shadow-sm transition-all duration-200",
           isDragging
             ? "border-primary/50 shadow-md shadow-primary/10"
             : "border-border/60"
