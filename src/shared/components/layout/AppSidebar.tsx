@@ -5,15 +5,18 @@ import {
   BarChart3,
   Bot,
   ChevronRight,
+  ChevronsUpDown,
   Command,
   Files,
   HelpCircle,
   LayoutDashboard,
   LayoutGrid,
+  LogOut,
   MessageSquare,
   Package,
   Settings,
   Shield,
+  User,
   Users,
 } from "lucide-react";
 import Link from "next/link";
@@ -24,6 +27,14 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/shared/components/ui/collapsible";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/shared/components/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -40,6 +51,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarRail,
+  useSidebar,
 } from "@/shared/components/ui/sidebar";
 
 type NavLink = {
@@ -203,27 +215,79 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" tooltip="Saber Alipour" asChild>
-              <Link href="/settings">
-                <Avatar size="sm">
-                  <AvatarFallback className="text-xs">SA</AvatarFallback>
-                </Avatar>
-                <div className="flex min-w-0 flex-col gap-0.5 leading-none">
-                  <span className="truncate text-sm font-medium">
-                    Saber Alipour
-                  </span>
-                  <span className="truncate text-xs text-muted-foreground">
-                    alipournet@gmail.com
-                  </span>
-                </div>
-              </Link>
-            </SidebarMenuButton>
+            <UserMenu />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
 
       <SidebarRail />
     </Sidebar>
+  );
+}
+
+function UserMenu() {
+  const { isMobile } = useSidebar();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <SidebarMenuButton
+          size="lg"
+          tooltip="Saber Alipour"
+          className="data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
+        >
+          <Avatar size="sm">
+            <AvatarFallback className="text-xs">SA</AvatarFallback>
+          </Avatar>
+          <div className="flex min-w-0 flex-col gap-0.5 leading-none">
+            <span className="truncate text-sm font-medium">Saber Alipour</span>
+            <span className="truncate text-xs text-muted-foreground">
+              alipournet@gmail.com
+            </span>
+          </div>
+          <ChevronsUpDown className="ml-auto size-4 text-muted-foreground" />
+        </SidebarMenuButton>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        side={isMobile ? "bottom" : "right"}
+        align="end"
+        sideOffset={8}
+        className="min-w-56 p-0"
+      >
+        <DropdownMenuLabel className="p-0">
+          <div className="flex items-center gap-2.5 px-2 py-2.5">
+            <Avatar size="default">
+              <AvatarFallback className="text-sm">SA</AvatarFallback>
+            </Avatar>
+            <div className="flex min-w-0 flex-1 flex-col gap-0.5 leading-none">
+              <span className="truncate text-sm font-medium text-foreground">
+                Saber Alipour
+              </span>
+              <span className="truncate text-xs font-normal text-muted-foreground">
+                alipournet@gmail.com
+              </span>
+              <span className="mt-1 flex items-center gap-1.5 text-xs font-normal text-muted-foreground">
+                <span className="size-1.5 rounded-full bg-emerald-500" />
+                Online
+              </span>
+            </div>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator className="mx-0 my-0" />
+        <div className="p-1">
+          <DropdownMenuItem asChild className="px-2 py-1.5">
+            <Link href="/settings">
+              <User className="size-4" />
+              <span>View Profile</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="destructive" className="px-2 py-1.5">
+            <LogOut className="size-4" />
+            <span>Log Out</span>
+          </DropdownMenuItem>
+        </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
