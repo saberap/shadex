@@ -1,7 +1,8 @@
 import { ChatLayout } from "@/features/chat";
 
 export const metadata = {
-  title: "Messages",
+  title: "پیام‌ها | پنل شدکس",
+  description: "گفتگوها و پیام‌های شما",
 };
 
 export default function MessagesPage() {

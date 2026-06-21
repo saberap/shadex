@@ -16,35 +16,35 @@ import {
 
 const stats = [
   {
-    title: "Total Revenue",
+    title: "درآمد کل",
     value: "$45,231.89",
     change: "+20.1%",
     trend: "up",
-    sub: "from last month",
+    sub: "نسبت به ماه گذشته",
     icon: DollarSign,
   },
   {
-    title: "Subscriptions",
+    title: "اشتراک‌ها",
     value: "+2,350",
     change: "+180.1%",
     trend: "up",
-    sub: "from last month",
+    sub: "نسبت به ماه گذشته",
     icon: Users,
   },
   {
-    title: "Sales",
+    title: "فروش",
     value: "+12,234",
     change: "+19%",
     trend: "up",
-    sub: "from last month",
+    sub: "نسبت به ماه گذشته",
     icon: CreditCard,
   },
   {
-    title: "Active Now",
+    title: "اکنون فعال",
     value: "+573",
     change: "+201",
     trend: "up",
-    sub: "since last hour",
+    sub: "نسبت به یک ساعت گذشته",
     icon: Activity,
   },
 ];

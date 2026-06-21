@@ -25,7 +25,11 @@ function getRemaining(target: number): Remaining {
   };
 }
 
-const pad = (n: number) => n.toString().padStart(2, "0");
+const pad = (n: number) =>
+  n
+    .toString()
+    .padStart(2, "0")
+    .replace(/[0-9]/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
 
 export function CountdownTimer({
   durationSeconds,
@@ -47,10 +51,10 @@ export function CountdownTimer({
   }, [target]);
 
   const segments: { value: string; label: string }[] = [
-    { value: remaining ? pad(remaining.days) : "--", label: "DAYS" },
-    { value: remaining ? pad(remaining.hours) : "--", label: "HRS" },
-    { value: remaining ? pad(remaining.minutes) : "--", label: "MIN" },
-    { value: remaining ? pad(remaining.seconds) : "--", label: "SEC" },
+    { value: remaining ? pad(remaining.days) : "--", label: "روز" },
+    { value: remaining ? pad(remaining.hours) : "--", label: "ساعت" },
+    { value: remaining ? pad(remaining.minutes) : "--", label: "دقیقه" },
+    { value: remaining ? pad(remaining.seconds) : "--", label: "ثانیه" },
   ];
 
   return (
@@ -61,7 +65,7 @@ export function CountdownTimer({
       )}
     >
       <div className="text-[10px] font-semibold tracking-[0.18em] text-primary-foreground/60 mb-2">
-        OFFER ENDS IN
+        پایان پیشنهاد تا
       </div>
       <div
         className="grid grid-cols-4 items-center"
@@ -74,7 +78,7 @@ export function CountdownTimer({
             className={cn(
               "flex flex-col items-center gap-1 relative",
               i < segments.length - 1 &&
-                "after:content-[':'] after:absolute after:right-0 after:top-1/2 after:-translate-y-[55%] after:text-primary-foreground/40 after:text-2xl after:font-light",
+                "after:content-[':'] after:absolute after:end-0 after:top-1/2 after:-translate-y-[55%] after:text-primary-foreground/40 after:text-2xl after:font-light",
             )}
           >
             <span

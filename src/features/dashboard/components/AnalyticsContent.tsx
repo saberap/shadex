@@ -17,18 +17,18 @@ import {
 import { Progress } from "@/shared/components/ui/progress";
 
 const weeklyTraffic = [
-  { day: "Mon", visitors: 2400, pageviews: 4200 },
-  { day: "Tue", visitors: 3100, pageviews: 5800 },
-  { day: "Wed", visitors: 2800, pageviews: 4900 },
-  { day: "Thu", visitors: 3600, pageviews: 6100 },
-  { day: "Fri", visitors: 4200, pageviews: 7300 },
-  { day: "Sat", visitors: 1900, pageviews: 3100 },
-  { day: "Sun", visitors: 1500, pageviews: 2400 },
+  { day: "دوشنبه", visitors: 2400, pageviews: 4200 },
+  { day: "سه‌شنبه", visitors: 3100, pageviews: 5800 },
+  { day: "چهارشنبه", visitors: 2800, pageviews: 4900 },
+  { day: "پنج‌شنبه", visitors: 3600, pageviews: 6100 },
+  { day: "جمعه", visitors: 4200, pageviews: 7300 },
+  { day: "شنبه", visitors: 1900, pageviews: 3100 },
+  { day: "یک‌شنبه", visitors: 1500, pageviews: 2400 },
 ];
 
 const chartConfig = {
-  visitors: { label: "Visitors", color: "var(--chart-5)" },
-  pageviews: { label: "Page Views", color: "var(--chart-2)" },
+  visitors: { label: "بازدیدکنندگان", color: "var(--chart-5)" },
+  pageviews: { label: "بازدید صفحه", color: "var(--chart-2)" },
 } satisfies ChartConfig;
 
 const topPages = [
@@ -41,18 +41,18 @@ const topPages = [
 ];
 
 const sources = [
-  { name: "Organic Search", value: 42, color: "bg-chart-5" },
-  { name: "Direct", value: 28, color: "bg-chart-2" },
-  { name: "Social Media", value: 16, color: "bg-chart-3" },
-  { name: "Referral", value: 9, color: "bg-chart-4" },
-  { name: "Email", value: 5, color: "bg-muted-foreground/40" },
+  { name: "جستجوی ارگانیک", value: 42, color: "bg-chart-5" },
+  { name: "مستقیم", value: 28, color: "bg-chart-2" },
+  { name: "شبکه‌های اجتماعی", value: 16, color: "bg-chart-3" },
+  { name: "ارجاع", value: 9, color: "bg-chart-4" },
+  { name: "ایمیل", value: 5, color: "bg-muted-foreground/40" },
 ];
 
 const metrics = [
-  { label: "Page Views", value: "38,742", change: "+14.2%", up: true },
-  { label: "Unique Visitors", value: "19,510", change: "+9.8%", up: true },
-  { label: "Bounce Rate", value: "34.7%", change: "-2.1%", up: false },
-  { label: "Avg. Session", value: "3m 42s", change: "+0:18", up: true },
+  { label: "بازدید صفحه", value: "38,742", change: "+14.2%", up: true },
+  { label: "بازدیدکنندگان یکتا", value: "19,510", change: "+9.8%", up: true },
+  { label: "نرخ پرش", value: "34.7%", change: "-2.1%", up: false },
+  { label: "میانگین جلسه", value: "3m 42s", change: "+0:18", up: true },
 ];
 
 export function AnalyticsContent() {
@@ -70,7 +70,7 @@ export function AnalyticsContent() {
               <p
                 className={`mt-0.5 text-xs font-medium ${m.up ? "text-emerald-600 dark:text-emerald-400" : "text-red-500"}`}
               >
-                {m.change} vs last week
+                {m.change} نسبت به هفته گذشته
               </p>
             </CardContent>
           </Card>
@@ -81,9 +81,9 @@ export function AnalyticsContent() {
       <div className="grid gap-4 sm:gap-6 xl:grid-cols-5">
         <Card className="xl:col-span-3">
           <CardHeader>
-            <CardTitle>Weekly Traffic</CardTitle>
+            <CardTitle>ترافیک هفتگی</CardTitle>
             <CardDescription>
-              Visitors and page views over the last 7 days
+              بازدیدکنندگان و بازدیدهای صفحه در ۷ روز گذشته
             </CardDescription>
           </CardHeader>
           <CardContent className="pb-4">
@@ -131,8 +131,8 @@ export function AnalyticsContent() {
 
         <Card className="xl:col-span-2">
           <CardHeader>
-            <CardTitle>Traffic Sources</CardTitle>
-            <CardDescription>Where your visitors come from</CardDescription>
+            <CardTitle>منابع ترافیک</CardTitle>
+            <CardDescription>بازدیدکنندگان شما از کجا می‌آیند</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             {sources.map((s) => (
@@ -156,8 +156,8 @@ export function AnalyticsContent() {
       {/* Top pages */}
       <Card>
         <CardHeader>
-          <CardTitle>Top Pages</CardTitle>
-          <CardDescription>Most visited pages this month</CardDescription>
+          <CardTitle>صفحات برتر</CardTitle>
+          <CardDescription>پربازدیدترین صفحات این ماه</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-1">
@@ -174,7 +174,7 @@ export function AnalyticsContent() {
                 </span>
                 <div className="hidden sm:flex items-center gap-3 w-32">
                   <Progress value={page.pct} className="h-1.5 flex-1" />
-                  <span className="text-xs text-muted-foreground w-8 text-right">
+                  <span className="text-xs text-muted-foreground w-8 text-end">
                     {page.pct}%
                   </span>
                 </div>

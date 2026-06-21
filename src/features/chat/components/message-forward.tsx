@@ -62,17 +62,17 @@ export function MessageForwardDialog() {
         <DialogHeader className="px-5 pt-5">
           <DialogTitle className="flex items-center gap-2 text-base">
             <Forward className="size-4" />
-            Forward message
+            هدایت پیام
           </DialogTitle>
           <DialogDescription className="text-xs">
-            Choose a conversation to forward this message to.
+            یک گفتگو برای هدایت این پیام انتخاب کنید.
           </DialogDescription>
         </DialogHeader>
 
         {forwardingMessage && (
           <div className="mx-5 mt-3 rounded-lg border bg-muted/40 p-3 text-xs">
             <div className="mb-1 font-medium text-foreground">
-              {users[forwardingMessage.authorId]?.name ?? "Unknown"}
+              {users[forwardingMessage.authorId]?.name ?? "ناشناس"}
             </div>
             <p className="line-clamp-3 text-muted-foreground">
               {getMessagePreview(forwardingMessage)}
@@ -81,12 +81,12 @@ export function MessageForwardDialog() {
         )}
 
         <div className="relative px-5 pt-4">
-          <Search className="pointer-events-none absolute left-7 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+          <Search className="pointer-events-none absolute start-7 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search conversations…"
-            className="h-9 rounded-lg pl-8 text-xs"
+            placeholder="جستجوی گفتگوها…"
+            className="h-9 rounded-lg ps-8 text-xs"
           />
         </div>
 
@@ -94,7 +94,7 @@ export function MessageForwardDialog() {
           <div className="flex flex-col gap-0.5 px-3 py-2">
             {filtered.length === 0 ? (
               <div className="px-3 py-8 text-center text-xs text-muted-foreground">
-                No conversations found
+                گفتگویی یافت نشد
               </div>
             ) : (
               filtered.map((c) => {
@@ -106,7 +106,7 @@ export function MessageForwardDialog() {
                     type="button"
                     onClick={() => setSelected(c.id)}
                     className={cn(
-                      "flex items-center gap-3 rounded-lg px-2.5 py-2 text-left transition-colors",
+                      "flex items-center gap-3 rounded-lg px-2.5 py-2 text-start transition-colors",
                       "hover:bg-muted/60",
                       active && "bg-muted"
                     )}
@@ -123,7 +123,7 @@ export function MessageForwardDialog() {
                       </span>
                       <span className="truncate text-[11px] text-muted-foreground">
                         {c.kind === "group"
-                          ? `${c.participantIds.length} members`
+                          ? `${c.participantIds.length} عضو`
                           : (users[c.participantIds.find((id) => id !== currentUser.id) ?? ""]?.role ?? "")}
                       </span>
                     </div>
@@ -149,7 +149,7 @@ export function MessageForwardDialog() {
             size="sm"
             onClick={() => cancelForward()}
           >
-            Cancel
+            لغو
           </Button>
           <Button
             type="button"
@@ -164,7 +164,7 @@ export function MessageForwardDialog() {
             }}
           >
             <Forward className="size-3.5" />
-            Forward
+            هدایت
           </Button>
         </DialogFooter>
       </DialogContent>

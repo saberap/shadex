@@ -17,10 +17,10 @@ export function InlineReplyPreview({
   return (
     <div
       className={cn(
-        "mb-1.5 flex items-start gap-2 rounded-md border-l-2 bg-background/40 px-2 py-1.5 text-xs",
+        "mb-1.5 flex items-start gap-2 rounded-md border-s-2 bg-background/40 px-2 py-1.5 text-xs",
         variant === "outgoing"
-          ? "border-l-primary-foreground/40 bg-primary-foreground/10 text-primary-foreground/90"
-          : "border-l-primary/40 bg-muted text-muted-foreground"
+          ? "border-s-primary-foreground/40 bg-primary-foreground/10 text-primary-foreground/90"
+          : "border-s-primary/40 bg-muted text-muted-foreground"
       )}
     >
       <CornerUpLeft className="mt-0.5 size-3 shrink-0 opacity-60" />
@@ -36,11 +36,11 @@ export function InlineReplyPreview({
         <span className="line-clamp-2 text-[11px] opacity-80">
           {reply.type === "image" ? (
             <span className="inline-flex items-center gap-1">
-              <ImageIcon className="size-3" /> Photo
+              <ImageIcon className="size-3" /> عکس
             </span>
           ) : reply.type === "file" ? (
             <span className="inline-flex items-center gap-1">
-              <Paperclip className="size-3" /> Attachment
+              <Paperclip className="size-3" /> پیوست
             </span>
           ) : (
             reply.preview
@@ -62,13 +62,13 @@ export function ReplyComposerBar({ reply, onCancel }: ReplyComposerBarProps) {
       <CornerUpLeft className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
       <div className="flex min-w-0 flex-1 flex-col">
         <span className="text-[11px] font-medium text-foreground">
-          Replying to {reply.authorName}
+          در پاسخ به {reply.authorName}
         </span>
         <span className="line-clamp-1 truncate text-[11px] text-muted-foreground">
           {reply.type === "image"
-            ? "Photo"
+            ? "عکس"
             : reply.type === "file"
-            ? "Attachment"
+            ? "پیوست"
             : reply.preview}
         </span>
       </div>
@@ -78,7 +78,7 @@ export function ReplyComposerBar({ reply, onCancel }: ReplyComposerBarProps) {
         size="icon"
         className="size-6 text-muted-foreground hover:text-foreground"
         onClick={onCancel}
-        aria-label="Cancel reply"
+        aria-label="لغو پاسخ"
       >
         <X className="size-3.5" />
       </Button>

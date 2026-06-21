@@ -336,9 +336,9 @@ export function ChatProvider({ children }: { children: ReactNode }) {
       );
       const forwarded: ForwardReference = {
         fromConversationId: original.conversationId,
-        fromConversationName: originConversation?.name ?? "Conversation",
+        fromConversationName: originConversation?.name ?? "گفتگو",
         originalAuthorId: original.authorId,
-        originalAuthorName: author?.name ?? "Unknown",
+        originalAuthorName: author?.name ?? "ناشناس",
       };
       sendMessage({
         conversationId: targetConversationId,

@@ -2,7 +2,7 @@
 
 import { Loader2 } from "lucide-react";
 
-export function DataGridLoading({ label = "Loading…" }: { label?: string }) {
+export function DataGridLoading({ label = "در حال بارگذاری…" }: { label?: string }) {
   return (
     <output
       aria-live="polite"

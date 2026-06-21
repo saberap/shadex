@@ -4,7 +4,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   BarChart3,
   Bot,
-  ChevronRight,
+  ChevronLeft,
   ChevronsUpDown,
   Command,
   Files,
@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { appConfig } from "@/core/config";
 import { Avatar, AvatarFallback } from "@/shared/components/ui/avatar";
 import {
   Collapsible,
@@ -53,6 +54,7 @@ import {
   SidebarRail,
   useSidebar,
 } from "@/shared/components/ui/sidebar";
+import Image from "next/image";
 
 type NavLink = {
   label: string;
@@ -68,46 +70,46 @@ type NavGroup = {
 };
 
 const application: NavLink[] = [
-  { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { label: "Analytics", href: "/analytics", icon: BarChart3 },
-  { label: "Users", href: "/users", icon: Users },
-  { label: "Products", href: "/products", icon: Package },
-  { label: "Messages", href: "/messages", icon: MessageSquare, badge: 3 },
-  { label: "AI Chat", href: "/ai-chat", icon: Bot },
+  { label: "داشبورد", href: "/dashboard", icon: LayoutDashboard },
+  { label: "تحلیل‌ها", href: "/analytics", icon: BarChart3 },
+  { label: "کاربران", href: "/users", icon: Users },
+  { label: "محصولات", href: "/products", icon: Package },
+  { label: "پیام‌ها", href: "/messages", icon: MessageSquare, badge: 3 },
+  { label: "چت هوش مصنوعی", href: "/ai-chat", icon: Bot },
 ];
 
 const pages: NavGroup = {
-  label: "Pages",
+  label: "صفحه‌ها",
   icon: Files,
-  items: [{ label: "Pricing", href: "/pricing" }],
+  items: [{ label: "قیمت‌گذاری", href: "/pricing" }],
 };
 
 const components: NavGroup = {
-  label: "Components",
+  label: "کامپوننت‌ها",
   icon: LayoutGrid,
   items: [
-    { label: "DataGrid", href: "/components/data-grid" },
-    { label: "File Upload", href: "/components/file-upload" },
+    { label: "جدول داده", href: "/components/data-grid" },
+    { label: "آپلود فایل", href: "/components/file-upload" },
   ],
 };
 
 const auth: NavGroup = {
-  label: "Auth",
+  label: "احراز هویت",
   icon: Shield,
   items: [
-    { label: "Sign In", href: "/login" },
-    { label: "Sign Up", href: "/register" },
-    { label: "Forgot Password", href: "/forgot-password" },
+    { label: "ورود", href: "/login" },
+    { label: "ثبت‌نام", href: "/register" },
+    { label: "فراموشی رمز عبور", href: "/forgot-password" },
   ],
 };
 
 const settings: NavGroup = {
-  label: "Settings",
+  label: "تنظیمات",
   icon: Settings,
   items: [
-    { label: "General", href: "/settings" },
-    { label: "Billing", href: "/settings/billing" },
-    { label: "Notifications", href: "/settings/notifications" },
+    { label: "عمومی", href: "/settings" },
+    { label: "صورتحساب", href: "/settings/billing" },
+    { label: "اعلان‌ها", href: "/settings/notifications" },
   ],
 };
 
@@ -118,18 +120,18 @@ export function AppSidebar() {
     items.some((item) => pathname === item.href);
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" side={appConfig.direction === "rtl" ? "right" : "left"}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="/dashboard">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                  <Command className="size-4" />
+                  <Image src="/images/logo/mofid.svg" className="rounded-md" width={35} height={35} alt="Logo" />
                 </div>
-                <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Shadex Admin</span>
-                  <span className="text-xs text-muted-foreground">v1.0.0</span>
+                <div className="flex flex-col gap-0.5 justify-start leading-none">
+                  <span className="font-semibold">کارگزاری مفید</span>
+                  <span className="text-xs text-muted-foreground text-right">نسخه ۱.۰.۰</span>
                 </div>
               </Link>
             </SidebarMenuButton>
@@ -139,7 +141,7 @@ export function AppSidebar() {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>برنامه</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {application.map((item) => (
@@ -164,7 +166,7 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Pages</SidebarGroupLabel>
+          <SidebarGroupLabel>صفحه‌ها</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <CollapsibleNavGroup
@@ -187,7 +189,7 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>System</SidebarGroupLabel>
+          <SidebarGroupLabel>سیستم</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <CollapsibleNavGroup
@@ -198,12 +200,12 @@ export function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
-                  tooltip="Help Center"
+                  tooltip="مرکز راهنما"
                   isActive={pathname === "/help"}
                 >
                   <Link href="/help">
                     <HelpCircle />
-                    <span>Help Center</span>
+                    <span>مرکز راهنما</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -233,19 +235,19 @@ function UserMenu() {
       <DropdownMenuTrigger asChild>
         <SidebarMenuButton
           size="lg"
-          tooltip="Saber Alipour"
+          tooltip="صابر علی‌پور"
           className="data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
         >
           <Avatar size="sm">
-            <AvatarFallback className="text-xs">SA</AvatarFallback>
+            <AvatarFallback className="text-xs">صع</AvatarFallback>
           </Avatar>
-          <div className="flex min-w-0 flex-col gap-0.5 leading-none">
-            <span className="truncate text-sm font-medium">Saber Alipour</span>
+          <div className="flex min-w-0 flex-col gap-0.5 leading-none text-right">
+            <span className="truncate text-sm font-medium">صابر علی‌پور</span>
             <span className="truncate text-xs text-muted-foreground">
               alipournet@gmail.com
             </span>
           </div>
-          <ChevronsUpDown className="ml-auto size-4 text-muted-foreground" />
+          <ChevronsUpDown className="ms-auto size-4 text-muted-foreground" />
         </SidebarMenuButton>
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -257,18 +259,18 @@ function UserMenu() {
         <DropdownMenuLabel className="p-0">
           <div className="flex items-center gap-2.5 px-2 py-2.5">
             <Avatar size="default">
-              <AvatarFallback className="text-sm">SA</AvatarFallback>
+              <AvatarFallback className="text-sm">صع</AvatarFallback>
             </Avatar>
             <div className="flex min-w-0 flex-1 flex-col gap-0.5 leading-none">
               <span className="truncate text-sm font-medium text-foreground">
-                Saber Alipour
+                صابر علی‌پور
               </span>
               <span className="truncate text-xs font-normal text-muted-foreground">
                 alipournet@gmail.com
               </span>
               <span className="mt-1 flex items-center gap-1.5 text-xs font-normal text-muted-foreground">
                 <span className="size-1.5 rounded-full bg-emerald-500" />
-                Online
+                آنلاین
               </span>
             </div>
           </div>
@@ -278,12 +280,12 @@ function UserMenu() {
           <DropdownMenuItem asChild className="px-2 py-1.5">
             <Link href="/settings">
               <User className="size-4" />
-              <span>View Profile</span>
+              <span>مشاهده پروفایل</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem variant="destructive" className="px-2 py-1.5">
             <LogOut className="size-4" />
-            <span>Log Out</span>
+            <span>خروج</span>
           </DropdownMenuItem>
         </div>
       </DropdownMenuContent>
@@ -311,7 +313,7 @@ function CollapsibleNavGroup({
           <SidebarMenuButton tooltip={group.label}>
             <group.icon />
             <span>{group.label}</span>
-            <ChevronRight className="ml-auto transition-transform duration-150 group-data-[state=open]/collapsible:rotate-90" />
+            <ChevronLeft className="mr-auto transition-transform duration-150 group-data-[state=open]/collapsible:-rotate-90" />
           </SidebarMenuButton>
         </CollapsibleTrigger>
         <CollapsibleContent>

@@ -35,7 +35,14 @@ import {
   statusColor,
 } from "../utils";
 import { ConversationAvatar } from "./conversation-avatar";
-import type { Conversation } from "../types";
+import type { Conversation, UserStatus } from "../types";
+
+const STATUS_LABEL: Record<UserStatus, string> = {
+  online: "آنلاین",
+  away: "غایب",
+  busy: "مشغول",
+  offline: "آفلاین",
+};
 
 interface ChatHeaderProps {
   conversation: Conversation;
@@ -71,7 +78,7 @@ export function ChatHeader({ conversation, onBack }: ChatHeaderProps) {
           size="icon"
           className="size-8 lg:hidden"
           onClick={onBack}
-          aria-label="Back to conversations"
+          aria-label="بازگشت به گفتگوها"
         >
           <ArrowLeft className="size-4" />
         </Button>
@@ -97,7 +104,7 @@ export function ChatHeader({ conversation, onBack }: ChatHeaderProps) {
           )}
           {conversation.archived && (
             <Badge variant="secondary" className="h-4 px-1 text-[10px]">
-              Archived
+              آرشیو
             </Badge>
           )}
         </div>
@@ -110,14 +117,14 @@ export function ChatHeader({ conversation, onBack }: ChatHeaderProps) {
                   partner.status
                 )}`}
               />
-              <span className="capitalize">{partner.status}</span>
+              <span>{STATUS_LABEL[partner.status]}</span>
               <span aria-hidden>·</span>
               <span>{partner.role}</span>
             </>
           ) : (
             <>
               <span>
-                {conversation.participantIds.length} members
+                {conversation.participantIds.length} عضو
               </span>
               {participantNames && (
                 <>
@@ -137,12 +144,12 @@ export function ChatHeader({ conversation, onBack }: ChatHeaderProps) {
               variant="ghost"
               size="icon"
               className="size-8 text-muted-foreground hover:text-foreground"
-              aria-label="Search in conversation"
+              aria-label="جستجو در گفتگو"
             >
               <Search className="size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="bottom">Search</TooltipContent>
+          <TooltipContent side="bottom">جستجو</TooltipContent>
         </Tooltip>
         <Tooltip>
           <TooltipTrigger asChild>
@@ -150,12 +157,12 @@ export function ChatHeader({ conversation, onBack }: ChatHeaderProps) {
               variant="ghost"
               size="icon"
               className="size-8 text-muted-foreground hover:text-foreground"
-              aria-label="Start call"
+              aria-label="شروع تماس"
             >
               <Phone className="size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="bottom">Voice call</TooltipContent>
+          <TooltipContent side="bottom">تماس صوتی</TooltipContent>
         </Tooltip>
         <Tooltip>
           <TooltipTrigger asChild>
@@ -163,12 +170,12 @@ export function ChatHeader({ conversation, onBack }: ChatHeaderProps) {
               variant="ghost"
               size="icon"
               className="size-8 text-muted-foreground hover:text-foreground"
-              aria-label="Start video call"
+              aria-label="شروع تماس تصویری"
             >
               <Video className="size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="bottom">Video call</TooltipContent>
+          <TooltipContent side="bottom">تماس تصویری</TooltipContent>
         </Tooltip>
 
         <Separator
@@ -182,34 +189,34 @@ export function ChatHeader({ conversation, onBack }: ChatHeaderProps) {
               variant="ghost"
               size="icon"
               className="size-8 text-muted-foreground hover:text-foreground"
-              aria-label="Conversation options"
+              aria-label="گزینه‌های گفتگو"
             >
               <MoreHorizontal className="size-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuLabel className="text-xs">
-              Conversation
+              گفتگو
             </DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() => togglePinned(conversation.id)}
             >
               <Star className="size-4" />
-              {conversation.pinned ? "Unpin" : "Pin to top"}
+              {conversation.pinned ? "حذف سنجاق" : "سنجاق کردن"}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => toggleMuted(conversation.id)}>
               <BellOff className="size-4" />
-              {conversation.muted ? "Unmute" : "Mute"}
+              {conversation.muted ? "فعال‌سازی صدا" : "بی‌صدا"}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => toggleArchived(conversation.id)}>
               <Archive className="size-4" />
-              {conversation.archived ? "Unarchive" : "Archive"}
+              {conversation.archived ? "خروج از آرشیو" : "آرشیو"}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <ChevronDown className="size-4" />
-              View details
+              مشاهده جزئیات
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

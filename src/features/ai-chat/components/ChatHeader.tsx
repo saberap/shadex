@@ -56,12 +56,12 @@ export function ChatHeader() {
             size="icon"
             className="size-8 lg:hidden"
             onClick={toggleHistory}
-            aria-label="Toggle conversation history"
+            aria-label="تغییر وضعیت تاریخچه گفتگو"
           >
             <Menu className="size-4" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent>Conversations</TooltipContent>
+        <TooltipContent>گفتگوها</TooltipContent>
       </Tooltip>
 
       {/* Desktop: sidebar toggle */}
@@ -75,12 +75,12 @@ export function ChatHeader() {
               !historyOpen && "text-muted-foreground"
             )}
             onClick={toggleHistory}
-            aria-label="Toggle sidebar"
+            aria-label="تغییر وضعیت نوار کناری"
           >
             <Menu className="size-4" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent>Toggle history</TooltipContent>
+        <TooltipContent>تغییر وضعیت تاریخچه</TooltipContent>
       </Tooltip>
 
       <VDivider className="hidden lg:block" />
@@ -105,12 +105,12 @@ export function ChatHeader() {
                 variant="secondary"
                 className="hidden sm:inline-flex h-5 px-1.5 text-[10px] shrink-0 bg-blue-500/10 text-blue-600"
               >
-                Shared
+                اشتراک‌گذاری‌شده
               </Badge>
             )}
           </>
         ) : (
-          <span className="text-sm text-muted-foreground">New Conversation</span>
+          <span className="text-sm text-muted-foreground">گفتگوی جدید</span>
         )}
       </div>
 
@@ -130,12 +130,12 @@ export function ChatHeader() {
               variant="ghost"
               size="icon"
               className="size-8 text-muted-foreground hover:text-foreground"
-              aria-label="Share conversation"
+              aria-label="اشتراک‌گذاری گفتگو"
             >
               <Share2 className="size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Share</TooltipContent>
+          <TooltipContent>اشتراک‌گذاری</TooltipContent>
         </Tooltip>
 
         {/* Export */}
@@ -145,12 +145,12 @@ export function ChatHeader() {
               variant="ghost"
               size="icon"
               className="size-8 text-muted-foreground hover:text-foreground hidden sm:flex"
-              aria-label="Export conversation"
+              aria-label="خروجی گرفتن از گفتگو"
             >
               <Download className="size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Export</TooltipContent>
+          <TooltipContent>خروجی</TooltipContent>
         </Tooltip>
 
         {/* More */}
@@ -160,27 +160,27 @@ export function ChatHeader() {
               variant="ghost"
               size="icon"
               className="size-8 text-muted-foreground hover:text-foreground"
-              aria-label="More options"
+              aria-label="گزینه‌های بیشتر"
             >
               <MoreHorizontal className="size-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-44">
             <DropdownMenuItem>
-              <Share2 className="mr-2 size-3.5" />
-              Share
+              <Share2 className="me-2 size-3.5" />
+              اشتراک‌گذاری
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Download className="mr-2 size-3.5" />
-              Export as PDF
+              <Download className="me-2 size-3.5" />
+              خروجی PDF
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={clearMessages}
               className="text-destructive focus:text-destructive"
             >
-              <Trash2 className="mr-2 size-3.5" />
-              Clear chat
+              <Trash2 className="me-2 size-3.5" />
+              پاک کردن گفتگو
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -197,12 +197,12 @@ export function ChatHeader() {
                 detailsOpen ? "text-foreground" : "text-muted-foreground"
               )}
               onClick={toggleDetails}
-              aria-label="Toggle details panel"
+              aria-label="تغییر وضعیت پنل جزئیات"
             >
               <PanelRight className="size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Conversation details</TooltipContent>
+          <TooltipContent>جزئیات گفتگو</TooltipContent>
         </Tooltip>
       </div>
     </header>

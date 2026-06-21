@@ -52,6 +52,12 @@ const statusVariant: Record<string, "default" | "secondary" | "destructive"> = {
   failed: "destructive",
 };
 
+const statusLabel: Record<string, string> = {
+  completed: "تکمیل‌شده",
+  pending: "در انتظار",
+  failed: "ناموفق",
+};
+
 export function RecentSales() {
   return (
     <div className="space-y-1">
@@ -76,9 +82,9 @@ export function RecentSales() {
           <div className="flex items-center gap-2 shrink-0">
             <Badge
               variant={statusVariant[sale.status]}
-              className="text-[10px] h-5 px-1.5 capitalize"
+              className="text-[10px] h-5 px-1.5"
             >
-              {sale.status}
+              {statusLabel[sale.status]}
             </Badge>
             <span className="text-sm font-semibold tabular-nums">
               {sale.amount}

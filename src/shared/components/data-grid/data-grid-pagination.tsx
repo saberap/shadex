@@ -51,7 +51,7 @@ export function DataGridPagination<TData>({
 
       <div className="flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-2">
-          <span className="text-sm text-muted-foreground">Rows per page</span>
+          <span className="text-sm text-muted-foreground">ردیف در صفحه</span>
           <Select
             value={String(pageSize)}
             onValueChange={(v) => table.setPageSize(Number(v))}
@@ -73,7 +73,7 @@ export function DataGridPagination<TData>({
           <Button
             variant="outline"
             size="icon-sm"
-            aria-label="Go to first page"
+            aria-label="رفتن به صفحه اول"
             disabled={!table.getCanPreviousPage()}
             onClick={() => table.setPageIndex(0)}
           >
@@ -82,7 +82,7 @@ export function DataGridPagination<TData>({
           <Button
             variant="outline"
             size="icon-sm"
-            aria-label="Go to previous page"
+            aria-label="رفتن به صفحه قبل"
             disabled={!table.getCanPreviousPage()}
             onClick={() => table.previousPage()}
           >
@@ -105,7 +105,7 @@ export function DataGridPagination<TData>({
                   key={n}
                   variant={n === current ? "default" : "ghost"}
                   size="icon-sm"
-                  aria-label={`Go to page ${n}`}
+                  aria-label={`رفتن به صفحه ${n}`}
                   aria-current={n === current ? "page" : undefined}
                   className={cn(
                     "min-w-7",
@@ -122,7 +122,7 @@ export function DataGridPagination<TData>({
           <Button
             variant="outline"
             size="icon-sm"
-            aria-label="Go to next page"
+            aria-label="رفتن به صفحه بعد"
             disabled={!table.getCanNextPage()}
             onClick={() => table.nextPage()}
           >
@@ -131,7 +131,7 @@ export function DataGridPagination<TData>({
           <Button
             variant="outline"
             size="icon-sm"
-            aria-label="Go to last page"
+            aria-label="رفتن به صفحه آخر"
             disabled={!table.getCanNextPage()}
             onClick={() => table.setPageIndex(pageCount - 1)}
           >

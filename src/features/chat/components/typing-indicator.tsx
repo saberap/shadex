@@ -26,7 +26,7 @@ export function TypingIndicator({ conversationId }: TypingIndicatorProps) {
         <Dot delay="300ms" />
       </div>
       <span className="text-[11px] text-muted-foreground">
-        {user.name.split(" ")[0]} is typing…
+        {user.name.split(" ")[0]} در حال نوشتن است…
       </span>
     </div>
   );

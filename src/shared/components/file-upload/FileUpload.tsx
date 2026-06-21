@@ -62,10 +62,10 @@ export function FileUpload({
         <div className="flex min-w-0 flex-1 flex-col gap-2">
           <div>
             <p className="text-sm font-medium text-foreground">
-              {emptyLabel ?? "Profile picture"}
+              {emptyLabel ?? "تصویر پروفایل"}
             </p>
             <p className="text-xs text-muted-foreground">
-              {emptyHint ?? "PNG or JPG, up to 2 MB"}
+              {emptyHint ?? "PNG یا JPG، حداکثر ۲ مگابایت"}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -77,7 +77,7 @@ export function FileUpload({
               onClick={() => document.getElementById(fileInputId)?.click()}
             >
               <Pencil />
-              {current ? "Change" : "Upload"}
+              {current ? "تغییر" : "بارگذاری"}
             </Button>
             {current && (
               <Button
@@ -89,7 +89,7 @@ export function FileUpload({
                 className="text-muted-foreground hover:text-destructive"
               >
                 <Trash2 />
-                Remove
+                حذف
               </Button>
             )}
             <input
@@ -138,7 +138,7 @@ export function FileUpload({
                 variant="ghost"
                 onClick={() => removeFile(current)}
                 className="bg-background/80 text-foreground hover:bg-background"
-                aria-label="Remove image"
+                aria-label="حذف تصویر"
               >
                 <Trash2 />
               </Button>
@@ -188,7 +188,7 @@ export function FileUpload({
         <>
           {multiple && files.length > 3 ? (
             <ScrollArea className="max-h-72 rounded-xl">
-              <div className="flex flex-col gap-2 pr-3">
+              <div className="flex flex-col gap-2 pe-3">
                 {files.map((file) => (
                   <FileUploadItem
                     key={file.id}

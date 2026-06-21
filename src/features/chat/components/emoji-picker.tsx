@@ -38,7 +38,7 @@ interface EmojiCategory {
 const CATEGORIES: EmojiCategory[] = [
   {
     id: "smileys",
-    label: "Smileys & People",
+    label: "خنده‌ها و افراد",
     icon: Smile,
     emojis: [
       "😀", "😃", "😄", "😁", "😆", "😅", "🤣", "😂", "🙂", "🙃",
@@ -56,7 +56,7 @@ const CATEGORIES: EmojiCategory[] = [
   },
   {
     id: "animals",
-    label: "Animals & Nature",
+    label: "حیوانات و طبیعت",
     icon: Cat,
     emojis: [
       "🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐻‍❄️", "🐨",
@@ -69,7 +69,7 @@ const CATEGORIES: EmojiCategory[] = [
   },
   {
     id: "food",
-    label: "Food & Drink",
+    label: "خوراک و نوشیدنی",
     icon: Apple,
     emojis: [
       "🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐",
@@ -82,7 +82,7 @@ const CATEGORIES: EmojiCategory[] = [
   },
   {
     id: "activities",
-    label: "Activities",
+    label: "فعالیت‌ها",
     icon: Music,
     emojis: [
       "⚽", "🏀", "🏈", "⚾", "🥎", "🎾", "🏐", "🏉", "🥏", "🎱",
@@ -93,7 +93,7 @@ const CATEGORIES: EmojiCategory[] = [
   },
   {
     id: "travel",
-    label: "Travel & Places",
+    label: "سفر و مکان‌ها",
     icon: Plane,
     emojis: [
       "🚗", "🚕", "🚙", "🚌", "🚎", "🏎️", "🚓", "🚑", "🚒", "🚐",
@@ -104,7 +104,7 @@ const CATEGORIES: EmojiCategory[] = [
   },
   {
     id: "objects",
-    label: "Objects",
+    label: "اشیاء",
     icon: Lightbulb,
     emojis: [
       "💡", "🔦", "🕯️", "🪔", "🧯", "🛢️", "💸", "💵", "💴", "💶",
@@ -116,7 +116,7 @@ const CATEGORIES: EmojiCategory[] = [
   },
   {
     id: "symbols",
-    label: "Symbols",
+    label: "نمادها",
     icon: Flag,
     emojis: [
       "❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤍", "🤎", "💔",
@@ -190,13 +190,13 @@ export function EmojiPicker({ onSelect }: EmojiPickerProps) {
     <div className="flex w-72 flex-col">
       <div className="px-2 pt-2">
         <div className="relative">
-          <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+          <Search className="pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search emoji…"
-            className="h-8 rounded-md pl-7 text-xs"
-            aria-label="Search emoji"
+            placeholder="جستجوی ایموجی…"
+            className="h-8 rounded-md ps-7 text-xs"
+            aria-label="جستجوی ایموجی"
           />
         </div>
       </div>
@@ -208,7 +208,7 @@ export function EmojiPicker({ onSelect }: EmojiPickerProps) {
           {recent.length > 0 && (
             <CategoryTab
               icon={Clock}
-              label="Recent"
+              label="اخیر"
               active={active === "recent"}
               onClick={() => setActive("recent")}
             />
@@ -231,9 +231,9 @@ export function EmojiPicker({ onSelect }: EmojiPickerProps) {
         <div className="px-2 py-2">
           <p className="mb-1 px-1 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
             {query
-              ? "Results"
+              ? "نتایج"
               : active === "recent"
-              ? "Recently used"
+              ? "اخیراً استفاده‌شده"
               : activeCategory?.label}
           </p>
           {ready ? (
@@ -252,7 +252,7 @@ export function EmojiPicker({ onSelect }: EmojiPickerProps) {
                 (active === "recent" ? recent : activeCategory?.emojis ?? [])
               ).length === 0 && (
                 <p className="px-1 py-6 text-center text-xs text-muted-foreground">
-                  {query ? "No emojis found" : "Nothing here yet"}
+                  {query ? "ایموجی‌ای یافت نشد" : "هنوز چیزی اینجا نیست"}
                 </p>
               )}
             </>
@@ -309,7 +309,7 @@ const EmojiGrid = memo(function EmojiGrid({
           type="button"
           onClick={() => onSelect(emoji)}
           className="flex size-7 items-center justify-center rounded-md text-base hover:bg-muted"
-          aria-label={`Insert ${emoji}`}
+          aria-label={`افزودن ${emoji}`}
         >
           {emoji}
         </button>

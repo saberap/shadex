@@ -126,7 +126,7 @@ export function FileUploadItem({
 
         {isError ? (
           <p className="truncate text-xs text-destructive">
-            {file.error ?? "Upload failed"}
+            {file.error ?? "آپلود ناموفق بود"}
           </p>
         ) : (
           <FileUploadProgress value={file.progress} status={file.status} />
@@ -147,12 +147,12 @@ export function FileUploadItem({
                   size="icon-sm"
                   variant="ghost"
                   onClick={() => onRetry(file)}
-                  aria-label={`Retry ${file.name}`}
+                  aria-label={`تلاش مجدد برای ${file.name}`}
                 >
                   <RefreshCw />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Retry upload</TooltipContent>
+              <TooltipContent>تلاش مجدد برای آپلود</TooltipContent>
             </Tooltip>
           )}
           {onRemove && (
@@ -163,13 +163,13 @@ export function FileUploadItem({
                   size="icon-sm"
                   variant="ghost"
                   onClick={() => onRemove(file)}
-                  aria-label={`Remove ${file.name}`}
+                  aria-label={`حذف ${file.name}`}
                   className="text-muted-foreground hover:text-destructive"
                 >
                   <Trash2 />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Remove</TooltipContent>
+              <TooltipContent>حذف</TooltipContent>
             </Tooltip>
           )}
         </div>

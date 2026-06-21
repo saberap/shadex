@@ -32,7 +32,7 @@ export function UserAvatar({
         <span
           aria-hidden
           className={cn(
-            "absolute -bottom-0.5 -right-0.5 rounded-full ring-2 ring-background",
+            "absolute -bottom-0.5 -end-0.5 rounded-full ring-2 ring-background",
             size === "sm" ? "size-2" : size === "lg" ? "size-2.5" : "size-2.5",
             statusColor(user.status)
           )}

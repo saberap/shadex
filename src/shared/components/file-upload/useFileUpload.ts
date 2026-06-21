@@ -56,7 +56,7 @@ const simulateUpload: FileUploadOnUpload = async (
 
       if (ratio >= failAt) {
         clearInterval(interval);
-        reject(new Error("Network error — upload failed"));
+        reject(new Error("خطای شبکه — آپلود ناموفق بود"));
         return;
       }
 
@@ -165,7 +165,7 @@ export function useFileUpload(options: UseFileUploadOptions) {
         const message =
           err instanceof Error
             ? err.message
-            : "Upload failed. Please try again.";
+            : "آپلود ناموفق بود. لطفاً دوباره تلاش کنید.";
         updateFile(target.id, { status: "error", error: message });
       } finally {
         controllers.current.delete(target.id);

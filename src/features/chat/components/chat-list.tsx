@@ -89,7 +89,7 @@ export function ChatList({ onSelect }: ChatListProps) {
             >
               <Icon className="size-3.5" />
               <span className="uppercase tracking-wide">{group.name}</span>
-              <span className="ml-auto flex items-center gap-1.5">
+              <span className="ms-auto flex items-center gap-1.5">
                 {unreadCount > 0 && (
                   <Badge
                     variant="secondary"
@@ -164,7 +164,7 @@ function ConversationRow({
       onKeyDown={handleKeyDown}
       data-active={active}
       className={cn(
-        "group/row relative flex w-full min-w-0 cursor-pointer items-center gap-3 overflow-hidden rounded-xl px-3 py-2 text-left outline-none transition-colors",
+        "group/row relative flex w-full min-w-0 cursor-pointer items-center gap-3 overflow-hidden rounded-xl px-3 py-2 text-start outline-none transition-colors",
         "hover:bg-muted/60 focus-visible:ring-2 focus-visible:ring-ring/40",
         active && "bg-muted text-foreground"
       )}
@@ -207,12 +207,12 @@ function ConversationRow({
             )}
           >
             {lastMessage?.authorId === currentUserId && (
-              <span className="mr-1 text-muted-foreground/70">You:</span>
+              <span className="me-1 text-muted-foreground/70">شما:</span>
             )}
             {preview}
           </span>
           {hasUnread && (
-            <Badge className="ml-auto h-4 min-w-4 shrink-0 px-1 text-[10px]">
+            <Badge className="ms-auto h-4 min-w-4 shrink-0 px-1 text-[10px]">
               {conversation.unreadCount}
             </Badge>
           )}
@@ -236,7 +236,7 @@ function ConversationRowActions({ conversation }: ConversationRowActionsProps) {
 
   return (
     <div
-      className="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover/row:pointer-events-auto group-hover/row:opacity-100 group-focus-within/row:pointer-events-auto group-focus-within/row:opacity-100 data-[state=open]:pointer-events-auto data-[state=open]:opacity-100"
+      className="pointer-events-none absolute end-1.5 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover/row:pointer-events-auto group-hover/row:opacity-100 group-focus-within/row:pointer-events-auto group-focus-within/row:opacity-100 data-[state=open]:pointer-events-auto data-[state=open]:opacity-100"
       onClick={stop}
     >
       <DropdownMenu>
@@ -246,7 +246,7 @@ function ConversationRowActions({ conversation }: ConversationRowActionsProps) {
             variant="ghost"
             size="icon"
             className="size-7 rounded-md bg-background/80 text-muted-foreground shadow-sm ring-1 ring-border/60 hover:bg-background hover:text-foreground"
-            aria-label="Conversation options"
+            aria-label="گزینه‌های گفتگو"
             onClick={stop}
             onPointerDown={stop}
           >
@@ -262,19 +262,19 @@ function ConversationRowActions({ conversation }: ConversationRowActionsProps) {
           {conversation.unreadCount > 0 && (
             <DropdownMenuItem onSelect={() => markAsRead(conversation.id)}>
               <CheckCheck className="size-4" />
-              Mark as read
+              علامت‌گذاری به عنوان خوانده‌شده
             </DropdownMenuItem>
           )}
           <DropdownMenuItem onSelect={() => togglePinned(conversation.id)}>
             {conversation.pinned ? (
               <>
                 <PinOff className="size-4" />
-                Unpin
+                حذف سنجاق
               </>
             ) : (
               <>
                 <Pin className="size-4" />
-                Pin to top
+                سنجاق کردن
               </>
             )}
           </DropdownMenuItem>
@@ -282,12 +282,12 @@ function ConversationRowActions({ conversation }: ConversationRowActionsProps) {
             {conversation.muted ? (
               <>
                 <Bell className="size-4" />
-                Unmute
+                فعال‌سازی صدا
               </>
             ) : (
               <>
                 <BellOff className="size-4" />
-                Mute
+                بی‌صدا
               </>
             )}
           </DropdownMenuItem>
@@ -296,14 +296,14 @@ function ConversationRowActions({ conversation }: ConversationRowActionsProps) {
             onSelect={() => toggleArchived(conversation.id)}
           >
             <Archive className="size-4" />
-            {conversation.archived ? "Unarchive" : "Archive"}
+            {conversation.archived ? "خروج از آرشیو" : "آرشیو"}
           </DropdownMenuItem>
           <DropdownMenuItem
             className="text-destructive focus:text-destructive"
             onSelect={() => toggleArchived(conversation.id)}
           >
             <Trash2 className="size-4" />
-            Delete
+            حذف
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -318,12 +318,12 @@ function EmptyState({ searching }: { searching: boolean }) {
         <Inbox className="size-5 text-muted-foreground" />
       </div>
       <p className="text-sm font-medium text-foreground">
-        {searching ? "No conversations match" : "No conversations yet"}
+        {searching ? "گفتگویی یافت نشد" : "هنوز گفتگویی وجود ندارد"}
       </p>
       <p className="text-xs text-muted-foreground">
         {searching
-          ? "Try a different search term."
-          : "Start a new conversation to get going."}
+          ? "عبارت دیگری را امتحان کنید."
+          : "برای شروع، یک گفتگوی جدید آغاز کنید."}
       </p>
     </div>
   );

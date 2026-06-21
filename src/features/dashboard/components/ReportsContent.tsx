@@ -23,55 +23,55 @@ type ReportStatus = "ready" | "generating" | "failed";
 const reports = [
   {
     id: 1,
-    name: "Monthly Revenue Report",
-    type: "Financial",
+    name: "گزارش درآمد ماهانه",
+    type: "مالی",
     icon: FileSpreadsheet,
-    date: "Jun 1, 2026",
+    date: "۱ ژوئن ۲۰۲۶",
     size: "2.4 MB",
     status: "ready" as ReportStatus,
   },
   {
     id: 2,
-    name: "User Acquisition Summary",
-    type: "Marketing",
+    name: "خلاصه جذب کاربر",
+    type: "بازاریابی",
     icon: FileText,
-    date: "Jun 1, 2026",
+    date: "۱ ژوئن ۲۰۲۶",
     size: "1.1 MB",
     status: "ready" as ReportStatus,
   },
   {
     id: 3,
-    name: "Q2 Sales Breakdown",
-    type: "Sales",
+    name: "تفکیک فروش سه‌ماهه دوم",
+    type: "فروش",
     icon: FileSpreadsheet,
-    date: "May 31, 2026",
+    date: "۳۱ مه ۲۰۲۶",
     size: "3.8 MB",
     status: "ready" as ReportStatus,
   },
   {
     id: 4,
-    name: "Product Performance",
-    type: "Product",
+    name: "عملکرد محصول",
+    type: "محصول",
     icon: FileText,
-    date: "May 28, 2026",
+    date: "۲۸ مه ۲۰۲۶",
     size: "890 KB",
     status: "ready" as ReportStatus,
   },
   {
     id: 5,
-    name: "Weekly Traffic Digest",
-    type: "Analytics",
+    name: "خلاصه ترافیک هفتگی",
+    type: "تحلیل‌ها",
     icon: FileText,
-    date: "Jun 7, 2026",
+    date: "۷ ژوئن ۲۰۲۶",
     size: "—",
     status: "generating" as ReportStatus,
   },
   {
     id: 6,
-    name: "Subscription Churn Analysis",
-    type: "Financial",
+    name: "تحلیل ریزش اشتراک",
+    type: "مالی",
     icon: FileSpreadsheet,
-    date: "May 20, 2026",
+    date: "۲۰ مه ۲۰۲۶",
     size: "—",
     status: "failed" as ReportStatus,
   },
@@ -81,16 +81,16 @@ const statusConfig: Record<
   ReportStatus,
   { label: string; variant: "default" | "secondary" | "destructive" }
 > = {
-  ready: { label: "Ready", variant: "default" },
-  generating: { label: "Generating…", variant: "secondary" },
-  failed: { label: "Failed", variant: "destructive" },
+  ready: { label: "آماده", variant: "default" },
+  generating: { label: "در حال تولید…", variant: "secondary" },
+  failed: { label: "ناموفق", variant: "destructive" },
 };
 
 const summaryStats = [
-  { label: "Total Reports", value: "24" },
-  { label: "Generated This Month", value: "6" },
-  { label: "Scheduled", value: "3" },
-  { label: "Storage Used", value: "48 MB" },
+  { label: "کل گزارش‌ها", value: "24" },
+  { label: "تولیدشده در این ماه", value: "6" },
+  { label: "زمان‌بندی‌شده", value: "3" },
+  { label: "فضای استفاده‌شده", value: "48 MB" },
 ];
 
 export function ReportsContent() {
@@ -122,9 +122,9 @@ export function ReportsContent() {
         <CardHeader>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <CardTitle>All Reports</CardTitle>
+              <CardTitle>همه گزارش‌ها</CardTitle>
               <CardDescription className="mt-1">
-                Download or regenerate your reports.
+                گزارش‌های خود را دانلود یا دوباره تولید کنید.
               </CardDescription>
             </div>
             <Button
@@ -136,12 +136,12 @@ export function ReportsContent() {
               {generating ? (
                 <>
                   <RefreshCw className="size-3.5 animate-spin" />
-                  Generating…
+                  در حال تولید…
                 </>
               ) : (
                 <>
                   <Plus className="size-3.5" />
-                  New Report
+                  گزارش جدید
                 </>
               )}
             </Button>
@@ -150,11 +150,11 @@ export function ReportsContent() {
         <CardContent className="p-0">
           {/* Table header — hidden on mobile */}
           <div className="hidden sm:grid grid-cols-[1fr_auto_auto_auto_auto] gap-4 px-6 py-2 border-b text-xs font-medium text-muted-foreground uppercase tracking-wider">
-            <span>Name</span>
-            <span>Type</span>
-            <span>Date</span>
-            <span>Size</span>
-            <span>Status</span>
+            <span>نام</span>
+            <span>نوع</span>
+            <span>تاریخ</span>
+            <span>حجم</span>
+            <span>وضعیت</span>
           </div>
 
           <div className="divide-y">
@@ -190,7 +190,7 @@ export function ReportsContent() {
                 <span className="hidden sm:block text-sm text-muted-foreground w-24 shrink-0">
                   {r.date}
                 </span>
-                <span className="hidden sm:block text-sm text-muted-foreground w-16 shrink-0 text-right">
+                <span className="hidden sm:block text-sm text-muted-foreground w-16 shrink-0 text-end">
                   {r.size}
                 </span>
                 <div className="hidden sm:flex w-24 justify-center shrink-0">

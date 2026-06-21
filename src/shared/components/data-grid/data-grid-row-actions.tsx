@@ -28,12 +28,12 @@ export function DataGridRowActions<TData>({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon-sm" aria-label="Open row actions">
+        <Button variant="ghost" size="icon-sm" aria-label="باز کردن عملیات ردیف">
           <MoreHorizontal />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-44">
-        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuLabel>عملیات</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {visible.map((action) => {
           const key = action.label;

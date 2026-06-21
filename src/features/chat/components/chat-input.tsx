@@ -103,11 +103,11 @@ export function ChatInput({ conversationId }: ChatInputProps) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Write a message…"
+          placeholder="پیامی بنویسید…"
           rows={1}
           className="block w-full resize-none bg-transparent px-4 pt-3 pb-1 text-sm leading-relaxed text-foreground placeholder:text-muted-foreground focus:outline-none"
           style={{ minHeight: "2.5rem", maxHeight: "160px" }}
-          aria-label="Message input"
+          aria-label="ورودی پیام"
         />
 
         <div className="flex h-10 items-center gap-0.5 px-1.5 pb-1.5">
@@ -118,12 +118,12 @@ export function ChatInput({ conversationId }: ChatInputProps) {
                 variant="ghost"
                 size="icon"
                 className="size-8 text-muted-foreground hover:text-foreground"
-                aria-label="Attach file"
+                aria-label="پیوست فایل"
               >
                 <Paperclip className="size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="top">Attach file</TooltipContent>
+            <TooltipContent side="top">پیوست فایل</TooltipContent>
           </Tooltip>
 
           <Tooltip>
@@ -133,12 +133,12 @@ export function ChatInput({ conversationId }: ChatInputProps) {
                 variant="ghost"
                 size="icon"
                 className="size-8 text-muted-foreground hover:text-foreground"
-                aria-label="Upload image"
+                aria-label="بارگذاری تصویر"
               >
                 <ImageIcon className="size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="top">Upload image</TooltipContent>
+            <TooltipContent side="top">بارگذاری تصویر</TooltipContent>
           </Tooltip>
 
           <Separator
@@ -155,13 +155,13 @@ export function ChatInput({ conversationId }: ChatInputProps) {
                     variant="ghost"
                     size="icon"
                     className="size-8 text-muted-foreground hover:text-foreground data-[state=open]:text-foreground"
-                    aria-label="Insert emoji"
+                    aria-label="افزودن ایموجی"
                   >
                     <Smile className="size-4" />
                   </Button>
                 </PopoverTrigger>
               </TooltipTrigger>
-              <TooltipContent side="top">Emoji</TooltipContent>
+              <TooltipContent side="top">ایموجی</TooltipContent>
             </Tooltip>
             <PopoverContent
               side="top"
@@ -177,7 +177,7 @@ export function ChatInput({ conversationId }: ChatInputProps) {
             </PopoverContent>
           </Popover>
 
-          <div className="ml-auto" />
+          <div className="ms-auto" />
 
           <Button
             type="button"
@@ -190,7 +190,7 @@ export function ChatInput({ conversationId }: ChatInputProps) {
             )}
             onClick={handleSend}
             disabled={!canSend}
-            aria-label="Send message"
+            aria-label="ارسال پیام"
           >
             <SendHorizontal className="size-4" />
           </Button>
@@ -198,7 +198,7 @@ export function ChatInput({ conversationId }: ChatInputProps) {
       </div>
 
       <p className="mt-1.5 px-1 text-center text-[10px] text-muted-foreground/70">
-        Press Enter to send · Shift + Enter for a new line
+        Enter برای ارسال · Shift + Enter برای خط جدید
       </p>
     </div>
   );

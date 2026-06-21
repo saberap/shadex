@@ -9,7 +9,7 @@ export const MODELS: Model[] = [
     id: "gpt-4o",
     name: "GPT-4o",
     provider: "OpenAI",
-    description: "Most capable multimodal model",
+    description: "توانمندترین مدل چندوجهی",
     contextLength: "128K",
     speed: "medium",
     cost: "medium",
@@ -18,7 +18,7 @@ export const MODELS: Model[] = [
     id: "gpt-4-1",
     name: "GPT-4.1",
     provider: "OpenAI",
-    description: "Improved reasoning and coding",
+    description: "استدلال و کدنویسی بهبودیافته",
     contextLength: "256K",
     speed: "medium",
     cost: "high",
@@ -27,7 +27,7 @@ export const MODELS: Model[] = [
     id: "claude-sonnet",
     name: "Claude Sonnet",
     provider: "Anthropic",
-    description: "Balanced performance and speed",
+    description: "تعادل میان عملکرد و سرعت",
     contextLength: "200K",
     speed: "fast",
     cost: "medium",
@@ -36,7 +36,7 @@ export const MODELS: Model[] = [
     id: "claude-opus",
     name: "Claude Opus",
     provider: "Anthropic",
-    description: "Exceptional performance for complex tasks",
+    description: "عملکرد فوق‌العاده برای کارهای پیچیده",
     contextLength: "200K",
     speed: "slow",
     cost: "high",
@@ -45,7 +45,7 @@ export const MODELS: Model[] = [
     id: "gemini-2-5-pro",
     name: "Gemini 2.5 Pro",
     provider: "Google",
-    description: "Advanced reasoning with 1M context",
+    description: "استدلال پیشرفته با زمینه ۱ میلیون توکن",
     contextLength: "1M",
     speed: "medium",
     cost: "medium",
@@ -54,7 +54,7 @@ export const MODELS: Model[] = [
     id: "gemini-flash",
     name: "Gemini Flash",
     provider: "Google",
-    description: "Ultra-fast and highly efficient",
+    description: "بسیار سریع و بهینه",
     contextLength: "1M",
     speed: "fast",
     cost: "low",
@@ -62,19 +62,19 @@ export const MODELS: Model[] = [
 ];
 
 export const mockFolders: Folder[] = [
-  { id: "f1", name: "Marketing", color: "bg-rose-500" },
-  { id: "f2", name: "Development", color: "bg-blue-500" },
-  { id: "f3", name: "Research", color: "bg-violet-500" },
-  { id: "f4", name: "Clients", color: "bg-emerald-500" },
+  { id: "f1", name: "بازاریابی", color: "bg-rose-500" },
+  { id: "f2", name: "توسعه", color: "bg-blue-500" },
+  { id: "f3", name: "تحقیقات", color: "bg-violet-500" },
+  { id: "f4", name: "مشتریان", color: "bg-emerald-500" },
 ];
 
 export const mockConversations: Conversation[] = [
   // Pinned
   {
     id: "pin-1",
-    title: "Q4 Sales Analysis Dashboard",
+    title: "داشبورد تحلیل فروش سه‌ماهه چهارم",
     model: "claude-opus",
-    preview: "Create a comprehensive revenue breakdown by region and product line…",
+    preview: "تفکیک جامع درآمد بر اساس منطقه و خط محصول بساز…",
     createdAt: d(3),
     updatedAt: h(2),
     pinned: true,
@@ -86,9 +86,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "pin-2",
-    title: "API Architecture Review",
+    title: "بازبینی معماری API",
     model: "gpt-4o",
-    preview: "Analyzing the microservices topology and identifying bottlenecks…",
+    preview: "تحلیل توپولوژی میکروسرویس‌ها و شناسایی گلوگاه‌ها…",
     createdAt: d(5),
     updatedAt: h(5),
     pinned: true,
@@ -101,9 +101,9 @@ export const mockConversations: Conversation[] = [
   // Today
   {
     id: "today-1",
-    title: "Database Schema Optimization",
+    title: "بهینه‌سازی اسکیمای پایگاه داده",
     model: "claude-sonnet",
-    preview: "Add composite indexing for multi-tenant query performance…",
+    preview: "افزودن ایندکس ترکیبی برای عملکرد کوئری چندمستأجری…",
     createdAt: h(1),
     updatedAt: h(1),
     pinned: false,
@@ -116,9 +116,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "today-2",
-    title: "React Performance Profiling",
+    title: "پروفایلینگ عملکرد React",
     model: "claude-opus",
-    preview: "Identified 3 major render bottlenecks in the dashboard layout…",
+    preview: "۳ گلوگاه عمده رندر در چیدمان داشبورد شناسایی شد…",
     createdAt: h(2),
     updatedAt: h(2),
     pinned: false,
@@ -130,9 +130,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "today-3",
-    title: "Marketing Email Campaign",
+    title: "کمپین ایمیل بازاریابی",
     model: "gpt-4o",
-    preview: "Here are 5 compelling subject lines with A/B test variants…",
+    preview: "۵ موضوع جذاب به همراه نسخه‌های تست A/B…",
     createdAt: h(4),
     updatedAt: h(4),
     pinned: false,
@@ -145,9 +145,9 @@ export const mockConversations: Conversation[] = [
   // Yesterday
   {
     id: "yest-1",
-    title: "Product Roadmap Planning",
+    title: "برنامه‌ریزی نقشه راه محصول",
     model: "claude-opus",
-    preview: "Prioritized features for Q1 2025 based on user feedback data…",
+    preview: "اولویت‌بندی قابلیت‌های سه‌ماهه اول ۲۰۲۵ بر اساس داده‌های بازخورد کاربر…",
     createdAt: d(1),
     updatedAt: d(1),
     pinned: false,
@@ -158,9 +158,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "yest-2",
-    title: "SQL Query Optimization",
+    title: "بهینه‌سازی کوئری SQL",
     model: "gpt-4o",
-    preview: "Reduced query execution time by 40% with proper index hints…",
+    preview: "زمان اجرای کوئری با راهنمایی‌های ایندکس مناسب ۴۰٪ کاهش یافت…",
     createdAt: d(1),
     updatedAt: d(1),
     pinned: false,
@@ -172,9 +172,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "yest-3",
-    title: "Competitive Analysis Report",
+    title: "گزارش تحلیل رقابتی",
     model: "gemini-2-5-pro",
-    preview: "Analyzed 8 competitors in the B2B SaaS analytics space…",
+    preview: "تحلیل ۸ رقیب در حوزه تحلیل B2B SaaS…",
     createdAt: d(1),
     updatedAt: d(1),
     pinned: false,
@@ -187,9 +187,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "yest-4",
-    title: "TypeScript Migration Guide",
+    title: "راهنمای مهاجرت به TypeScript",
     model: "claude-sonnet",
-    preview: "Step-by-step migration path from JavaScript with minimal disruption…",
+    preview: "مسیر مهاجرت گام‌به‌گام از JavaScript با کمترین اختلال…",
     createdAt: d(1),
     updatedAt: d(1),
     pinned: false,
@@ -202,9 +202,9 @@ export const mockConversations: Conversation[] = [
   // Last 7 Days
   {
     id: "w7-1",
-    title: "Customer Segmentation Model",
+    title: "مدل بخش‌بندی مشتری",
     model: "gemini-2-5-pro",
-    preview: "K-means clustering on 50K users revealed 6 distinct personas…",
+    preview: "خوشه‌بندی K-means روی ۵۰ هزار کاربر، ۶ پرسونای متمایز را نشان داد…",
     createdAt: d(3),
     updatedAt: d(3),
     pinned: false,
@@ -217,9 +217,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "w7-2",
-    title: "CI/CD Pipeline Setup",
+    title: "راه‌اندازی پایپ‌لاین CI/CD",
     model: "claude-sonnet",
-    preview: "GitHub Actions workflow with multi-environment deployment stages…",
+    preview: "گردش‌کار GitHub Actions با مراحل استقرار چندمحیطه…",
     createdAt: d(4),
     updatedAt: d(4),
     pinned: false,
@@ -232,9 +232,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "w7-3",
-    title: "Landing Page Copy",
+    title: "متن صفحه فرود",
     model: "gpt-4-1",
-    preview: "Three hero copy variants optimized for SaaS conversion rates…",
+    preview: "سه نسخه متن سرتیتر بهینه‌شده برای نرخ تبدیل SaaS…",
     createdAt: d(5),
     updatedAt: d(5),
     pinned: false,
@@ -246,9 +246,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "w7-4",
-    title: "Error Monitoring Strategy",
+    title: "استراتژی مانیتورینگ خطا",
     model: "claude-opus",
-    preview: "Sentry configuration with custom alerting and PagerDuty integration…",
+    preview: "پیکربندی Sentry با هشدارهای سفارشی و یکپارچه‌سازی PagerDuty…",
     createdAt: d(6),
     updatedAt: d(6),
     pinned: false,
@@ -259,9 +259,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "w7-5",
-    title: "Data Visualization Design",
+    title: "طراحی مصورسازی داده",
     model: "gemini-flash",
-    preview: "Created 4 chart prototypes for the analytics dashboard module…",
+    preview: "۴ پروتوتایپ نمودار برای ماژول داشبورد تحلیلی ساخته شد…",
     createdAt: d(6),
     updatedAt: d(6),
     pinned: false,
@@ -274,9 +274,9 @@ export const mockConversations: Conversation[] = [
   // Last 30 Days
   {
     id: "m30-1",
-    title: "Machine Learning Pipeline",
+    title: "پایپ‌لاین یادگیری ماشین",
     model: "gemini-2-5-pro",
-    preview: "TensorFlow Serving with Docker and Kubernetes auto-scaling…",
+    preview: "TensorFlow Serving با Docker و مقیاس‌دهی خودکار Kubernetes…",
     createdAt: d(14),
     updatedAt: d(14),
     pinned: false,
@@ -289,9 +289,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "m30-2",
-    title: "Business Intelligence Report",
+    title: "گزارش هوش تجاری",
     model: "claude-opus",
-    preview: "Revenue trends show 23% YoY growth with strong enterprise uptake…",
+    preview: "روند درآمد ۲۳٪ رشد سالانه با پذیرش قوی سازمانی نشان می‌دهد…",
     createdAt: d(16),
     updatedAt: d(16),
     pinned: false,
@@ -303,9 +303,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "m30-3",
-    title: "Authentication System Design",
+    title: "طراحی سامانه احراز هویت",
     model: "gpt-4o",
-    preview: "JWT + refresh token rotation with Redis session management…",
+    preview: "JWT با چرخش توکن تجدید و مدیریت نشست Redis…",
     createdAt: d(20),
     updatedAt: d(20),
     pinned: false,
@@ -317,9 +317,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "m30-4",
-    title: "Content Strategy Framework",
+    title: "چارچوب استراتژی محتوا",
     model: "gpt-4-1",
-    preview: "12-month editorial calendar aligned with product launch milestones…",
+    preview: "تقویم سرمقاله ۱۲ ماهه هم‌راستا با نقاط عطف عرضه محصول…",
     createdAt: d(22),
     updatedAt: d(22),
     pinned: false,
@@ -331,9 +331,9 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: "m30-5",
-    title: "Onboarding Flow Optimization",
+    title: "بهینه‌سازی جریان آن‌بوردینگ",
     model: "claude-sonnet",
-    preview: "A/B test results show 34% improvement with progressive disclosure…",
+    preview: "نتایج تست A/B بهبود ۳۴٪ با افشای تدریجی را نشان می‌دهد…",
     createdAt: d(28),
     updatedAt: d(28),
     pinned: false,
@@ -353,7 +353,7 @@ export const mockMessages: Record<string, Message[]> = {
       conversationId: "today-1",
       role: "user",
       content:
-        "Can you help me design a scalable database schema for a multi-tenant SaaS application? We expect to onboard thousands of organizations.",
+        "می‌توانی به من کمک کنی یک اسکیمای پایگاه داده مقیاس‌پذیر برای یک اپلیکیشن SaaS چندمستأجری طراحی کنم؟ انتظار داریم هزاران سازمان را پذیرش کنیم.",
       type: "text",
       createdAt: h(1.5),
     },
@@ -362,13 +362,13 @@ export const mockMessages: Record<string, Message[]> = {
       conversationId: "today-1",
       role: "assistant",
       content:
-        "I've analyzed your requirements and recommend a **shared schema with Row-Level Security (RLS)** approach for your SaaS application.\n\n## Key Benefits\n- **Cost efficiency**: Single database instance reduces infrastructure spend\n- **Simplified migrations**: Schema changes apply globally across all tenants\n- **Better resource utilization**: Connection pooling works across organizations\n\n## Architecture Overview\nYour database should include:\n1. A central `organizations` table for tenant management\n2. An `organization_id` foreign key on all tenant-specific tables\n3. PostgreSQL RLS policies to enforce strict data isolation\n4. Composite indexes for tenant-scoped query performance",
+        "نیازمندی‌های شما را تحلیل کردم و رویکرد **اسکیمای مشترک با امنیت سطح ردیف (RLS)** را برای اپلیکیشن SaaS شما توصیه می‌کنم.\n\n## مزایای کلیدی\n- **کارایی هزینه**: یک نمونه پایگاه داده هزینه زیرساخت را کاهش می‌دهد\n- **مهاجرت‌های ساده‌تر**: تغییرات اسکیما به‌صورت سراسری بر همه مستأجرها اعمال می‌شود\n- **بهره‌برداری بهتر از منابع**: استخر اتصال میان سازمان‌ها کار می‌کند\n\n## نمای کلی معماری\nپایگاه داده شما باید شامل موارد زیر باشد:\n1. یک جدول مرکزی `organizations` برای مدیریت مستأجرها\n2. کلید خارجی `organization_id` روی همه جداول مختص مستأجر\n3. سیاست‌های RLS پست‌گرس برای اعمال جداسازی سخت داده‌ها\n4. ایندکس‌های ترکیبی برای عملکرد کوئری در محدوده مستأجر",
       type: "text",
       thinkingSteps: [
-        { id: "t1", content: "Analyzing multi-tenant architecture patterns: shared schema vs schema-per-tenant vs database-per-tenant" },
-        { id: "t2", content: "Evaluating Row-Level Security (RLS) performance characteristics at scale with PostgreSQL" },
-        { id: "t3", content: "Considering connection pooling with PgBouncer for thousands of concurrent tenants" },
-        { id: "t4", content: "Drafting indexing strategy for `organization_id` foreign key columns" },
+        { id: "t1", content: "تحلیل الگوهای معماری چندمستأجری: اسکیمای مشترک در برابر اسکیما به‌ازای هر مستأجر در برابر پایگاه داده به‌ازای هر مستأجر" },
+        { id: "t2", content: "ارزیابی ویژگی‌های عملکرد امنیت سطح ردیف (RLS) در مقیاس بزرگ با PostgreSQL" },
+        { id: "t3", content: "بررسی استخر اتصال با PgBouncer برای هزاران مستأجر همزمان" },
+        { id: "t4", content: "پیش‌نویس استراتژی ایندکس‌گذاری برای ستون‌های کلید خارجی `organization_id`" },
       ],
       createdAt: h(1.4),
     },
@@ -376,7 +376,7 @@ export const mockMessages: Record<string, Message[]> = {
       id: "m3",
       conversationId: "today-1",
       role: "user",
-      content: "Can you write the actual PostgreSQL schema with RLS policies and proper indexes?",
+      content: "می‌توانی اسکیمای واقعی PostgreSQL را به همراه سیاست‌های RLS و ایندکس‌های مناسب بنویسی؟",
       type: "text",
       createdAt: h(1.2),
     },
@@ -384,7 +384,7 @@ export const mockMessages: Record<string, Message[]> = {
       id: "m4",
       conversationId: "today-1",
       role: "assistant",
-      content: "Here's a production-ready PostgreSQL schema with RLS policies:",
+      content: "این یک اسکیمای PostgreSQL آماده تولید همراه با سیاست‌های RLS است:",
       type: "code",
       codeContent: {
         language: "sql",
@@ -444,7 +444,7 @@ CREATE TRIGGER organizations_updated_at
       id: "m5",
       conversationId: "today-1",
       role: "user",
-      content: "Great! Can you compare the three multi-tenancy strategies in a table?",
+      content: "عالی! می‌توانی این سه استراتژی چندمستأجری را در یک جدول مقایسه کنی؟",
       type: "text",
       createdAt: h(0.8),
     },
@@ -452,24 +452,24 @@ CREATE TRIGGER organizations_updated_at
       id: "m6",
       conversationId: "today-1",
       role: "assistant",
-      content: "Here's a comprehensive comparison of the three main multi-tenancy strategies:",
+      content: "این یک مقایسه جامع از سه استراتژی اصلی چندمستأجری است:",
       type: "table",
       tableContent: {
         columns: [
-          { key: "feature", label: "Criteria" },
-          { key: "shared", label: "Shared Schema + RLS" },
-          { key: "schemaPer", label: "Schema Per Tenant" },
-          { key: "dbPer", label: "Database Per Tenant" },
+          { key: "feature", label: "معیار" },
+          { key: "shared", label: "اسکیمای مشترک + RLS" },
+          { key: "schemaPer", label: "اسکیما به‌ازای هر مستأجر" },
+          { key: "dbPer", label: "پایگاه داده به‌ازای هر مستأجر" },
         ],
         rows: [
-          { feature: "Infrastructure Cost", shared: "Low", schemaPer: "Medium", dbPer: "High" },
-          { feature: "Data Isolation", shared: "Good (RLS)", schemaPer: "Strong", dbPer: "Complete" },
-          { feature: "Max Tenants", shared: "Unlimited", schemaPer: "~1,000", dbPer: "~100" },
-          { feature: "Migration Complexity", shared: "Low", schemaPer: "Medium", dbPer: "High" },
-          { feature: "Query Performance", shared: "Good w/ indexes", schemaPer: "Excellent", dbPer: "Excellent" },
-          { feature: "Connection Pooling", shared: "Easy", schemaPer: "Moderate", dbPer: "Complex" },
-          { feature: "Compliance (GDPR)", shared: "Manageable", schemaPer: "Good", dbPer: "Best" },
-          { feature: "Recommended For", shared: "Most SaaS", schemaPer: "Mid-market", dbPer: "Enterprise" },
+          { feature: "هزینه زیرساخت", shared: "کم", schemaPer: "متوسط", dbPer: "زیاد" },
+          { feature: "جداسازی داده", shared: "خوب (RLS)", schemaPer: "قوی", dbPer: "کامل" },
+          { feature: "حداکثر مستأجر", shared: "نامحدود", schemaPer: "~۱٬۰۰۰", dbPer: "~۱۰۰" },
+          { feature: "پیچیدگی مهاجرت", shared: "کم", schemaPer: "متوسط", dbPer: "زیاد" },
+          { feature: "عملکرد کوئری", shared: "خوب با ایندکس", schemaPer: "عالی", dbPer: "عالی" },
+          { feature: "استخر اتصال", shared: "آسان", schemaPer: "متوسط", dbPer: "پیچیده" },
+          { feature: "انطباق (GDPR)", shared: "قابل مدیریت", schemaPer: "خوب", dbPer: "بهترین" },
+          { feature: "توصیه‌شده برای", shared: "اغلب SaaS‌ها", schemaPer: "بازار میانی", dbPer: "سازمانی" },
         ],
       },
       createdAt: h(0.6),
@@ -478,7 +478,7 @@ CREATE TRIGGER organizations_updated_at
       id: "m7",
       conversationId: "today-1",
       role: "user",
-      content: "Can you show me a chart of query performance benchmarks across these strategies?",
+      content: "می‌توانی یک نمودار از معیارهای عملکرد کوئری در این استراتژی‌ها به من نشان دهی؟",
       type: "text",
       createdAt: h(0.4),
     },
@@ -486,15 +486,15 @@ CREATE TRIGGER organizations_updated_at
       id: "m8",
       conversationId: "today-1",
       role: "assistant",
-      content: "Here are benchmark results from a 100K tenant simulation (queries per second, p99 latency in ms):",
+      content: "این نتایج بنچمارک از یک شبیه‌سازی ۱۰۰ هزار مستأجری است (کوئری در ثانیه، تأخیر p99 بر حسب میلی‌ثانیه):",
       type: "chart",
       chartContent: {
         type: "bar",
-        title: "Multi-Tenancy Performance Benchmarks",
+        title: "بنچمارک‌های عملکرد چندمستأجری",
         data: [
-          { strategy: "Shared + RLS", qps: 8400, p99_ms: 12, setup_days: 2 },
-          { strategy: "Schema Per Tenant", qps: 11200, p99_ms: 8, setup_days: 14 },
-          { strategy: "DB Per Tenant", qps: 12800, p99_ms: 6, setup_days: 45 },
+          { strategy: "مشترک + RLS", qps: 8400, p99_ms: 12, setup_days: 2 },
+          { strategy: "اسکیما به‌ازای هر مستأجر", qps: 11200, p99_ms: 8, setup_days: 14 },
+          { strategy: "پایگاه داده به‌ازای هر مستأجر", qps: 12800, p99_ms: 6, setup_days: 45 },
         ],
         keys: [
           { key: "qps", color: "hsl(var(--chart-1))" },
@@ -507,27 +507,27 @@ CREATE TRIGGER organizations_updated_at
 };
 
 export const aiResponses = {
-  default: `That's a great question! Let me break this down for you.
+  default: `سؤال بسیار خوبی است! اجازه بدهید آن را برایتان تجزیه‌وتحلیل کنم.
 
-Based on your requirements, here's my analysis:
+بر اساس نیازمندی‌های شما، تحلیل من این است:
 
-**Key Considerations**
+**ملاحظات کلیدی**
 
-The most important factors to evaluate are performance, maintainability, and scalability. Each approach has distinct trade-offs that depend on your specific use case and team constraints.
+مهم‌ترین عوامل برای ارزیابی، عملکرد، قابلیت نگهداری و مقیاس‌پذیری هستند. هر رویکرد، مزایا و معایب متمایزی دارد که به مورد استفاده مشخص شما و محدودیت‌های تیم بستگی دارد.
 
-**My Recommendation**
+**توصیه من**
 
-I'd suggest starting with the simplest approach that meets your current needs, then optimizing iteratively as you gather real-world usage data. Premature optimization can add significant complexity without proportional benefit.
+پیشنهاد می‌کنم با ساده‌ترین رویکردی که نیازهای فعلی شما را برآورده می‌کند آغاز کنید و سپس به‌تدریج با جمع‌آوری داده‌های واقعی استفاده، آن را بهینه‌سازی کنید. بهینه‌سازی زودهنگام می‌تواند پیچیدگی قابل‌توجهی را بدون منفعت متناسب اضافه کند.
 
-**Next Steps**
-1. Define your success metrics clearly before implementing
-2. Set up monitoring to measure the baseline
-3. Implement the solution with observability built in
-4. Review and iterate based on real data
+**گام‌های بعدی**
+1. پیش از پیاده‌سازی، معیارهای موفقیت خود را به‌وضوح تعریف کنید
+2. مانیتورینگ را برای اندازه‌گیری خط پایه راه‌اندازی کنید
+3. راه‌حل را با قابلیت مشاهده‌پذیری داخلی پیاده‌سازی کنید
+4. بر اساس داده‌های واقعی بررسی و تکرار کنید
 
-Would you like me to dive deeper into any specific aspect of this?`,
+آیا می‌خواهید در جنبه خاصی از این موضوع عمیق‌تر شویم؟`,
 
-  coding: `Here's a clean, production-ready implementation:
+  coding: `این یک پیاده‌سازی تمیز و آماده تولید است:
 
 \`\`\`typescript
 import { useCallback, useEffect, useRef, useState } from "react"
@@ -577,30 +577,30 @@ export function useAsync<T>({ fetcher, initialData, onSuccess, onError }: Config
 }
 \`\`\`
 
-This implementation handles cancellation, avoids state updates on unmounted components, and provides a clean refetch mechanism. The generic type parameter ensures full TypeScript inference throughout your application.`,
+این پیاده‌سازی لغو را مدیریت می‌کند، از به‌روزرسانی state در کامپوننت‌های unmount شده جلوگیری می‌کند و یک مکانیزم refetch تمیز فراهم می‌کند. پارامتر نوع جنریک، استنتاج کامل TypeScript را در سراسر اپلیکیشن شما تضمین می‌کند.`,
 
-  analysis: `Here's my analysis of the data:
+  analysis: `این تحلیل من از داده‌ها است:
 
-**Summary of Findings**
+**خلاصه یافته‌ها**
 
-The data reveals several important patterns worth highlighting:
+داده‌ها چندین الگوی مهم را آشکار می‌کنند که شایان توجه‌اند:
 
-| Metric | Current | Target | Gap |
+| معیار | فعلی | هدف | فاصله |
 |--------|---------|--------|-----|
-| Conversion Rate | 3.2% | 5.0% | -1.8pp |
-| Avg Session Time | 4m 12s | 6m 00s | -1m 48s |
-| Bounce Rate | 52% | 35% | +17pp |
-| Revenue/User | $42 | $65 | -$23 |
+| نرخ تبدیل | ۳٫۲٪ | ۵٫۰٪ | -۱٫۸pp |
+| میانگین زمان نشست | ۴ دقیقه ۱۲ ثانیه | ۶ دقیقه ۰۰ ثانیه | -۱ دقیقه ۴۸ ثانیه |
+| نرخ پرش | ۵۲٪ | ۳۵٪ | +۱۷pp |
+| درآمد به ازای کاربر | ۴۲ دلار | ۶۵ دلار | -۲۳ دلار |
 
-**Key Insights**
+**بینش‌های کلیدی**
 
-The conversion funnel shows the largest drop-off at the pricing page (68% exit rate). Users who engage with the interactive demo show 4.2x higher conversion rates.
+قیف تبدیل بزرگ‌ترین افت را در صفحه قیمت‌گذاری نشان می‌دهد (نرخ خروج ۶۸٪). کاربرانی که با دموی تعاملی درگیر می‌شوند، نرخ تبدیل ۴٫۲ برابر بالاتری دارند.
 
-**Recommended Actions**
-1. Redesign the pricing page with social proof and comparison table
-2. Add an in-product trial that delays payment friction
-3. Implement behavioral retargeting for pricing page exits
-4. A/B test a usage-based pricing model for SMB segment
+**اقدامات توصیه‌شده**
+1. صفحه قیمت‌گذاری را با اثبات اجتماعی و جدول مقایسه بازطراحی کنید
+2. یک نسخه آزمایشی درون‌محصولی اضافه کنید تا اصطکاک پرداخت به تأخیر بیفتد
+3. هدف‌گیری مجدد رفتاری را برای خروجی‌های صفحه قیمت‌گذاری پیاده‌سازی کنید
+4. یک مدل قیمت‌گذاری مبتنی بر استفاده را برای بخش SMB تست A/B کنید
 
-Implementing these changes could conservatively improve conversion by 40-60% based on industry benchmarks.`,
+اعمال این تغییرات می‌تواند بر اساس بنچمارک‌های صنعتی، نرخ تبدیل را به‌صورت محافظه‌کارانه ۴۰ تا ۶۰٪ بهبود دهد.`,
 };

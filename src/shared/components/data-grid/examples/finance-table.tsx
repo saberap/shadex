@@ -24,39 +24,46 @@ const STATUS_VARIANT: Record<
 };
 
 const METHOD_LABEL: Record<InvoiceRecord["method"], string> = {
-  card: "Card",
-  wire: "Wire",
+  card: "کارت",
+  wire: "حواله",
   ach: "ACH",
-  paypal: "PayPal",
+  paypal: "پی‌پال",
+};
+
+const STATUS_LABEL: Record<InvoiceRecord["status"], string> = {
+  paid: "پرداخت‌شده",
+  open: "باز",
+  overdue: "سررسید گذشته",
+  draft: "پیش‌نویس",
 };
 
 const columns: DataGridColumnDef<InvoiceRecord>[] = [
   {
     accessorKey: "invoice",
-    header: "Invoice",
+    header: "فاکتور",
     cell: ({ row }) => (
       <span className="font-mono text-xs">{row.original.invoice}</span>
     ),
-    meta: { label: "Invoice", filterType: "text" },
+    meta: { label: "فاکتور", filterType: "text" },
   },
   {
     accessorKey: "customer",
-    header: "Customer",
-    meta: { label: "Customer", filterType: "text" },
+    header: "مشتری",
+    meta: { label: "مشتری", filterType: "text" },
   },
   {
     accessorKey: "amount",
-    header: "Amount",
+    header: "مبلغ",
     cell: ({ row }) => (
       <span className="font-medium tabular-nums">
         {formatCurrency(row.original.amount, row.original.currency)}
       </span>
     ),
-    meta: { label: "Amount", align: "right" },
+    meta: { label: "مبلغ", align: "right" },
   },
   {
     accessorKey: "method",
-    header: "Method",
+    header: "روش پرداخت",
     cell: ({ row }) => (
       <span className="text-muted-foreground">
         {METHOD_LABEL[row.original.method]}
@@ -67,25 +74,25 @@ const columns: DataGridColumnDef<InvoiceRecord>[] = [
       return value.includes(row.getValue<string>(id));
     },
     meta: {
-      label: "Method",
+      label: "روش پرداخت",
       filterType: "select",
       filterOptions: [
-        { label: "Card", value: "card" },
-        { label: "Wire", value: "wire" },
+        { label: "کارت", value: "card" },
+        { label: "حواله", value: "wire" },
         { label: "ACH", value: "ach" },
-        { label: "PayPal", value: "paypal" },
+        { label: "پی‌پال", value: "paypal" },
       ],
     },
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "وضعیت",
     cell: ({ row }) => (
       <Badge
         variant={STATUS_VARIANT[row.original.status]}
         className="capitalize"
       >
-        {row.original.status}
+        {STATUS_LABEL[row.original.status]}
       </Badge>
     ),
     filterFn: (row, id, value) => {
@@ -93,53 +100,53 @@ const columns: DataGridColumnDef<InvoiceRecord>[] = [
       return value.includes(row.getValue<string>(id));
     },
     meta: {
-      label: "Status",
+      label: "وضعیت",
       filterType: "select",
       filterOptions: [
-        { label: "Paid", value: "paid" },
-        { label: "Open", value: "open" },
-        { label: "Overdue", value: "overdue" },
-        { label: "Draft", value: "draft" },
+        { label: "پرداخت‌شده", value: "paid" },
+        { label: "باز", value: "open" },
+        { label: "سررسید گذشته", value: "overdue" },
+        { label: "پیش‌نویس", value: "draft" },
       ],
     },
   },
   {
     accessorKey: "issuedAt",
-    header: "Issued",
+    header: "تاریخ صدور",
     cell: ({ row }) => (
       <span className="text-muted-foreground">
         {formatDate(row.original.issuedAt)}
       </span>
     ),
-    meta: { label: "Issued" },
+    meta: { label: "تاریخ صدور" },
   },
   {
     accessorKey: "dueAt",
-    header: "Due",
+    header: "سررسید",
     cell: ({ row }) => (
       <span className="text-muted-foreground">
         {formatDate(row.original.dueAt)}
       </span>
     ),
-    meta: { label: "Due" },
+    meta: { label: "سررسید" },
   },
 ];
 
 const rowActions: DataGridRowAction<InvoiceRecord>[] = [
   {
-    label: "View invoice",
+    label: "مشاهده فاکتور",
     icon: <Eye />,
-    onClick: (r) => toast(`Opening ${r.invoice}`),
+    onClick: (r) => toast(`در حال باز کردن ${r.invoice}`),
   },
   {
-    label: "Send reminder",
+    label: "ارسال یادآور",
     icon: <Send />,
-    onClick: (r) => toast.success(`Reminder sent for ${r.invoice}`),
+    onClick: (r) => toast.success(`یادآور برای ${r.invoice} ارسال شد`),
   },
   {
-    label: "Download PDF",
+    label: "دانلود PDF",
     icon: <FileText />,
-    onClick: (r) => toast(`Downloading ${r.invoice}.pdf`),
+    onClick: (r) => toast(`در حال دانلود ${r.invoice}.pdf`),
   },
 ];
 
@@ -154,12 +161,12 @@ export function FinanceTable() {
       rowActions={rowActions}
       bulkActions={[
         {
-          label: "Export",
+          label: "خروجی گرفتن",
           icon: <Download />,
-          onClick: (rows) => toast(`Exporting ${rows.length} invoices`),
+          onClick: (rows) => toast(`در حال خروجی گرفتن ${rows.length} فاکتور`),
         },
       ]}
-      searchPlaceholder="Search invoices, customers…"
+      searchPlaceholder="جستجوی فاکتورها، مشتریان…"
       initialSorting={[{ id: "issuedAt", desc: true }]}
     />
   );

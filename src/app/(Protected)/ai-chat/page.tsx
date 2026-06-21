@@ -5,5 +5,6 @@ export default function AiChatPage() {
 }
 
 export const metadata = {
-  title: "AI Chat",
+  title: "چت هوش مصنوعی | پنل شدکس",
+  description: "گفتگو با دستیار هوش مصنوعی",
 };

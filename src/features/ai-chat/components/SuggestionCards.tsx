@@ -14,33 +14,33 @@ import { useChatContext } from "../context/ChatContext";
 const suggestions = [
   {
     icon: BarChart3,
-    title: "Analyze Data",
-    prompt: "Analyze this dataset and provide key insights, trends, and actionable recommendations.",
+    title: "تحلیل داده",
+    prompt: "این مجموعه‌داده را تحلیل کن و بینش‌های کلیدی، روندها و توصیه‌های عملی ارائه بده.",
   },
   {
     icon: Image,
-    title: "Generate Image",
-    prompt: "Generate a detailed prompt for creating a professional image for my project.",
+    title: "تولید تصویر",
+    prompt: "یک پرامپت دقیق برای ساخت یک تصویر حرفه‌ای برای پروژه‌ام تولید کن.",
   },
   {
     icon: Code2,
-    title: "Write Code",
-    prompt: "Write a clean, production-ready TypeScript function with proper error handling and types.",
+    title: "نوشتن کد",
+    prompt: "یک تابع TypeScript تمیز و آماده تولید با مدیریت خطای مناسب و تایپ‌ها بنویس.",
   },
   {
     icon: Brain,
-    title: "Brainstorm Ideas",
-    prompt: "Brainstorm 10 creative and innovative ideas for improving user engagement in a SaaS product.",
+    title: "طوفان فکری",
+    prompt: "۱۰ ایده خلاقانه و نوآورانه برای بهبود تعامل کاربر در یک محصول SaaS ارائه بده.",
   },
   {
     icon: Database,
-    title: "Create SQL Query",
-    prompt: "Write an optimized SQL query with proper indexing hints for querying a large dataset.",
+    title: "ساخت کوئری SQL",
+    prompt: "یک کوئری SQL بهینه با راهنمایی‌های ایندکس‌گذاری مناسب برای کوئری روی یک مجموعه‌داده بزرگ بنویس.",
   },
   {
     icon: FileSearch,
-    title: "Summarize Document",
-    prompt: "Summarize this document and extract the 5 most important points in bullet format.",
+    title: "خلاصه‌سازی سند",
+    prompt: "این سند را خلاصه کن و ۵ نکته مهم را به‌صورت فهرستی استخراج کن.",
   },
 ];
 

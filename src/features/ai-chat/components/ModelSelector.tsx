@@ -23,6 +23,7 @@ const PROVIDER_COLORS: Record<string, string> = {
 };
 
 const SPEED_DOTS: Record<string, number> = { fast: 3, medium: 2, slow: 1 };
+const SPEED_LABEL: Record<string, string> = { fast: "سریع", medium: "متوسط", slow: "کند" };
 const COST_LABEL: Record<string, string> = { low: "$", medium: "$$", high: "$$$" };
 
 const byProvider = (provider: string) => MODELS.filter((m) => m.provider === provider);
@@ -87,7 +88,7 @@ export function ModelSelector({ compact = false }: ModelSelectorProps) {
                       <p className="text-xs text-muted-foreground mb-1.5">{model.description}</p>
                       <div className="flex items-center gap-3">
                         <span className="text-[10px] text-muted-foreground">
-                          {model.contextLength} ctx
+                          زمینه {model.contextLength}
                         </span>
                         <div className="flex items-center gap-0.5">
                           {Array.from({ length: 3 }).map((_, i) => (
@@ -101,8 +102,8 @@ export function ModelSelector({ compact = false }: ModelSelectorProps) {
                               )}
                             />
                           ))}
-                          <span className="ml-1 text-[10px] text-muted-foreground capitalize">
-                            {model.speed}
+                          <span className="ms-1 text-[10px] text-muted-foreground">
+                            {SPEED_LABEL[model.speed]}
                           </span>
                         </div>
                         {model.speed === "fast" && (

@@ -42,6 +42,13 @@ const STATUS_VARIANT: Record<
   churned: "outline",
 };
 
+const STATUS_LABEL: Record<ApiCustomer["status"], string> = {
+  active: "فعال",
+  pending: "در انتظار",
+  suspended: "معلق",
+  churned: "ریزش‌کرده",
+};
+
 export function UrlSyncTable() {
   const { state, update } = useUrlState({ defaultPageSize: 20 });
 
@@ -70,45 +77,45 @@ export function UrlSyncTable() {
     () => [
       {
         accessorKey: "id",
-        header: "ID",
+        header: "شناسه",
         meta: {
-          label: "ID",
+          label: "شناسه",
           className: "font-mono text-xs text-muted-foreground",
         },
         size: 130,
       },
-      { accessorKey: "name", header: "Name", meta: { label: "Name" } },
+      { accessorKey: "name", header: "نام", meta: { label: "نام" } },
       {
         accessorKey: "email",
-        header: "Email",
+        header: "ایمیل",
         cell: ({ row }) => (
           <span className="text-muted-foreground">{row.original.email}</span>
         ),
-        meta: { label: "Email" },
+        meta: { label: "ایمیل" },
       },
       {
         accessorKey: "status",
-        header: "Status",
+        header: "وضعیت",
         cell: ({ row }) => (
           <Badge
             variant={STATUS_VARIANT[row.original.status]}
             className="capitalize"
           >
-            {row.original.status}
+            {STATUS_LABEL[row.original.status]}
           </Badge>
         ),
-        meta: { label: "Status" },
+        meta: { label: "وضعیت" },
       },
-      { accessorKey: "country", header: "Country", meta: { label: "Country" } },
+      { accessorKey: "country", header: "کشور", meta: { label: "کشور" } },
       {
         accessorKey: "createdAt",
-        header: "Joined",
+        header: "تاریخ عضویت",
         cell: ({ row }) => (
           <span className="text-muted-foreground">
             {formatDate(row.original.createdAt)}
           </span>
         ),
-        meta: { label: "Joined" },
+        meta: { label: "تاریخ عضویت" },
       },
     ],
     [],
@@ -146,7 +153,7 @@ export function UrlSyncTable() {
       onRetry={() => query.refetch()}
       enableSelection={false}
       enableColumnFilters={false}
-      searchPlaceholder="Search — state persists in URL"
+      searchPlaceholder="جستجو — وضعیت در URL باقی می‌ماند"
     />
   );
 }

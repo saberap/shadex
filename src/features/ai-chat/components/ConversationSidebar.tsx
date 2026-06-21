@@ -26,12 +26,12 @@ import type { Conversation } from "../types";
 type GroupKey = "pinned" | "today" | "yesterday" | "last7" | "last30" | "older";
 
 const GROUP_LABELS: Record<GroupKey, string> = {
-  pinned: "Pinned",
-  today: "Today",
-  yesterday: "Yesterday",
-  last7: "Previous 7 Days",
-  last30: "Previous 30 Days",
-  older: "Older",
+  pinned: "سنجاق‌شده",
+  today: "امروز",
+  yesterday: "دیروز",
+  last7: "۷ روز گذشته",
+  last30: "۳۰ روز گذشته",
+  older: "قدیمی‌تر",
 };
 
 function getGroup(conv: Conversation): GroupKey {
@@ -128,7 +128,7 @@ function FolderSection({ name, color, conversations }: FolderSectionProps) {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="overflow-hidden pl-4"
+            className="overflow-hidden ps-4"
           >
             {conversations.map((conv) => (
               <ConversationItem key={conv.id} conversation={conv} />
@@ -147,13 +147,13 @@ function EmptyHistoryState() {
       <div className="mb-3 flex size-10 items-center justify-center rounded-xl bg-muted">
         <Bot className="size-5 text-muted-foreground" />
       </div>
-      <p className="text-sm font-medium text-foreground mb-1">No conversations yet</p>
+      <p className="text-sm font-medium text-foreground mb-1">هنوز گفتگویی وجود ندارد</p>
       <p className="text-xs text-muted-foreground mb-4">
-        Start a new conversation to begin.
+        برای شروع یک گفتگوی جدید آغاز کنید.
       </p>
       <Button size="sm" onClick={createNewChat}>
-        <MessageSquarePlus className="mr-1.5 size-3.5" />
-        New Chat
+        <MessageSquarePlus className="me-1.5 size-3.5" />
+        گفتگوی جدید
       </Button>
     </div>
   );
@@ -163,7 +163,7 @@ function SearchEmptyState() {
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
       <Search className="size-6 text-muted-foreground/40 mb-2" />
-      <p className="text-sm text-muted-foreground">No conversations found</p>
+      <p className="text-sm text-muted-foreground">گفتگویی یافت نشد</p>
     </div>
   );
 }
@@ -209,30 +209,30 @@ export function ConversationSidebar() {
       {/* Header */}
       <div className="flex shrink-0 flex-col gap-3 p-3 pt-4">
         <div className="flex items-center justify-between px-1">
-          <span className="text-sm font-semibold text-foreground">Chats</span>
+          <span className="text-sm font-semibold text-foreground">گفتگوها</span>
           <Button
             size="sm"
             onClick={createNewChat}
             className="h-7 gap-1.5 px-2.5 text-xs"
           >
             <MessageSquarePlus className="size-3.5" />
-            New Chat
+            گفتگوی جدید
           </Button>
         </div>
 
         {/* Search */}
         <div className="relative">
-          <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+          <Search className="pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder="Search conversations…"
+            placeholder="جستجو در گفتگوها…"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="h-8 rounded-lg pl-8 pr-8 text-xs bg-background"
+            className="h-8 rounded-lg ps-8 pe-8 text-xs bg-background"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              className="absolute end-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <X className="size-3.5" />
             </button>
@@ -254,7 +254,7 @@ export function ConversationSidebar() {
                 <div className="mb-2">
                   <div className="px-4 py-1.5">
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/70">
-                      Folders
+                      پوشه‌ها
                     </span>
                   </div>
                   {folders.map((folder) => {

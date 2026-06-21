@@ -22,7 +22,14 @@ import { cn } from "@/core/utils/cn";
 import { useChat } from "../hooks/use-chat";
 import { statusColor } from "../utils";
 import { UserAvatar } from "./user-avatar";
-import type { ChatUser } from "../types";
+import type { ChatUser, UserStatus } from "../types";
+
+const STATUS_LABEL: Record<UserStatus, string> = {
+  online: "آنلاین",
+  away: "غایب",
+  busy: "مشغول",
+  offline: "آفلاین",
+};
 
 type Mode = "direct" | "group";
 
@@ -121,7 +128,7 @@ export function NewConversationDialog({
       const partner = userList.find((u) => u.id === partnerId);
       const id = createConversation({
         kind: "direct",
-        name: partner?.name ?? "Conversation",
+        name: partner?.name ?? "گفتگو",
         participantIds: [currentUser.id, partnerId],
         groupId: "direct",
       });
@@ -144,10 +151,10 @@ export function NewConversationDialog({
         <DialogHeader className="px-5 pt-5">
           <DialogTitle className="flex items-center gap-2 text-base">
             <MessageSquarePlus className="size-4" />
-            New conversation
+            گفتگوی جدید
           </DialogTitle>
           <DialogDescription className="text-xs">
-            Start a direct message or create a group chat with your teammates.
+            یک پیام مستقیم آغاز کنید یا با هم‌تیمی‌هایتان یک گفتگوی گروهی بسازید.
           </DialogDescription>
         </DialogHeader>
 
@@ -156,11 +163,11 @@ export function NewConversationDialog({
             <TabsList className="w-full">
               <TabsTrigger value="direct" className="flex-1 gap-1.5">
                 <MessageSquarePlus className="size-3.5" />
-                Direct
+                مستقیم
               </TabsTrigger>
               <TabsTrigger value="group" className="flex-1 gap-1.5">
                 <Users className="size-3.5" />
-                Group
+                گروهی
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -171,7 +178,7 @@ export function NewConversationDialog({
             <Input
               value={groupName}
               onChange={(e) => setGroupName(e.target.value)}
-              placeholder="Group name (e.g. Design Sync)"
+              placeholder="نام گروه (مثلاً هماهنگی طراحی)"
               className="h-9 text-sm"
               maxLength={60}
             />
@@ -180,12 +187,12 @@ export function NewConversationDialog({
 
         <div className="px-5 pt-3">
           <div className="relative">
-            <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+            <Search className="pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search people…"
-              className="h-9 rounded-lg pl-8 text-xs"
+              placeholder="جستجوی افراد…"
+              className="h-9 rounded-lg ps-8 text-xs"
             />
           </div>
         </div>
@@ -194,7 +201,7 @@ export function NewConversationDialog({
           <div className="flex flex-col gap-0.5 px-3 py-2">
             {candidates.length === 0 ? (
               <div className="px-3 py-8 text-center text-xs text-muted-foreground">
-                No people match your search
+                هیچ شخصی با جستجوی شما مطابقت ندارد
               </div>
             ) : (
               candidates.map((user) => {
@@ -205,7 +212,7 @@ export function NewConversationDialog({
                     type="button"
                     onClick={() => toggle(user.id)}
                     className={cn(
-                      "flex items-center gap-3 rounded-lg px-2.5 py-2 text-left transition-colors",
+                      "flex items-center gap-3 rounded-lg px-2.5 py-2 text-start transition-colors",
                       "hover:bg-muted/60",
                       active && "bg-muted"
                     )}
@@ -226,7 +233,7 @@ export function NewConversationDialog({
                           user.status
                         )}`}
                       />
-                      <span className="capitalize">{user.status}</span>
+                      <span>{STATUS_LABEL[user.status]}</span>
                     </div>
                     <div
                       className={cn(
@@ -246,12 +253,12 @@ export function NewConversationDialog({
         </ScrollArea>
 
         <DialogFooter className="m-0 rounded-b-xl border-t px-5 py-3">
-          <div className="mr-auto text-[11px] text-muted-foreground">
+          <div className="me-auto text-[11px] text-muted-foreground">
             {mode === "direct"
               ? selected.size === 1
-                ? "1 person selected"
-                : "Pick one person"
-              : `${selected.size} selected`}
+                ? "۱ نفر انتخاب شده"
+                : "یک نفر را انتخاب کنید"
+              : `${selected.size} نفر انتخاب شده`}
           </div>
           <Button
             type="button"
@@ -259,7 +266,7 @@ export function NewConversationDialog({
             size="sm"
             onClick={() => handleOpenChange(false)}
           >
-            Cancel
+            لغو
           </Button>
           <Button
             type="button"
@@ -267,7 +274,7 @@ export function NewConversationDialog({
             disabled={!canCreate}
             onClick={handleCreate}
           >
-            {mode === "direct" ? "Start chat" : "Create group"}
+            {mode === "direct" ? "شروع گفتگو" : "ایجاد گروه"}
           </Button>
         </DialogFooter>
       </DialogContent>

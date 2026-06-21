@@ -19,7 +19,7 @@ export function FeatureHint({ hint }: FeatureHintProps) {
         <TooltipTrigger asChild>
           <button
             type="button"
-            aria-label="More information"
+            aria-label="اطلاعات بیشتر"
             className="text-current/40 hover:text-current/70 transition-colors"
           >
             <Info className="size-3.5" />

@@ -52,7 +52,7 @@ const errorDemoFile: UploadFile[] = [
     size: 12 * MB,
     type: "application/zip",
     status: "error",
-    error: "File exceeds 10 MB limit",
+    error: "حجم فایل از محدودیت ۱۰ مگابایت بیشتر است",
   }),
 ];
 
@@ -130,43 +130,43 @@ export function FileUploadShowcaseFeature() {
     <div className="space-y-8 p-4 md:p-6 lg:p-8">
       <header className="flex flex-col gap-1.5">
         <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-          Component
+          کامپوننت
         </p>
-        <h1 className="text-2xl font-semibold tracking-tight">File Upload</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">آپلود فایل</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          A polished, fully accessible upload primitive built on shadcn/ui and
-          react-dropzone. Drag-and-drop, click-to-upload, progress, retry,
-          validation, image and avatar variants — all from a single composable
-          component.
+          یک کامپوننت آپلود حرفه‌ای و کاملاً قابل دسترسی، ساخته شده بر پایه
+          shadcn/ui و react-dropzone. کشیدن و رها کردن، آپلود با کلیک، نمایش
+          پیشرفت، تلاش مجدد، اعتبارسنجی و حالت‌های تصویر و آواتار — همگی در یک
+          کامپوننت ترکیب‌پذیر.
         </p>
       </header>
 
       <Section
-        title="Basic upload"
-        description="Single file, drag-and-drop or click to select. Remove to start over."
+        title="آپلود ساده"
+        description="یک فایل تکی، با کشیدن و رها کردن یا کلیک برای انتخاب. برای شروع دوباره فایل را حذف کنید."
       >
         <div className="grid gap-8 md:grid-cols-2">
           <div>
-            <StateLabel>Live</StateLabel>
+            <StateLabel>زنده</StateLabel>
             <FileUpload
               maxSize={5 * MB}
               value={basic}
               onChange={setBasic}
-              emptyLabel="Click to upload or drag and drop"
-              emptyHint="Any file up to 5 MB"
+              emptyLabel="برای آپلود کلیک کنید یا فایل را بکشید و رها کنید"
+              emptyHint="هر فایلی تا حجم ۵ مگابایت"
             />
           </div>
           <div className="grid gap-4">
             <div>
-              <StateLabel>Success</StateLabel>
+              <StateLabel>موفق</StateLabel>
               <FileUpload value={successDemoFile} onChange={() => {}} />
             </div>
             <div>
-              <StateLabel>Error</StateLabel>
+              <StateLabel>خطا</StateLabel>
               <FileUpload value={errorDemoFile} onChange={() => {}} />
             </div>
             <div>
-              <StateLabel>Disabled</StateLabel>
+              <StateLabel>غیرفعال</StateLabel>
               <FileUpload
                 disabled
                 value={disabledDemoFile}
@@ -178,24 +178,24 @@ export function FileUploadShowcaseFeature() {
       </Section>
 
       <Section
-        title="Multiple upload"
-        description="Upload several files at once. Each row reports its own progress and can be retried or removed independently."
+        title="آپلود چندتایی"
+        description="چندین فایل را به‌صورت همزمان آپلود کنید. هر ردیف پیشرفت خود را گزارش می‌دهد و می‌تواند مستقل تلاش مجدد یا حذف شود."
       >
         <div className="grid gap-8 md:grid-cols-2">
           <div>
-            <StateLabel>Live</StateLabel>
+            <StateLabel>زنده</StateLabel>
             <FileUpload
               multiple
               maxFiles={10}
               maxSize={10 * MB}
               value={multiple}
               onChange={setMultiple}
-              emptyLabel="Drop files here"
-              emptyHint="Up to 10 files, 10 MB each"
+              emptyLabel="فایل‌ها را اینجا رها کنید"
+              emptyHint="تا ۱۰ فایل، هر کدام حداکثر ۱۰ مگابایت"
             />
           </div>
           <div>
-            <StateLabel>Mixed states</StateLabel>
+            <StateLabel>حالت‌های ترکیبی</StateLabel>
             <FileUpload
               multiple
               value={[
@@ -217,7 +217,7 @@ export function FileUploadShowcaseFeature() {
                   size: 64 * MB,
                   type: "application/zip",
                   status: "error",
-                  error: "Connection lost — tap retry",
+                  error: "ارتباط قطع شد — برای تلاش مجدد کلیک کنید",
                 }),
               ]}
               onChange={() => {}}
@@ -227,12 +227,12 @@ export function FileUploadShowcaseFeature() {
       </Section>
 
       <Section
-        title="Image upload"
-        description="Single image with inline preview. Replace or remove in a click."
+        title="آپلود تصویر"
+        description="یک تصویر تکی با پیش‌نمایش درون‌خطی. با یک کلیک جایگزین یا حذف کنید."
       >
         <div className="grid gap-8 md:grid-cols-2">
           <div>
-            <StateLabel>Live</StateLabel>
+            <StateLabel>زنده</StateLabel>
             <FileUpload
               variant="image"
               accept={imageAccept}
@@ -242,27 +242,27 @@ export function FileUploadShowcaseFeature() {
             />
           </div>
           <div>
-            <StateLabel>Empty state</StateLabel>
+            <StateLabel>حالت خالی</StateLabel>
             <FileUpload
               variant="image"
               accept={imageAccept}
               maxSize={5 * MB}
               value={[]}
               onChange={() => {}}
-              emptyLabel="Drop cover image"
-              emptyHint="PNG, JPG or WEBP up to 5 MB"
+              emptyLabel="تصویر کاور را رها کنید"
+              emptyHint="PNG، JPG یا WEBP تا حجم ۵ مگابایت"
             />
           </div>
         </div>
       </Section>
 
       <Section
-        title="Avatar upload"
-        description="Circular preview with change and remove actions — perfect for profile settings."
+        title="آپلود آواتار"
+        description="پیش‌نمایش دایره‌ای با گزینه‌های تغییر و حذف — مناسب برای تنظیمات پروفایل."
       >
         <div className="grid gap-8 md:grid-cols-2">
           <div>
-            <StateLabel>Live</StateLabel>
+            <StateLabel>زنده</StateLabel>
             <FileUpload
               variant="avatar"
               accept={imageAccept}
@@ -272,7 +272,7 @@ export function FileUploadShowcaseFeature() {
             />
           </div>
           <div>
-            <StateLabel>Disabled</StateLabel>
+            <StateLabel>غیرفعال</StateLabel>
             <FileUpload
               variant="avatar"
               disabled
@@ -284,24 +284,24 @@ export function FileUploadShowcaseFeature() {
       </Section>
 
       <Section
-        title="Document upload"
-        description="PDF, DOCX, XLSX, PPTX — each file type gets its own icon."
+        title="آپلود سند"
+        description="PDF، DOCX، XLSX، PPTX — هر نوع فایل آیکون مخصوص خود را دارد."
       >
         <div className="grid gap-8 md:grid-cols-2">
           <div>
-            <StateLabel>Live</StateLabel>
+            <StateLabel>زنده</StateLabel>
             <FileUpload
               multiple
               accept={docAccept}
               maxSize={20 * MB}
               value={docs}
               onChange={setDocs}
-              emptyLabel="Drop documents to upload"
-              emptyHint="PDF, DOCX, XLSX, PPTX up to 20 MB"
+              emptyLabel="اسناد را برای آپلود رها کنید"
+              emptyHint="PDF، DOCX، XLSX، PPTX تا حجم ۲۰ مگابایت"
             />
           </div>
           <div>
-            <StateLabel>Sample documents</StateLabel>
+            <StateLabel>اسناد نمونه</StateLabel>
             <FileUpload
               multiple
               value={[
@@ -337,8 +337,8 @@ export function FileUploadShowcaseFeature() {
       </Section>
 
       <Section
-        title="Advanced upload"
-        description="Multiple files, progress, success, error and retry — everything wired up end-to-end."
+        title="آپلود پیشرفته"
+        description="چند فایل، پیشرفت، موفقیت، خطا و تلاش مجدد — همه چیز به‌صورت یکپارچه پیاده‌سازی شده است."
       >
         <div className="space-y-4">
           <FileUpload
@@ -348,13 +348,14 @@ export function FileUploadShowcaseFeature() {
             accept={advancedAccept}
             value={advanced}
             onChange={setAdvanced}
-            emptyLabel="Click to upload or drag and drop"
-            emptyHint="Images, PDF, ZIP or RAR up to 25 MB"
+            emptyLabel="برای آپلود کلیک کنید یا فایل را بکشید و رها کنید"
+            emptyHint="تصاویر، PDF، ZIP یا RAR تا حجم ۲۵ مگابایت"
           />
           <Separator />
           <p className="text-xs text-muted-foreground">
-            Tip — the demo upload occasionally fails to showcase the error and
-            retry flow. Hit the retry icon on a failed row to try again.
+            نکته — آپلود نمونه گاهی به‌صورت تصادفی شکست می‌خورد تا روند نمایش
+            خطا و تلاش مجدد را نشان دهد. برای تلاش دوباره، روی آیکون تلاش مجدد
+            در ردیف ناموفق کلیک کنید.
           </p>
         </div>
       </Section>

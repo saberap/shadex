@@ -38,11 +38,11 @@ export function DataGridViewOptions<TData>({
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm">
           <SlidersHorizontal />
-          View
+          نمایش
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
-        <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+        <DropdownMenuLabel>تغییر ستون‌ها</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {toggleable.map((column) => {
           const isVisible = columnVisibility[column.id] ?? true;

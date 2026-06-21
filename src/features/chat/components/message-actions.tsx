@@ -39,7 +39,7 @@ export function MessageActions({ message, align = "end" }: MessageActionsProps) 
         "pointer-events-none absolute z-20 flex items-center gap-0.5 rounded-lg border bg-popover/95 px-0.5 py-0.5 opacity-0 shadow-sm backdrop-blur transition-opacity",
         "group-hover/message:pointer-events-auto group-hover/message:opacity-100 focus-within:pointer-events-auto focus-within:opacity-100",
         "-top-2.5",
-        align === "end" ? "right-2" : "left-2"
+        align === "end" ? "end-2" : "start-2"
       )}
     >
       <Tooltip>
@@ -50,12 +50,12 @@ export function MessageActions({ message, align = "end" }: MessageActionsProps) 
             size="icon"
             className="size-6 text-muted-foreground hover:text-foreground"
             onClick={() => replyTo(message)}
-            aria-label="Reply to message"
+            aria-label="پاسخ به پیام"
           >
             <CornerUpLeft className="size-3.5" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent side="top">Reply</TooltipContent>
+        <TooltipContent side="top">پاسخ</TooltipContent>
       </Tooltip>
 
       <Tooltip>
@@ -66,12 +66,12 @@ export function MessageActions({ message, align = "end" }: MessageActionsProps) 
             size="icon"
             className="size-6 text-muted-foreground hover:text-foreground"
             onClick={() => forward(message)}
-            aria-label="Forward message"
+            aria-label="هدایت پیام"
           >
             <Forward className="size-3.5" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent side="top">Forward</TooltipContent>
+        <TooltipContent side="top">هدایت</TooltipContent>
       </Tooltip>
 
       <Tooltip>
@@ -82,12 +82,12 @@ export function MessageActions({ message, align = "end" }: MessageActionsProps) 
             size="icon"
             className="size-6 text-muted-foreground hover:text-foreground"
             onClick={() => copy(message)}
-            aria-label="Copy message"
+            aria-label="کپی پیام"
           >
             <Copy className="size-3.5" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent side="top">Copy</TooltipContent>
+        <TooltipContent side="top">کپی</TooltipContent>
       </Tooltip>
 
       <DropdownMenu>
@@ -99,26 +99,26 @@ export function MessageActions({ message, align = "end" }: MessageActionsProps) 
                 variant="ghost"
                 size="icon"
                 className="size-6 text-muted-foreground hover:text-foreground"
-                aria-label="More actions"
+                aria-label="اقدامات بیشتر"
               >
                 <MoreHorizontal className="size-3.5" />
               </Button>
             </DropdownMenuTrigger>
           </TooltipTrigger>
-          <TooltipContent side="top">More</TooltipContent>
+          <TooltipContent side="top">بیشتر</TooltipContent>
         </Tooltip>
         <DropdownMenuContent align={align === "end" ? "end" : "start"} className="w-40">
           <DropdownMenuItem onClick={() => replyTo(message)}>
             <CornerUpLeft className="size-4" />
-            Reply
+            پاسخ
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => forward(message)}>
             <Forward className="size-4" />
-            Forward
+            هدایت
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => copy(message)}>
             <Copy className="size-4" />
-            Copy text
+            کپی متن
           </DropdownMenuItem>
           {deletable && (
             <>
@@ -128,7 +128,7 @@ export function MessageActions({ message, align = "end" }: MessageActionsProps) 
                 className="text-destructive focus:text-destructive"
               >
                 <Trash2 className="size-4" />
-                Delete
+                حذف
               </DropdownMenuItem>
             </>
           )}

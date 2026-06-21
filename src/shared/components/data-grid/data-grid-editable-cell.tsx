@@ -70,7 +70,7 @@ export function DataGridEditableCell({
       <div className={`group/edit flex items-center gap-1.5 ${alignClass}`}>
         <span className="truncate">{display ?? value ?? "—"}</span>
         <Button
-          aria-label="Edit cell"
+          aria-label="ویرایش سلول"
           size="icon-xs"
           variant="ghost"
           className="opacity-0 transition-opacity group-hover/edit:opacity-100"
@@ -96,7 +96,7 @@ export function DataGridEditableCell({
           }}
         >
           <SelectTrigger size="sm" className="h-7 w-full min-w-32">
-            <SelectValue placeholder="Select…" />
+            <SelectValue placeholder="انتخاب…" />
           </SelectTrigger>
           <SelectContent>
             {options.map((o) => (
@@ -110,7 +110,7 @@ export function DataGridEditableCell({
           size="icon-xs"
           variant="ghost"
           onClick={cancel}
-          aria-label="Cancel"
+          aria-label="انصراف"
         >
           <X />
         </Button>
@@ -131,14 +131,14 @@ export function DataGridEditableCell({
         }}
         className="h-7"
       />
-      <Button size="icon-xs" variant="ghost" onClick={commit} aria-label="Save">
+      <Button size="icon-xs" variant="ghost" onClick={commit} aria-label="ذخیره">
         <Check />
       </Button>
       <Button
         size="icon-xs"
         variant="ghost"
         onClick={cancel}
-        aria-label="Cancel"
+        aria-label="انصراف"
       >
         <X />
       </Button>

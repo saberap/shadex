@@ -40,12 +40,12 @@ export function ChatSidebar({ onSelectConversation }: ChatSidebarProps) {
         <UserAvatar user={currentUser} size="default" showStatus />
         <div className="flex min-w-0 flex-1 flex-col">
           <span className="truncate text-sm font-semibold leading-tight text-foreground">
-            Messages
+            پیام‌ها
           </span>
           <span className="truncate text-[11px] text-muted-foreground">
             {totalUnread > 0
-              ? `${totalUnread} unread`
-              : "You're all caught up"}
+              ? `${totalUnread} خوانده‌نشده`
+              : "همه پیام‌ها را خوانده‌اید"}
           </span>
         </div>
         {totalUnread > 0 && (
@@ -59,31 +59,31 @@ export function ChatSidebar({ onSelectConversation }: ChatSidebarProps) {
               variant="ghost"
               size="icon"
               className="size-8"
-              aria-label="New conversation"
+              aria-label="گفتگوی جدید"
               onClick={() => setNewConversationOpen(true)}
             >
               <MessageSquarePlus className="size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="bottom">New conversation</TooltipContent>
+          <TooltipContent side="bottom">گفتگوی جدید</TooltipContent>
         </Tooltip>
       </div>
 
       <div className="px-4 pb-3">
         <div className="relative">
-          <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+          <Search className="pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder="Search messages…"
+            placeholder="جستجوی پیام‌ها…"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="h-9 rounded-lg pl-8 pr-8 text-xs"
+            className="h-9 rounded-lg ps-8 pe-8 text-xs"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="Clear search"
+              className="absolute end-2.5 top-1/2 -translate-y-1/2 rounded text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="پاک کردن جستجو"
             >
               <X className="size-3.5" />
             </button>
@@ -117,13 +117,13 @@ export function ChatSidebar({ onSelectConversation }: ChatSidebarProps) {
               variant="ghost"
               size="icon"
               className="size-8"
-              aria-label="Preferences"
+              aria-label="تنظیمات"
               onClick={() => setPreferencesOpen(true)}
             >
               <Settings2 className="size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="top">Preferences</TooltipContent>
+          <TooltipContent side="top">تنظیمات</TooltipContent>
         </Tooltip>
       </div>
 

@@ -92,11 +92,10 @@ function EmptyChatState() {
         <MessageSquare className="size-6 text-muted-foreground" />
       </div>
       <h2 className="text-base font-semibold text-foreground">
-        Select a conversation
+        یک گفتگو انتخاب کنید
       </h2>
       <p className="mt-1 max-w-sm text-sm text-muted-foreground">
-        Choose a conversation from the sidebar to start messaging, or create a
-        new one to begin a fresh thread.
+        برای شروع پیام‌رسانی یک گفتگو از نوار کناری انتخاب کنید، یا یک گفتگوی جدید بسازید تا یک رشته تازه آغاز شود.
       </p>
     </div>
   );
@@ -109,10 +108,10 @@ function EmptyMessagesState() {
         <MessageSquare className="size-5 text-muted-foreground" />
       </div>
       <p className="text-sm font-medium text-foreground">
-        No messages yet
+        هنوز پیامی وجود ندارد
       </p>
       <p className="text-xs text-muted-foreground">
-        Send the first message to get the conversation started.
+        برای آغاز گفتگو اولین پیام را بفرستید.
       </p>
     </div>
   );

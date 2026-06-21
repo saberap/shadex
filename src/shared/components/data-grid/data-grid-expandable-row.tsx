@@ -25,7 +25,7 @@ export function DataGridExpandToggle<TData>({
     <Button
       variant="ghost"
       size="icon-xs"
-      aria-label={isExpanded ? "Collapse row" : "Expand row"}
+      aria-label={isExpanded ? "بستن ردیف" : "گسترش ردیف"}
       aria-expanded={isExpanded}
       onClick={(e) => {
         e.stopPropagation();

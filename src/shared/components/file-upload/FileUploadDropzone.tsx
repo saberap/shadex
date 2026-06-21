@@ -54,11 +54,11 @@ export function FileUploadDropzone({
           ),
         })}
       >
-        <input {...getInputProps()} aria-label="Upload avatar" />
+        <input {...getInputProps()} aria-label="بارگذاری آواتار" />
         <div className="flex flex-col items-center gap-1">
           <User className="size-6" />
           <span className="text-[10px] font-medium uppercase tracking-wide">
-            Upload
+            بارگذاری
           </span>
         </div>
       </div>
@@ -81,16 +81,16 @@ export function FileUploadDropzone({
           ),
         })}
       >
-        <input {...getInputProps()} aria-label="Upload image" />
+        <input {...getInputProps()} aria-label="بارگذاری تصویر" />
         <div className="flex size-10 items-center justify-center rounded-lg bg-background ring-1 ring-foreground/10">
           <ImageIcon className="size-5" />
         </div>
         <div className="flex flex-col gap-0.5">
           <p className="text-sm font-medium text-foreground">
-            {emptyLabel ?? "Drop image to upload"}
+            {emptyLabel ?? "تصویر را برای آپلود رها کنید"}
           </p>
           <p className="text-xs text-muted-foreground">
-            {emptyHint ?? "PNG, JPG, WEBP or SVG"}
+            {emptyHint ?? "PNG، JPG، WEBP یا SVG"}
           </p>
         </div>
       </div>
@@ -112,7 +112,7 @@ export function FileUploadDropzone({
         ),
       })}
     >
-      <input {...getInputProps()} aria-label="Upload files" />
+      <input {...getInputProps()} aria-label="بارگذاری فایل‌ها" />
 
       <div
         className={cn(
@@ -127,15 +127,15 @@ export function FileUploadDropzone({
         <p className="text-sm font-medium text-foreground">
           {isDragActive
             ? isDragReject
-              ? "This file type isn't supported"
-              : "Drop to upload"
-            : (emptyLabel ?? "Click to upload or drag and drop")}
+              ? "این نوع فایل پشتیبانی نمی‌شود"
+              : "برای آپلود رها کنید"
+            : (emptyLabel ?? "برای آپلود کلیک کنید یا فایل را بکشید و رها کنید")}
         </p>
         <p className="text-xs text-muted-foreground">
           {emptyHint ??
             (maxSize
-              ? `Up to ${formatBytes(maxSize)} per file`
-              : "Any file type")}
+              ? `حداکثر ${formatBytes(maxSize)} برای هر فایل`
+              : "هر نوع فایلی")}
         </p>
       </div>
     </div>

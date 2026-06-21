@@ -108,7 +108,7 @@ export function PreferencesDialog({
 
   const handleSave = () => {
     writePreferences(prefs);
-    toast.success("Preferences saved");
+    toast.success("تنظیمات ذخیره شد");
     onOpenChange(false);
   };
 
@@ -122,10 +122,10 @@ export function PreferencesDialog({
         <DialogHeader className="px-5 pt-5">
           <DialogTitle className="flex items-center gap-2 text-base">
             <Settings2 className="size-4" />
-            Preferences
+            تنظیمات
           </DialogTitle>
           <DialogDescription className="text-xs">
-            Customize how messages, notifications, and the interface behave.
+            رفتار پیام‌ها، اعلان‌ها و رابط کاربری را شخصی‌سازی کنید.
           </DialogDescription>
         </DialogHeader>
 
@@ -133,12 +133,12 @@ export function PreferencesDialog({
           <div className="flex flex-col gap-6 px-5 py-4">
             <Section
               icon={<Bell className="size-3.5" />}
-              title="Notifications"
-              description="How and when you're alerted about new messages."
+              title="اعلان‌ها"
+              description="چگونگی و زمان دریافت اعلان پیام‌های جدید."
             >
               <SettingRow
-                label="Notifications"
-                description="Enable all message notifications."
+                label="اعلان‌ها"
+                description="فعال‌سازی همه اعلان‌های پیام."
               >
                 <Switch
                   checked={prefs.notificationsEnabled}
@@ -147,8 +147,8 @@ export function PreferencesDialog({
               </SettingRow>
 
               <SettingRow
-                label="Sound"
-                description="Play a sound when a new message arrives."
+                label="صدا"
+                description="پخش صدا هنگام دریافت پیام جدید."
                 icon={<Volume2 className="size-3.5" />}
                 disabled={!prefs.notificationsEnabled}
               >
@@ -160,8 +160,8 @@ export function PreferencesDialog({
               </SettingRow>
 
               <SettingRow
-                label="Desktop notifications"
-                description="Show a system notification when the app isn't focused."
+                label="اعلان‌های دسکتاپ"
+                description="نمایش اعلان سیستمی زمانی که برنامه در فوکوس نیست."
                 disabled={!prefs.notificationsEnabled}
               >
                 <Switch
@@ -176,12 +176,12 @@ export function PreferencesDialog({
 
             <Section
               icon={<Eye className="size-3.5" />}
-              title="Privacy"
-              description="Control what others can see about your activity."
+              title="حریم خصوصی"
+              description="کنترل کنید دیگران چه چیزی از فعالیت شما می‌بینند."
             >
               <SettingRow
-                label="Read receipts"
-                description="Let others know when you've read their messages."
+                label="رسید خوانده‌شدن"
+                description="به دیگران اطلاع دهید پیامشان را خوانده‌اید."
               >
                 <Switch
                   checked={prefs.readReceipts}
@@ -189,8 +189,8 @@ export function PreferencesDialog({
                 />
               </SettingRow>
               <SettingRow
-                label="Typing indicator"
-                description="Show others when you're typing a message."
+                label="نشانگر تایپ"
+                description="به دیگران نشان دهید در حال نوشتن پیام هستید."
               >
                 <Switch
                   checked={prefs.showTyping}
@@ -203,12 +203,12 @@ export function PreferencesDialog({
 
             <Section
               icon={<Palette className="size-3.5" />}
-              title="Appearance"
-              description="Adjust how the chat looks and feels."
+              title="ظاهر"
+              description="ظاهر و حس چت را تنظیم کنید."
             >
               <SettingRow
-                label="Show avatars"
-                description="Display avatars next to incoming messages."
+                label="نمایش آواتارها"
+                description="نمایش آواتار کنار پیام‌های دریافتی."
               >
                 <Switch
                   checked={prefs.showAvatars}
@@ -217,8 +217,8 @@ export function PreferencesDialog({
               </SettingRow>
 
               <SettingRow
-                label="Density"
-                description="How much breathing room between rows."
+                label="تراکم"
+                description="میزان فاصله بین ردیف‌ها."
               >
                 <Select
                   value={prefs.density}
@@ -228,15 +228,15 @@ export function PreferencesDialog({
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="comfortable">Comfortable</SelectItem>
-                    <SelectItem value="compact">Compact</SelectItem>
+                    <SelectItem value="comfortable">راحت</SelectItem>
+                    <SelectItem value="compact">فشرده</SelectItem>
                   </SelectContent>
                 </Select>
               </SettingRow>
 
               <SettingRow
-                label="Theme"
-                description="Match system, or force light or dark."
+                label="پوسته"
+                description="هماهنگ با سیستم، یا روشن یا تاریک."
               >
                 <Select
                   value={prefs.theme}
@@ -246,9 +246,9 @@ export function PreferencesDialog({
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="system">System</SelectItem>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
+                    <SelectItem value="system">سیستم</SelectItem>
+                    <SelectItem value="light">روشن</SelectItem>
+                    <SelectItem value="dark">تاریک</SelectItem>
                   </SelectContent>
                 </Select>
               </SettingRow>
@@ -258,12 +258,12 @@ export function PreferencesDialog({
 
             <Section
               icon={<MessageSquare className="size-3.5" />}
-              title="Messaging"
-              description="Tune how the composer behaves."
+              title="پیام‌رسانی"
+              description="رفتار جعبه نگارش پیام را تنظیم کنید."
             >
               <SettingRow
-                label="Send with"
-                description="Choose how messages are sent."
+                label="ارسال با"
+                description="انتخاب کنید پیام‌ها چگونه ارسال شوند."
                 icon={<Keyboard className="size-3.5" />}
               >
                 <Select
@@ -276,9 +276,9 @@ export function PreferencesDialog({
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="enter">Enter to send</SelectItem>
+                    <SelectItem value="enter">Enter برای ارسال</SelectItem>
                     <SelectItem value="shift-enter">
-                      Shift + Enter to send
+                      Shift + Enter برای ارسال
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -292,10 +292,10 @@ export function PreferencesDialog({
             type="button"
             variant="ghost"
             size="sm"
-            className="mr-auto"
+            className="me-auto"
             onClick={handleReset}
           >
-            Reset to defaults
+            بازنشانی به پیش‌فرض‌ها
           </Button>
           <Button
             type="button"
@@ -303,10 +303,10 @@ export function PreferencesDialog({
             size="sm"
             onClick={() => onOpenChange(false)}
           >
-            Cancel
+            لغو
           </Button>
           <Button type="button" size="sm" onClick={handleSave}>
-            Save changes
+            ذخیره تغییرات
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -335,7 +335,7 @@ function Section({ icon, title, description, children }: SectionProps) {
           </span>
         </div>
       </div>
-      <div className="flex flex-col gap-2 pl-8">{children}</div>
+      <div className="flex flex-col gap-2 ps-8">{children}</div>
     </div>
   );
 }

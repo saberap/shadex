@@ -5,11 +5,12 @@ import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui"
 
 import { cn } from "@/core/utils/index"
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
+import { appConfig } from "@/core/config"
 
 function DropdownMenu({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
-  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />
+  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" dir={appConfig.direction} {...props} />
 }
 
 function DropdownMenuPortal({

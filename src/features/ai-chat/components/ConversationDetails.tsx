@@ -85,7 +85,7 @@ function Section({ title, icon: Icon, children, defaultOpen = true }: SectionPro
 }
 
 function formatDate(date: Date) {
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString("fa-IR", {
     month: "short",
     day: "numeric",
     year: "numeric",
@@ -95,7 +95,7 @@ function formatDate(date: Date) {
 }
 
 function formatNumber(n: number) {
-  return n.toLocaleString();
+  return n.toLocaleString("fa-IR");
 }
 
 export function ConversationDetails() {
@@ -117,7 +117,7 @@ export function ConversationDetails() {
       {/* Header */}
       <div className="flex shrink-0 items-center gap-2 border-b border-border/50 px-4 h-14">
         <Info className="size-4 text-muted-foreground" />
-        <span className="text-sm font-semibold text-foreground">Details</span>
+        <span className="text-sm font-semibold text-foreground">جزئیات</span>
       </div>
 
       <ScrollArea className="flex-1 min-h-0">
@@ -134,52 +134,52 @@ export function ConversationDetails() {
           ) : (
             <>
               {/* Metadata */}
-              <Section title="Metadata" icon={Info}>
+              <Section title="فراداده" icon={Info}>
                 <DetailRow
                   icon={Sparkles}
-                  label="Model"
+                  label="مدل"
                   value={model?.name}
                   badge={model?.provider}
                 />
                 <Separator className="my-0.5" />
                 <DetailRow
                   icon={Calendar}
-                  label="Created"
+                  label="ایجاد شده"
                   value={formatDate(activeConversation.createdAt)}
                 />
                 <DetailRow
                   icon={Clock}
-                  label="Last Activity"
+                  label="آخرین فعالیت"
                   value={formatDate(activeConversation.updatedAt)}
                 />
                 <DetailRow
                   icon={MessageSquare}
-                  label="Messages"
-                  value={`${convMessages.length} messages`}
+                  label="پیام‌ها"
+                  value={`${formatNumber(convMessages.length)} پیام`}
                 />
                 {activeConversation.shared && (
-                  <DetailRow icon={Share2} label="Visibility" value="Shared link active" />
+                  <DetailRow icon={Share2} label="نمایان بودن" value="پیوند اشتراکی فعال است" />
                 )}
               </Section>
 
               <Separator />
 
               {/* Token usage */}
-              <Section title="Usage" icon={Coins}>
+              <Section title="مصرف" icon={Coins}>
                 <DetailRow
                   icon={Layers}
-                  label="Tokens Used"
+                  label="توکن‌های استفاده‌شده"
                   value={formatNumber(tokensUsed)}
                 />
                 <DetailRow
                   icon={Coins}
-                  label="Estimated Cost"
+                  label="هزینه تخمینی"
                   value={`$${estimatedCost}`}
                 />
                 {/* Mini usage bar */}
                 <div className="mt-2 space-y-1">
                   <div className="flex items-center justify-between text-[10px] text-muted-foreground">
-                    <span>Context usage</span>
+                    <span>مصرف زمینه</span>
                     <span>
                       {formatNumber(tokensUsed)} / {model?.contextLength ?? "200K"}
                     </span>
@@ -207,9 +207,9 @@ export function ConversationDetails() {
               <Separator />
 
               {/* Attached files */}
-              <Section title="Attachments" icon={FileText} defaultOpen={attachments.length > 0}>
+              <Section title="پیوست‌ها" icon={FileText} defaultOpen={attachments.length > 0}>
                 {attachments.length === 0 ? (
-                  <p className="py-2 text-xs text-muted-foreground">No files attached</p>
+                  <p className="py-2 text-xs text-muted-foreground">فایلی پیوست نشده است</p>
                 ) : (
                   <div className="space-y-1.5 pt-1">
                     {attachments.map((att) => (
@@ -231,10 +231,10 @@ export function ConversationDetails() {
               <Separator />
 
               {/* System prompt */}
-              <Section title="System Prompt" icon={Terminal} defaultOpen={false}>
+              <Section title="پرامپت سیستم" icon={Terminal} defaultOpen={false}>
                 <div className="mt-1.5 rounded-lg bg-muted/40 p-3">
                   <p className="text-xs text-muted-foreground italic leading-relaxed">
-                    You are a helpful AI assistant for a SaaS analytics platform. Help users analyze data, write code, and provide actionable insights. Be concise, accurate, and professional.
+                    شما یک دستیار هوش مصنوعی مفید برای یک پلتفرم تحلیلی SaaS هستید. به کاربران در تحلیل داده‌ها، نوشتن کد و ارائه بینش‌های عملی کمک کنید. مختصر، دقیق و حرفه‌ای باشید.
                   </p>
                 </div>
               </Section>
@@ -242,9 +242,9 @@ export function ConversationDetails() {
               <Separator />
 
               {/* Knowledge sources */}
-              <Section title="Knowledge" icon={Settings2} defaultOpen={false}>
+              <Section title="دانش" icon={Settings2} defaultOpen={false}>
                 <p className="py-2 text-xs text-muted-foreground">
-                  No additional knowledge sources added.
+                  منبع دانش اضافی اضافه نشده است.
                 </p>
               </Section>
             </>

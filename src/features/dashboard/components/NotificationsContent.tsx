@@ -40,75 +40,75 @@ const initialNotifications: Notification[] = [
     id: 1,
     type: "success",
     icon: CreditCard,
-    title: "Payment received",
-    description: "You received a payment of $1,999.00 from Olivia Martin.",
-    time: "2 min ago",
+    title: "پرداخت دریافت شد",
+    description: "شما پرداختی به مبلغ $1,999.00 از Olivia Martin دریافت کردید.",
+    time: "۲ دقیقه پیش",
     read: false,
   },
   {
     id: 2,
     type: "info",
     icon: Users,
-    title: "New user registered",
+    title: "کاربر جدید ثبت‌نام کرد",
     description:
-      "Jackson Lee created a new account and is waiting for approval.",
-    time: "18 min ago",
+      "Jackson Lee حساب کاربری جدیدی ایجاد کرد و در انتظار تأیید است.",
+    time: "۱۸ دقیقه پیش",
     read: false,
   },
   {
     id: 3,
     type: "warning",
     icon: AlertTriangle,
-    title: "Storage limit approaching",
-    description: "You have used 87% of your 50 GB storage quota.",
-    time: "1 hr ago",
+    title: "نزدیک شدن به محدودیت فضای ذخیره‌سازی",
+    description: "شما ۸۷٪ از سهمیه ۵۰ گیگابایتی فضای ذخیره‌سازی خود را استفاده کرده‌اید.",
+    time: "۱ ساعت پیش",
     read: false,
   },
   {
     id: 4,
     type: "success",
     icon: Package,
-    title: "Order fulfilled",
-    description: "Order #4821 has been shipped and is on its way.",
-    time: "3 hr ago",
+    title: "سفارش انجام شد",
+    description: "سفارش #4821 ارسال شده و در راه است.",
+    time: "۳ ساعت پیش",
     read: true,
   },
   {
     id: 5,
     type: "info",
     icon: Settings,
-    title: "System maintenance",
+    title: "تعمیر و نگهداری سیستم",
     description:
-      "Scheduled maintenance is planned for Jun 10, 2026 at 02:00 UTC.",
-    time: "5 hr ago",
+      "تعمیر و نگهداری برنامه‌ریزی‌شده برای ۱۰ ژوئن ۲۰۲۶ در ساعت 02:00 UTC پیش‌بینی شده است.",
+    time: "۵ ساعت پیش",
     read: true,
   },
   {
     id: 6,
     type: "error",
     icon: AlertTriangle,
-    title: "Webhook delivery failed",
+    title: "ارسال وب‌هوک ناموفق بود",
     description:
-      "3 webhook events failed to deliver to https://api.example.com/hook.",
-    time: "Yesterday",
+      "۳ رویداد وب‌هوک نتوانستند به https://api.example.com/hook ارسال شوند.",
+    time: "دیروز",
     read: true,
   },
   {
     id: 7,
     type: "success",
     icon: CheckCircle2,
-    title: "Subscription renewed",
-    description: "Your Pro plan subscription has been successfully renewed.",
-    time: "2 days ago",
+    title: "اشتراک تمدید شد",
+    description: "اشتراک پلن Pro شما با موفقیت تمدید شد.",
+    time: "۲ روز پیش",
     read: true,
   },
   {
     id: 8,
     type: "info",
     icon: Info,
-    title: "New feature available",
-    description: "Advanced analytics with custom date ranges is now available.",
-    time: "3 days ago",
+    title: "ویژگی جدید در دسترس است",
+    description: "تحلیل‌های پیشرفته با بازه‌های تاریخ سفارشی اکنون در دسترس است.",
+    time: "۳ روز پیش",
     read: true,
   },
 ];
@@ -157,9 +157,9 @@ export function NotificationsContent() {
         <CardHeader>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-2">
-              <CardTitle>Notifications</CardTitle>
+              <CardTitle>اعلان‌ها</CardTitle>
               {unreadCount > 0 && (
-                <Badge className="h-5 px-1.5 text-xs">{unreadCount} new</Badge>
+                <Badge className="h-5 px-1.5 text-xs">{unreadCount} جدید</Badge>
               )}
             </div>
             <div className="flex items-center gap-2 self-start sm:self-auto">
@@ -171,14 +171,14 @@ export function NotificationsContent() {
                 disabled={unreadCount === 0}
               >
                 <CheckCircle2 className="size-3" />
-                Mark all read
+                علامت‌گذاری همه به‌عنوان خوانده‌شده
               </Button>
             </div>
           </div>
           <CardDescription>
             {unreadCount > 0
-              ? `You have ${unreadCount} unread notification${unreadCount > 1 ? "s" : ""}.`
-              : "You're all caught up."}
+              ? `شما ${unreadCount} اعلان خوانده‌نشده دارید.`
+              : "همه را خوانده‌اید."}
           </CardDescription>
         </CardHeader>
 
@@ -187,7 +187,7 @@ export function NotificationsContent() {
             <>
               <div className="px-4 sm:px-6 py-2 bg-muted/40 border-y">
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  New
+                  جدید
                 </p>
               </div>
               <NotificationList
@@ -202,7 +202,7 @@ export function NotificationsContent() {
             <>
               <div className="px-4 sm:px-6 py-2 bg-muted/40 border-y">
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  Earlier
+                  قبل‌تر
                 </p>
               </div>
               <NotificationList
@@ -218,7 +218,7 @@ export function NotificationsContent() {
               <div className="flex size-12 items-center justify-center rounded-full bg-muted">
                 <Bell className="size-5 text-muted-foreground" />
               </div>
-              <p className="text-sm text-muted-foreground">No notifications</p>
+              <p className="text-sm text-muted-foreground">اعلانی وجود ندارد</p>
             </div>
           )}
         </CardContent>

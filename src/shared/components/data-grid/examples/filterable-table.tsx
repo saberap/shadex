@@ -20,26 +20,40 @@ const STATUS_VARIANT: Record<
   churned: "outline",
 };
 
+const STATUS_LABEL: Record<CustomerRecord["status"], string> = {
+  active: "فعال",
+  pending: "در انتظار",
+  suspended: "معلق",
+  churned: "ریزش‌کرده",
+};
+
+const ROLE_LABEL: Record<CustomerRecord["role"], string> = {
+  admin: "مدیر",
+  manager: "مدیر بخش",
+  member: "عضو",
+  viewer: "بیننده",
+};
+
 const columns: DataGridColumnDef<CustomerRecord>[] = [
-  { accessorKey: "name", header: "Name", meta: { label: "Name" } },
+  { accessorKey: "name", header: "نام", meta: { label: "نام" } },
   {
     accessorKey: "email",
-    header: "Email",
+    header: "ایمیل",
     meta: {
-      label: "Email",
+      label: "ایمیل",
       filterType: "text",
       className: "text-muted-foreground",
     },
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "وضعیت",
     cell: ({ row }) => (
       <Badge
         variant={STATUS_VARIANT[row.original.status]}
         className="capitalize"
       >
-        {row.original.status}
+        {STATUS_LABEL[row.original.status]}
       </Badge>
     ),
     filterFn: (row, columnId, value) => {
@@ -47,22 +61,22 @@ const columns: DataGridColumnDef<CustomerRecord>[] = [
       return value.includes(row.getValue<string>(columnId));
     },
     meta: {
-      label: "Status",
+      label: "وضعیت",
       filterType: "select",
       filterOptions: [
-        { label: "Active", value: "active" },
-        { label: "Pending", value: "pending" },
-        { label: "Suspended", value: "suspended" },
-        { label: "Churned", value: "churned" },
+        { label: "فعال", value: "active" },
+        { label: "در انتظار", value: "pending" },
+        { label: "معلق", value: "suspended" },
+        { label: "ریزش‌کرده", value: "churned" },
       ],
     },
   },
   {
     accessorKey: "role",
-    header: "Role",
+    header: "نقش",
     cell: ({ row }) => (
       <span className="capitalize text-muted-foreground">
-        {row.original.role}
+        {ROLE_LABEL[row.original.role]}
       </span>
     ),
     filterFn: (row, columnId, value) => {
@@ -70,30 +84,30 @@ const columns: DataGridColumnDef<CustomerRecord>[] = [
       return value.includes(row.getValue<string>(columnId));
     },
     meta: {
-      label: "Role",
+      label: "نقش",
       filterType: "select",
       filterOptions: [
-        { label: "Admin", value: "admin" },
-        { label: "Manager", value: "manager" },
-        { label: "Member", value: "member" },
-        { label: "Viewer", value: "viewer" },
+        { label: "مدیر", value: "admin" },
+        { label: "مدیر بخش", value: "manager" },
+        { label: "عضو", value: "member" },
+        { label: "بیننده", value: "viewer" },
       ],
     },
   },
   {
     accessorKey: "country",
-    header: "Country",
-    meta: { label: "Country", filterType: "text" },
+    header: "کشور",
+    meta: { label: "کشور", filterType: "text" },
   },
   {
     accessorKey: "createdAt",
-    header: "Joined",
+    header: "تاریخ عضویت",
     cell: ({ row }) => (
       <span className="text-muted-foreground">
         {formatDate(row.original.createdAt)}
       </span>
     ),
-    meta: { label: "Joined" },
+    meta: { label: "تاریخ عضویت" },
   },
 ];
 
@@ -106,7 +120,7 @@ export function FilterableTable() {
       columns={columns}
       enableSelection={false}
       enableExport={false}
-      searchPlaceholder="Search customers…"
+      searchPlaceholder="جستجوی مشتریان…"
     />
   );
 }

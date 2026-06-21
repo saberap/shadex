@@ -59,7 +59,7 @@ function ChatLayoutInner() {
     <div className="flex h-[calc(100svh-3.5rem)] min-h-0 w-full overflow-hidden bg-muted/30">
       <aside
         className={cn(
-          "hidden h-full w-[320px] shrink-0 border-r lg:flex"
+          "hidden h-full w-[320px] shrink-0 border-e lg:flex"
         )}
       >
         <ChatSidebar onSelectConversation={handleSelectFromSidebar} />
@@ -74,12 +74,12 @@ function ChatLayoutInner() {
               size="icon"
               className="size-8"
               onClick={() => setMobileSidebarOpen(true)}
-              aria-label="Open conversations"
+              aria-label="باز کردن گفتگوها"
             >
               <Menu className="size-4" />
             </Button>
             <span className="text-sm font-semibold">
-              {activeConversation ? "Conversation" : "Messages"}
+              {activeConversation ? "گفتگو" : "پیام‌ها"}
             </span>
           </div>
         )}
@@ -105,7 +105,7 @@ function ChatLayoutInner() {
       >
         <SheetContent side="left" className="w-[320px] p-0">
           <SheetHeader className="sr-only">
-            <SheetTitle>Conversations</SheetTitle>
+            <SheetTitle>گفتگوها</SheetTitle>
           </SheetHeader>
           <ChatSidebar
             onSelectConversation={() => setMobileSidebarOpen(false)}

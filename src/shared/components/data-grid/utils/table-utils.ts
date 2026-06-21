@@ -15,10 +15,10 @@ export function formatRecordsRange(
   pageSize: number,
   total: number,
 ): string {
-  if (total === 0) return "No records";
+  if (total === 0) return "بدون رکورد";
   const start = pageIndex * pageSize + 1;
   const end = Math.min((pageIndex + 1) * pageSize, total);
-  return `Showing ${start.toLocaleString()}–${end.toLocaleString()} of ${total.toLocaleString()} records`;
+  return `نمایش ${start.toLocaleString()}–${end.toLocaleString()} از ${total.toLocaleString()} رکورد`;
 }
 
 export function getPageNumbers(

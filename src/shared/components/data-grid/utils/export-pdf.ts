@@ -6,7 +6,7 @@ import type { Table } from "@tanstack/react-table";
  */
 export function exportTableToPdf<TData>(
   table: Table<TData>,
-  filename = "Export",
+  filename = "خروجی",
 ): void {
   const visibleColumns = table
     .getAllLeafColumns()
@@ -48,7 +48,7 @@ export function exportTableToPdf<TData>(
           body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 24px; color: #111; }
           h1 { font-size: 18px; margin: 0 0 16px; }
           table { width: 100%; border-collapse: collapse; font-size: 12px; }
-          th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+          th, td { padding: 8px 10px; text-align: start; border-bottom: 1px solid #e5e7eb; }
           th { background: #f9fafb; font-weight: 600; }
           tr:nth-child(even) td { background: #fafafa; }
         </style>

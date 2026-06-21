@@ -14,6 +14,6 @@ export interface AppConfig {
  * direction: "rtl" → Vazirmatn font, right-to-left
  */
 export const appConfig: AppConfig = {
-  direction: "ltr",
-  locale: "en",
+  direction: "rtl",
+  locale: "fa",
 };

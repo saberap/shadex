@@ -22,16 +22,16 @@ export function EmptyState() {
           <Bot className="size-8 text-primary" />
         </div>
         <h2 className="text-xl font-semibold text-foreground mb-2">
-          How can I help you today?
+          امروز چطور می‌توانم کمکتان کنم؟
         </h2>
         <p className="text-sm text-muted-foreground leading-relaxed">
           {model ? (
             <>
-              Powered by <span className="font-medium text-foreground">{model.name}</span>.{" "}
-              Ask anything, generate code, analyze data, or explore ideas.
+              با قدرت <span className="font-medium text-foreground">{model.name}</span>.{" "}
+              هر چیزی بپرسید، کد تولید کنید، داده‌ها را تحلیل کنید یا ایده‌ها را کاوش کنید.
             </>
           ) : (
-            "Ask anything, generate code, analyze data, or explore ideas."
+            "هر چیزی بپرسید، کد تولید کنید، داده‌ها را تحلیل کنید یا ایده‌ها را کاوش کنید."
           )}
         </p>
       </motion.div>

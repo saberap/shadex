@@ -47,6 +47,20 @@ const STATUS_VARIANT: Record<
   churned: "outline",
 };
 
+const STATUS_LABEL: Record<ApiCustomer["status"], string> = {
+  active: "فعال",
+  pending: "در انتظار",
+  suspended: "معلق",
+  churned: "ریزش‌کرده",
+};
+
+const ROLE_LABEL: Record<ApiCustomer["role"], string> = {
+  admin: "مدیر",
+  manager: "مدیر بخش",
+  member: "عضو",
+  viewer: "بیننده",
+};
+
 function initials(name: string) {
   const [first, last] = name.split(" ");
   return `${first?.[0] ?? ""}${last?.[0] ?? ""}`.toUpperCase();
@@ -89,7 +103,7 @@ export function ServerSideTable() {
     () => [
       {
         accessorKey: "name",
-        header: "Customer",
+        header: "مشتری",
         cell: ({ row }) => (
           <div className="flex items-center gap-2.5">
             <Avatar size="sm">
@@ -105,84 +119,84 @@ export function ServerSideTable() {
             </div>
           </div>
         ),
-        meta: { label: "Customer" },
+        meta: { label: "مشتری" },
       },
       {
         accessorKey: "status",
-        header: "Status",
+        header: "وضعیت",
         cell: ({ row }) => (
           <Badge
             variant={STATUS_VARIANT[row.original.status]}
             className="capitalize"
           >
-            {row.original.status}
+            {STATUS_LABEL[row.original.status]}
           </Badge>
         ),
         meta: {
-          label: "Status",
+          label: "وضعیت",
           filterType: "select",
           filterOptions: [
-            { label: "Active", value: "active" },
-            { label: "Pending", value: "pending" },
-            { label: "Suspended", value: "suspended" },
-            { label: "Churned", value: "churned" },
+            { label: "فعال", value: "active" },
+            { label: "در انتظار", value: "pending" },
+            { label: "معلق", value: "suspended" },
+            { label: "ریزش‌کرده", value: "churned" },
           ],
         },
       },
       {
         accessorKey: "role",
-        header: "Role",
+        header: "نقش",
         cell: ({ row }) => (
           <span className="capitalize text-muted-foreground">
-            {row.original.role}
+            {ROLE_LABEL[row.original.role]}
           </span>
         ),
         meta: {
-          label: "Role",
+          label: "نقش",
           filterType: "select",
           filterOptions: [
-            { label: "Admin", value: "admin" },
-            { label: "Manager", value: "manager" },
-            { label: "Member", value: "member" },
-            { label: "Viewer", value: "viewer" },
+            { label: "مدیر", value: "admin" },
+            { label: "مدیر بخش", value: "manager" },
+            { label: "عضو", value: "member" },
+            { label: "بیننده", value: "viewer" },
           ],
         },
       },
       {
         accessorKey: "country",
-        header: "Country",
-        meta: { label: "Country" },
+        header: "کشور",
+        meta: { label: "کشور" },
       },
       {
         accessorKey: "city",
-        header: "City",
+        header: "شهر",
         cell: ({ row }) => (
           <span className="text-muted-foreground">{row.original.city}</span>
         ),
-        meta: { label: "City" },
+        meta: { label: "شهر" },
       },
       {
         accessorKey: "createdAt",
-        header: "Joined",
+        header: "تاریخ عضویت",
         cell: ({ row }) => (
           <span className="text-muted-foreground">
             {formatDate(row.original.createdAt)}
           </span>
         ),
-        meta: { label: "Joined" },
+        meta: { label: "تاریخ عضویت" },
       },
     ],
     [],
   );
 
   const rowActions: DataGridRowAction<ApiCustomer>[] = [
-    { label: "View", icon: <Eye />, onClick: (r) => toast(`Open ${r.name}`) },
+    { label: "مشاهده", icon: <Eye />, onClick: (r) => toast(`باز کردن ${r.name}`) },
     {
-      label: "Delete",
+      label: "حذف",
       icon: <Trash2 />,
       variant: "destructive",
       separatorBefore: true,
-      onClick: (r) => toast.success(`${r.name} marked for deletion`),
+      onClick: (r) => toast.success(`${r.name} برای حذف علامت‌گذاری شد`),
     },
   ];
 
@@ -210,7 +224,7 @@ export function ServerSideTable() {
       isFetching={query.isFetching}
       isError={query.isError}
       onRetry={() => query.refetch()}
-      searchPlaceholder="Search 1,200 customers via API…"
+      searchPlaceholder="جستجوی ۱٬۲۰۰ مشتری از طریق API…"
     />
   );
 }

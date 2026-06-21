@@ -23,44 +23,30 @@ export function LoginForm() {
 
   return (
     <div className="flex min-h-screen">
-      {/* Left — image panel */}
-      <div className="relative hidden flex-1 lg:block">
-        <Image
-          src="/images/login/login_left_side.png"
-          alt="Login illustration"
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
+    
 
       {/* Right — form panel */}
       <div className="flex flex-1 items-center justify-center p-6">
       <div className="w-full max-w-sm space-y-6">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <Command className="size-5" />
-          <span className="text-base font-semibold">Shadex</span>
+          <Image src={'/images/logo/mofid.svg'} width={35} className="rounded-md" height={35} alt="Logo" />
+          <span className="text-base font-semibold">کارگزاری مفید</span>
         </div>
 
         {/* Header */}
         <div className="space-y-1.5">
-          <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">ورود</h1>
           <p className="text-sm text-muted-foreground">
-            Enter your email and password below to log into your account.{" "}
-            <Link
-              href="/register"
-              className="text-foreground underline underline-offset-4 hover:opacity-70"
-            >
-              Don&apos;t have an account? Sign Up
-            </Link>
+            برای ورود به حساب کاربری خود، ایمیل و رمز عبور را وارد کنید.{" "}
+           
           </p>
         </div>
 
         {/* Form */}
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-1.5">
-            <Label htmlFor="username">Email</Label>
+            <Label htmlFor="username">ایمیل</Label>
             <Input
               id="username"
               type="email"
@@ -74,12 +60,12 @@ export function LoginForm() {
 
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">رمز عبور</Label>
               <Link
                 href="/forgot-password"
                 className="text-sm text-muted-foreground hover:text-foreground"
               >
-                Forgot password?
+                رمز عبور را فراموش کرده‌اید؟
               </Link>
             </div>
             <div className="relative">
@@ -88,7 +74,7 @@ export function LoginForm() {
                 type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
                 autoComplete="current-password"
-                className="pr-10"
+                className="pe-10"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -96,8 +82,8 @@ export function LoginForm() {
               <button
                 type="button"
                 onClick={() => setShowPassword((v) => !v)}
-                className="absolute inset-y-0 right-3 flex items-center text-muted-foreground hover:text-foreground"
-                aria-label={showPassword ? "Hide password" : "Show password"}
+                className="absolute inset-y-0 end-3 flex items-center text-muted-foreground hover:text-foreground"
+                aria-label={showPassword ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"}
               >
                 {showPassword ? (
                   <Eye className="size-4" />
@@ -110,50 +96,43 @@ export function LoginForm() {
 
           <Button type="submit" className="w-full gap-2">
             <ArrowRight className="size-4" />
-            Sign in
+            ورود
           </Button>
         </form>
 
-        {/* Divider */}
-        <div className="flex items-center gap-3">
-          <Separator className="flex-1" />
-          <span className="text-xs uppercase tracking-widest text-muted-foreground">
-            Or continue with
-          </span>
-          <Separator className="flex-1" />
-        </div>
+        
 
-        {/* Social buttons */}
-        <div className="grid grid-cols-2 gap-3">
-          <Button variant="outline" type="button" className="gap-2">
-            <GitHubIcon />
-            GitHub
-          </Button>
-          <Button variant="outline" type="button" className="gap-2">
-            <FacebookIcon />
-            Facebook
-          </Button>
-        </div>
 
         {/* Footer */}
         <p className="text-center text-xs text-muted-foreground">
-          By clicking sign in, you agree to our{" "}
+          با کلیک روی ورود، شما با{" "}
           <Link
             href="/terms"
             className="underline underline-offset-3 hover:text-foreground"
           >
-            Terms of Service
+            شرایط استفاده
           </Link>{" "}
-          and{" "}
+          و{" "}
           <Link
             href="/privacy"
             className="underline underline-offset-3 hover:text-foreground"
           >
-            Privacy Policy
+            حریم خصوصی
           </Link>
-          .
+          {" "}ما موافقت می‌کنید.
         </p>
       </div>
+      </div>
+
+        {/* Left — image panel */}
+      <div className="relative hidden flex-1 lg:block">
+        <Image
+          src="/images/login/login_right_side.png"
+          alt="تصویر ورود"
+          fill
+          className="object-cover"
+          priority
+        />
       </div>
     </div>
   );

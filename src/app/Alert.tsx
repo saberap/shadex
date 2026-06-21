@@ -20,15 +20,15 @@ export function AlertDemo() {
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>آیا کاملاً مطمئن هستید؟</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account from our servers.
+              این عملیات قابل بازگشت نیست. این کار حساب شما را برای همیشه از
+              سرورهای ما حذف خواهد کرد.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogCancel>لغو</AlertDialogCancel>
+            <AlertDialogAction>ادامه</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

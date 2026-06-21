@@ -47,7 +47,7 @@ export function CodeBlock({ language, code, filename }: CodeContent) {
           <button
             onClick={() => setCollapsed((p) => !p)}
             className="text-muted-foreground hover:text-white transition-colors"
-            aria-label={collapsed ? "Expand code" : "Collapse code"}
+            aria-label={collapsed ? "گسترش کد" : "جمع کردن کد"}
           >
             {collapsed ? (
               <ChevronRight className="size-3.5" />
@@ -68,7 +68,7 @@ export function CodeBlock({ language, code, filename }: CodeContent) {
             size="icon"
             className="size-6 text-zinc-400 hover:text-white hover:bg-white/10"
             onClick={handleDownload}
-            aria-label="Download code"
+            aria-label="دانلود کد"
           >
             <Download className="size-3" />
           </Button>
@@ -77,7 +77,7 @@ export function CodeBlock({ language, code, filename }: CodeContent) {
             size="icon"
             className="size-6 text-zinc-400 hover:text-white hover:bg-white/10"
             onClick={handleCopy}
-            aria-label="Copy code"
+            aria-label="کپی کد"
           >
             {copied ? (
               <Check className="size-3 text-green-400" />

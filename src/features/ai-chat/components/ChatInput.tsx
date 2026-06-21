@@ -74,14 +74,14 @@ function AttachmentPill({ attachment, onRemove }: AttachmentPillProps) {
         )}
       </div>
       {attachment.status === "success" && (
-        <Badge variant="secondary" className="ml-0.5 h-3.5 px-1 text-[9px] text-emerald-600">
+        <Badge variant="secondary" className="ms-0.5 h-3.5 px-1 text-[9px] text-emerald-600">
           ✓
         </Badge>
       )}
       <button
         onClick={() => onRemove(attachment.id)}
-        className="ml-0.5 rounded text-muted-foreground hover:text-destructive transition-colors"
-        aria-label="Remove attachment"
+        className="ms-0.5 rounded text-muted-foreground hover:text-destructive transition-colors"
+        aria-label="حذف پیوست"
       >
         <X className="size-3" />
       </button>
@@ -218,7 +218,7 @@ export function ChatInput() {
               className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 rounded-2xl bg-primary/5 ring-2 ring-primary/30 ring-inset"
             >
               <File className="size-8 text-primary/60" />
-              <p className="text-sm font-medium text-primary/80">Drop files to attach</p>
+              <p className="text-sm font-medium text-primary/80">فایل‌ها را برای پیوست رها کنید</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -253,12 +253,12 @@ export function ChatInput() {
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={handleKeyDown}
             onPaste={handlePaste}
-            placeholder="Ask anything…"
+            placeholder="هرچه می‌خواهید بپرسید…"
             rows={1}
             disabled={false}
             className="w-full resize-none bg-transparent text-sm leading-relaxed text-foreground placeholder:text-muted-foreground focus:outline-none disabled:opacity-50"
             style={{ minHeight: "2rem", maxHeight: "200px" }}
-            aria-label="Chat message input"
+            aria-label="ورودی پیام گفتگو"
           />
         </div>
 
@@ -273,12 +273,12 @@ export function ChatInput() {
                   size="icon"
                   className="size-7 text-muted-foreground hover:text-foreground"
                   onClick={() => fileInputRef.current?.click()}
-                  aria-label="Attach file"
+                  aria-label="پیوست فایل"
                 >
                   <Paperclip className="size-3.5" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="top">Attach file</TooltipContent>
+              <TooltipContent side="top">پیوست فایل</TooltipContent>
             </Tooltip>
 
             {/* Image */}
@@ -289,12 +289,12 @@ export function ChatInput() {
                   size="icon"
                   className="size-7 text-muted-foreground hover:text-foreground"
                   onClick={() => fileInputRef.current?.click()}
-                  aria-label="Upload image"
+                  aria-label="بارگذاری تصویر"
                 >
                   <Image className="size-3.5" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="top">Upload image</TooltipContent>
+              <TooltipContent side="top">بارگذاری تصویر</TooltipContent>
             </Tooltip>
 
             {/* Voice */}
@@ -304,12 +304,12 @@ export function ChatInput() {
                   variant="ghost"
                   size="icon"
                   className="size-7 text-muted-foreground hover:text-foreground"
-                  aria-label="Voice input"
+                  aria-label="ورودی صوتی"
                 >
                   <Mic className="size-3.5" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="top">Voice input</TooltipContent>
+              <TooltipContent side="top">ورودی صوتی</TooltipContent>
             </Tooltip>
 
             {/* Mention */}
@@ -319,12 +319,12 @@ export function ChatInput() {
                   variant="ghost"
                   size="icon"
                   className="size-7 text-muted-foreground hover:text-foreground"
-                  aria-label="Mention"
+                  aria-label="منشن"
                 >
                   <AtSign className="size-3.5" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="top">Mention</TooltipContent>
+              <TooltipContent side="top">منشن</TooltipContent>
             </Tooltip>
 
             <Separator orientation="vertical" className="mx-1 h-4" />
@@ -334,7 +334,7 @@ export function ChatInput() {
 
           <div className="flex items-center gap-2">
             <span className="hidden text-[10px] text-muted-foreground/60 sm:block">
-              {isStreaming ? "Generating…" : "Enter ↵ to send · Shift+Enter for newline"}
+              {isStreaming ? "در حال تولید…" : "Enter ↵ برای ارسال · Shift+Enter برای خط جدید"}
             </span>
             <Button
               size="icon"
@@ -348,7 +348,7 @@ export function ChatInput() {
               )}
               onClick={handleSend}
               disabled={!canSend && !isStreaming}
-              aria-label={isStreaming ? "Stop generation" : "Send message"}
+              aria-label={isStreaming ? "توقف تولید" : "ارسال پیام"}
             >
               {isStreaming ? <Square className="size-3.5" /> : <Send className="size-3.5" />}
             </Button>
@@ -358,7 +358,7 @@ export function ChatInput() {
 
       {/* Keyboard hint */}
       <p className="mt-1.5 text-center text-[10px] text-muted-foreground/50">
-        AI can make mistakes. Verify important information.
+        هوش مصنوعی ممکن است اشتباه کند. اطلاعات مهم را راستی‌آزمایی کنید.
       </p>
 
       <input

@@ -36,19 +36,23 @@ interface ConversationItemProps {
 }
 
 const ACTIVITY_ICONS = {
-  image: { icon: ImageIcon, label: "Image" },
-  file: { icon: FileText, label: "File" },
-  voice: { icon: FileAudio, label: "Voice" },
-  shared: { icon: Share2, label: "Shared" },
+  image: { icon: ImageIcon, label: "تصویر" },
+  file: { icon: FileText, label: "فایل" },
+  voice: { icon: FileAudio, label: "صوت" },
+  shared: { icon: Share2, label: "اشتراک‌گذاری‌شده" },
 };
+
+const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+const toFaDigits = (n: number) =>
+  String(n).replace(/\d/g, (d) => FA_DIGITS[Number(d)]);
 
 function timeAgo(date: Date): string {
   const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
-  if (seconds < 60) return "just now";
-  if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
-  if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
-  if (seconds < 604800) return `${Math.floor(seconds / 86400)}d ago`;
-  return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  if (seconds < 60) return "همین حالا";
+  if (seconds < 3600) return `${toFaDigits(Math.floor(seconds / 60))} دقیقه پیش`;
+  if (seconds < 86400) return `${toFaDigits(Math.floor(seconds / 3600))} ساعت پیش`;
+  if (seconds < 604800) return `${toFaDigits(Math.floor(seconds / 86400))} روز پیش`;
+  return date.toLocaleDateString("fa-IR", { month: "short", day: "numeric" });
 }
 
 export function ConversationItem({ conversation }: ConversationItemProps) {
@@ -169,53 +173,53 @@ export function ConversationItem({ conversation }: ConversationItemProps) {
                   setMenuOpen(false);
                 }}
               >
-                <Pencil className="mr-2 size-3.5" />
-                Rename
+                <Pencil className="me-2 size-3.5" />
+                تغییر نام
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => duplicateConversation(conversation.id)}
               >
-                <Copy className="mr-2 size-3.5" />
-                Duplicate
+                <Copy className="me-2 size-3.5" />
+                تکثیر
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => togglePin(conversation.id)}>
                 {conversation.pinned ? (
                   <>
-                    <PinOff className="mr-2 size-3.5" />
-                    Unpin
+                    <PinOff className="me-2 size-3.5" />
+                    حذف سنجاق
                   </>
                 ) : (
                   <>
-                    <Pin className="mr-2 size-3.5" />
-                    Pin
+                    <Pin className="me-2 size-3.5" />
+                    سنجاق
                   </>
                 )}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => toggleFavorite(conversation.id)}>
                 {conversation.favorite ? (
                   <>
-                    <StarOff className="mr-2 size-3.5" />
-                    Unfavorite
+                    <StarOff className="me-2 size-3.5" />
+                    حذف از علاقه‌مندی‌ها
                   </>
                 ) : (
                   <>
-                    <Star className="mr-2 size-3.5" />
-                    Favorite
+                    <Star className="me-2 size-3.5" />
+                    علاقه‌مندی
                   </>
                 )}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => archiveConversation(conversation.id)}>
-                <Archive className="mr-2 size-3.5" />
-                Archive
+                <Archive className="me-2 size-3.5" />
+                بایگانی
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 onClick={() => deleteConversation(conversation.id)}
                 className="text-destructive focus:text-destructive"
               >
-                <Trash2 className="mr-2 size-3.5" />
-                Delete
+                <Trash2 className="me-2 size-3.5" />
+                حذف
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -223,7 +227,7 @@ export function ConversationItem({ conversation }: ConversationItemProps) {
 
         {/* Preview */}
         <p className="mb-1.5 line-clamp-1 text-xs text-muted-foreground leading-relaxed">
-          {conversation.preview || "No messages yet"}
+          {conversation.preview || "هنوز پیامی وجود ندارد"}
         </p>
 
         {/* Footer row */}

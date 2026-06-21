@@ -11,32 +11,32 @@ import {
 } from "./mock-data";
 
 const columns: DataGridColumnDef<CustomerRecord>[] = [
-  { accessorKey: "name", header: "Customer", meta: { label: "Customer" } },
+  { accessorKey: "name", header: "مشتری", meta: { label: "مشتری" } },
   {
     accessorKey: "email",
-    header: "Email",
-    meta: { label: "Email", className: "text-muted-foreground" },
+    header: "ایمیل",
+    meta: { label: "ایمیل", className: "text-muted-foreground" },
   },
-  { accessorKey: "country", header: "Country", meta: { label: "Country" } },
+  { accessorKey: "country", header: "کشور", meta: { label: "کشور" } },
   {
     accessorKey: "spend",
-    header: "Lifetime spend",
+    header: "هزینه‌کرد کل",
     cell: ({ row }) => (
       <span className="font-medium tabular-nums">
         {formatCurrency(row.original.spend)}
       </span>
     ),
-    meta: { label: "Lifetime spend", align: "right" },
+    meta: { label: "هزینه‌کرد کل", align: "right" },
   },
   {
     accessorKey: "createdAt",
-    header: "Joined",
+    header: "تاریخ عضویت",
     cell: ({ row }) => (
       <span className="text-muted-foreground">
         {formatDate(row.original.createdAt)}
       </span>
     ),
-    meta: { label: "Joined" },
+    meta: { label: "تاریخ عضویت" },
   },
 ];
 
@@ -51,7 +51,7 @@ export function SortableTable() {
       enableColumnFilters={false}
       enableExport={false}
       initialSorting={[{ id: "spend", desc: true }]}
-      searchPlaceholder="Search by name, email…"
+      searchPlaceholder="جستجو بر اساس نام، ایمیل…"
     />
   );
 }

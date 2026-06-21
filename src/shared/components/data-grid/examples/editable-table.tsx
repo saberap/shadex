@@ -9,18 +9,32 @@ import type { DataGridColumnDef } from "../types";
 import { type CustomerRecord, generateCustomers } from "./mock-data";
 
 const ROLE_OPTIONS = [
-  { label: "Admin", value: "admin" },
-  { label: "Manager", value: "manager" },
-  { label: "Member", value: "member" },
-  { label: "Viewer", value: "viewer" },
+  { label: "مدیر", value: "admin" },
+  { label: "مدیر بخش", value: "manager" },
+  { label: "عضو", value: "member" },
+  { label: "بیننده", value: "viewer" },
 ];
 
 const STATUS_OPTIONS = [
-  { label: "Active", value: "active" },
-  { label: "Pending", value: "pending" },
-  { label: "Suspended", value: "suspended" },
-  { label: "Churned", value: "churned" },
+  { label: "فعال", value: "active" },
+  { label: "در انتظار", value: "pending" },
+  { label: "معلق", value: "suspended" },
+  { label: "ریزش‌کرده", value: "churned" },
 ];
+
+const ROLE_LABEL: Record<CustomerRecord["role"], string> = {
+  admin: "مدیر",
+  manager: "مدیر بخش",
+  member: "عضو",
+  viewer: "بیننده",
+};
+
+const STATUS_LABEL: Record<CustomerRecord["status"], string> = {
+  active: "فعال",
+  pending: "در انتظار",
+  suspended: "معلق",
+  churned: "ریزش‌کرده",
+};
 
 const STATUS_VARIANT: Record<
   CustomerRecord["status"],
@@ -44,8 +58,8 @@ export function EditableTable() {
           row.id === id ? { ...row, [field]: value as never } : row,
         ),
       );
-      toast.success("Cell updated", {
-        description: `Saved ${String(field)} for ${id}.`,
+      toast.success("سلول به‌روزرسانی شد", {
+        description: `${String(field)} برای ${id} ذخیره شد.`,
       });
     },
     [],
@@ -55,7 +69,7 @@ export function EditableTable() {
     () => [
       {
         accessorKey: "name",
-        header: "Name",
+        header: "نام",
         cell: ({ row }) => (
           <DataGridEditableCell
             value={row.original.name}
@@ -63,11 +77,11 @@ export function EditableTable() {
             onCommit={(v) => updateCell(row.original.id, "name", v)}
           />
         ),
-        meta: { label: "Name" },
+        meta: { label: "نام" },
       },
       {
         accessorKey: "email",
-        header: "Email",
+        header: "ایمیل",
         cell: ({ row }) => (
           <DataGridEditableCell
             value={row.original.email}
@@ -75,11 +89,11 @@ export function EditableTable() {
             onCommit={(v) => updateCell(row.original.id, "email", v)}
           />
         ),
-        meta: { label: "Email", className: "text-muted-foreground" },
+        meta: { label: "ایمیل", className: "text-muted-foreground" },
       },
       {
         accessorKey: "role",
-        header: "Role",
+        header: "نقش",
         cell: ({ row }) => (
           <DataGridEditableCell
             value={row.original.role}
@@ -87,17 +101,17 @@ export function EditableTable() {
             options={ROLE_OPTIONS}
             display={
               <span className="capitalize text-muted-foreground">
-                {row.original.role}
+                {ROLE_LABEL[row.original.role]}
               </span>
             }
             onCommit={(v) => updateCell(row.original.id, "role", v)}
           />
         ),
-        meta: { label: "Role" },
+        meta: { label: "نقش" },
       },
       {
         accessorKey: "status",
-        header: "Status",
+        header: "وضعیت",
         cell: ({ row }) => (
           <DataGridEditableCell
             value={row.original.status}
@@ -108,17 +122,17 @@ export function EditableTable() {
                 variant={STATUS_VARIANT[row.original.status]}
                 className="capitalize"
               >
-                {row.original.status}
+                {STATUS_LABEL[row.original.status]}
               </Badge>
             }
             onCommit={(v) => updateCell(row.original.id, "status", v)}
           />
         ),
-        meta: { label: "Status" },
+        meta: { label: "وضعیت" },
       },
       {
         accessorKey: "spend",
-        header: "Lifetime spend",
+        header: "هزینه‌کرد کل",
         cell: ({ row }) => (
           <DataGridEditableCell
             value={row.original.spend}
@@ -132,7 +146,7 @@ export function EditableTable() {
             onCommit={(v) => updateCell(row.original.id, "spend", v)}
           />
         ),
-        meta: { label: "Lifetime spend", align: "right" },
+        meta: { label: "هزینه‌کرد کل", align: "right" },
       },
     ],
     [updateCell],
@@ -145,7 +159,7 @@ export function EditableTable() {
       enableSelection={false}
       enableColumnFilters={false}
       enableExport={false}
-      searchPlaceholder="Search to edit…"
+      searchPlaceholder="برای ویرایش جستجو کنید…"
     />
   );
 }

@@ -57,7 +57,7 @@ export function DataGridColumnFilter<TData, TValue>({
         <Button
           variant="ghost"
           size="icon-xs"
-          aria-label={`Filter column ${column.id}`}
+          aria-label={`فیلتر ستون ${column.id}`}
           data-active={isActive ? "true" : undefined}
           className={cn(
             "shrink-0 transition-colors",
@@ -76,19 +76,19 @@ export function DataGridColumnFilter<TData, TValue>({
       <PopoverContent align="start" className="w-64">
         <div className="flex items-center justify-between">
           <p className="text-xs font-medium text-foreground">
-            Filter{" "}
+            فیلتر{" "}
             <span className="text-muted-foreground">
               {meta?.label ?? column.id}
             </span>
           </p>
-          {isActive ? <Badge variant="secondary">Active</Badge> : null}
+          {isActive ? <Badge variant="secondary">فعال</Badge> : null}
         </div>
         <Separator />
 
         {filterType === "text" || filterType === "number" ? (
           <div className="flex flex-col gap-2">
             <Label htmlFor={`filter-${column.id}`} className="text-xs">
-              {filterType === "number" ? "Contains number" : "Contains text"}
+              {filterType === "number" ? "شامل عدد" : "شامل متن"}
             </Label>
             <Input
               id={`filter-${column.id}`}
@@ -103,7 +103,7 @@ export function DataGridColumnFilter<TData, TValue>({
                     : e.target.value,
                 )
               }
-              placeholder="Type to filter…"
+              placeholder="برای فیلتر کردن تایپ کنید…"
               className="h-8"
             />
           </div>
@@ -111,12 +111,12 @@ export function DataGridColumnFilter<TData, TValue>({
 
         {filterType === "boolean" ? (
           <div className="flex flex-col gap-2">
-            <Label className="text-xs">Value</Label>
+            <Label className="text-xs">مقدار</Label>
             <div className="flex gap-1.5">
               {(
                 [
-                  { v: true, label: "True" },
-                  { v: false, label: "False" },
+                  { v: true, label: "درست" },
+                  { v: false, label: "نادرست" },
                 ] as const
               ).map((opt) => (
                 <Button
@@ -168,7 +168,7 @@ export function DataGridColumnFilter<TData, TValue>({
         {filterType === "date" ? (
           <div className="flex flex-col gap-2">
             <Label htmlFor={`filter-${column.id}`} className="text-xs">
-              On date
+              در تاریخ
             </Label>
             <Input
               id={`filter-${column.id}`}
@@ -183,10 +183,10 @@ export function DataGridColumnFilter<TData, TValue>({
         <div className="flex justify-between gap-2 pt-1">
           <Button size="sm" variant="ghost" onClick={clear}>
             <X />
-            Clear
+            پاک کردن
           </Button>
           <Button size="sm" onClick={apply}>
-            Apply filter
+            اعمال فیلتر
           </Button>
         </div>
       </PopoverContent>

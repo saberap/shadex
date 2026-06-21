@@ -12,26 +12,26 @@ import {
 const columns: DataGridColumnDef<CustomerRecord>[] = [
   {
     accessorKey: "id",
-    header: "ID",
-    meta: { label: "ID", className: "font-mono text-xs text-muted-foreground" },
+    header: "شناسه",
+    meta: { label: "شناسه", className: "font-mono text-xs text-muted-foreground" },
   },
-  { accessorKey: "name", header: "Name", meta: { label: "Name" } },
+  { accessorKey: "name", header: "نام", meta: { label: "نام" } },
   {
     accessorKey: "email",
-    header: "Email",
-    meta: { label: "Email", className: "text-muted-foreground" },
+    header: "ایمیل",
+    meta: { label: "ایمیل", className: "text-muted-foreground" },
   },
-  { accessorKey: "country", header: "Country", meta: { label: "Country" } },
-  { accessorKey: "city", header: "City", meta: { label: "City" } },
+  { accessorKey: "country", header: "کشور", meta: { label: "کشور" } },
+  { accessorKey: "city", header: "شهر", meta: { label: "شهر" } },
   {
     accessorKey: "createdAt",
-    header: "Created",
+    header: "تاریخ ایجاد",
     cell: ({ row }) => (
       <span className="text-muted-foreground">
         {formatDate(row.original.createdAt)}
       </span>
     ),
-    meta: { label: "Created" },
+    meta: { label: "تاریخ ایجاد" },
   },
 ];
 
@@ -46,7 +46,7 @@ export function BasicTable() {
       enableColumnFilters={false}
       enableExport={false}
       enableSorting={false}
-      searchPlaceholder="Search customers…"
+      searchPlaceholder="جستجوی مشتریان…"
     />
   );
 }

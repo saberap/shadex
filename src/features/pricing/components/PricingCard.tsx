@@ -10,6 +10,9 @@ type PricingCardProps = {
   slot?: React.ReactNode;
 };
 
+const toPersianDigits = (value: number | string) =>
+  String(value).replace(/[0-9]/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
+
 export function PricingCard({ plan, slot }: PricingCardProps) {
   const isFeatured = Boolean(plan.featured);
 
@@ -43,11 +46,11 @@ export function PricingCard({ plan, slot }: PricingCardProps) {
                   : "text-muted-foreground/60",
               )}
             >
-              ${plan.originalPrice}
+              ${toPersianDigits(plan.originalPrice)}
             </span>
           ) : null}
           <span className="text-4xl font-bold tracking-tight tabular-nums">
-            ${plan.price}
+            ${toPersianDigits(plan.price)}
           </span>
           <span
             className={cn(
@@ -57,7 +60,7 @@ export function PricingCard({ plan, slot }: PricingCardProps) {
                 : "text-muted-foreground",
             )}
           >
-            /month
+            /ماه
           </span>
         </div>
 

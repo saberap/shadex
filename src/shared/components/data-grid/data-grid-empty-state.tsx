@@ -43,13 +43,13 @@ export function DataGridEmptyState({
 
       <div className="flex flex-col items-center gap-1 px-6">
         <p className="text-sm font-semibold text-foreground">
-          {title ?? (isError ? "Something went wrong" : "No results")}
+          {title ?? (isError ? "مشکلی پیش آمد" : "نتیجه‌ای یافت نشد")}
         </p>
         <p className="max-w-sm text-sm text-muted-foreground">
           {description ??
             (isError
-              ? "We couldn't load the data. Please try again."
-              : "Try adjusting your filters or search to see more results.")}
+              ? "بارگذاری داده‌ها ممکن نشد. لطفاً دوباره تلاش کنید."
+              : "برای دیدن نتایج بیشتر فیلترها یا جستجوی خود را تنظیم کنید.")}
         </p>
       </div>
 
@@ -57,7 +57,7 @@ export function DataGridEmptyState({
         {onRetry ? (
           <Button size="sm" variant="outline" onClick={onRetry}>
             <RefreshCcw />
-            Retry
+            تلاش مجدد
           </Button>
         ) : null}
         {action}

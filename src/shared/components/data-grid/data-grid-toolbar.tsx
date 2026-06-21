@@ -47,7 +47,7 @@ export function DataGridToolbar<TData>({
   table,
   search,
   onSearchChange,
-  searchPlaceholder = "Search…",
+  searchPlaceholder = "جستجو…",
   enableSearch,
   enableColumnVisibility,
   enableExport,
@@ -85,22 +85,22 @@ export function DataGridToolbar<TData>({
         <div className="flex flex-wrap items-center gap-2">
           {enableSearch ? (
             <div className="relative">
-              <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+              <Search className="pointer-events-none absolute start-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
               <Input
                 value={draftSearch}
                 onChange={(e) => setDraftSearch(e.target.value)}
                 placeholder={searchPlaceholder}
-                className="h-8 w-64 pl-8 pr-8"
-                aria-label="Search"
+                className="h-8 w-64 ps-8 pe-8"
+                aria-label="جستجو"
               />
               {draftSearch ? (
                 <Button
                   type="button"
                   variant="ghost"
                   size="icon-xs"
-                  className="absolute right-1 top-1/2 -translate-y-1/2"
+                  className="absolute end-1 top-1/2 -translate-y-1/2"
                   onClick={() => setDraftSearch("")}
-                  aria-label="Clear search"
+                  aria-label="پاک کردن جستجو"
                 >
                   <X />
                 </Button>
@@ -116,7 +116,7 @@ export function DataGridToolbar<TData>({
               variant="ghost"
               onClick={() => table.resetColumnFilters()}
             >
-              Reset
+              بازنشانی
               <Badge variant="secondary">{filterCount}</Badge>
             </Button>
           ) : null}
@@ -137,11 +137,11 @@ export function DataGridToolbar<TData>({
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
                   <Download />
-                  Export
+                  خروجی گرفتن
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-44">
-                <DropdownMenuLabel>Download as</DropdownMenuLabel>
+                <DropdownMenuLabel>دانلود به‌صورت</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onSelect={() => exportTableToCsv(table)}>
                   <FileText />
@@ -163,7 +163,7 @@ export function DataGridToolbar<TData>({
 
       {selectedCount > 0 && bulkActions && bulkActions.length > 0 ? (
         <div className="flex flex-wrap items-center gap-2 rounded-lg border bg-muted/40 px-3 py-2">
-          <span className="text-sm font-medium">{selectedCount} selected</span>
+          <span className="text-sm font-medium">{selectedCount} انتخاب‌شده</span>
           <Separator orientation="vertical" className="h-4" />
           <div className="flex flex-wrap items-center gap-1.5">
             {bulkActions.map((action) => (
@@ -187,10 +187,10 @@ export function DataGridToolbar<TData>({
           <Button
             size="sm"
             variant="ghost"
-            className="ml-auto"
+            className="ms-auto"
             onClick={() => table.resetRowSelection()}
           >
-            Clear
+            پاک کردن
           </Button>
         </div>
       ) : null}

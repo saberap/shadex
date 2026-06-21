@@ -40,88 +40,88 @@ const items: ShowcaseItem[] = [
   {
     value: "crm",
     label: "CRM",
-    title: "CRM customers",
+    title: "مشتریان CRM",
     description:
-      "Full-featured customer table with avatars, status, bulk actions and row menus.",
+      "جدول کامل مشتریان با آواتار، وضعیت، عملیات گروهی و منوی ردیف.",
     component: <CrmCustomersTable />,
   },
   {
     value: "finance",
-    label: "Finance",
-    title: "Invoices",
+    label: "مالی",
+    title: "فاکتورها",
     description:
-      "Invoice ledger with currency formatting, status badges, and per-row actions.",
+      "دفتر فاکتورها با قالب‌بندی ارز، نشان‌های وضعیت و عملیات هر ردیف.",
     component: <FinanceTable />,
   },
   {
     value: "tasks",
-    label: "Tasks",
-    title: "Project tasks",
+    label: "وظایف",
+    title: "وظایف پروژه",
     description:
-      "Tasks with progress bars, priority and status labels, plus bulk operations.",
+      "وظایف به همراه نوار پیشرفت، برچسب‌های اولویت و وضعیت، و عملیات گروهی.",
     component: <TasksTable />,
   },
   {
     value: "basic",
-    label: "Basic",
-    title: "Basic table",
-    description: "The smallest possible setup — data, columns, search.",
+    label: "ساده",
+    title: "جدول ساده",
+    description: "کوچک‌ترین پیکربندی ممکن — داده، ستون‌ها و جستجو.",
     component: <BasicTable />,
   },
   {
     value: "sorting",
-    label: "Sorting",
-    title: "Sortable columns",
+    label: "مرتب‌سازی",
+    title: "ستون‌های قابل مرتب‌سازی",
     description:
-      "Multi-column sorting with subtle visual affordance on column hover.",
+      "مرتب‌سازی چندستونی با نشانه بصری ظریف هنگام هاور روی ستون.",
     component: <SortableTable />,
   },
   {
     value: "filtering",
-    label: "Filtering",
-    title: "Per-column filters",
+    label: "فیلتر کردن",
+    title: "فیلترهای هر ستون",
     description:
-      "Text, select and date filters integrated into each column header.",
+      "فیلترهای متنی، انتخابی و تاریخ یکپارچه در سرستون هر ستون.",
     component: <FilterableTable />,
   },
   {
     value: "editable",
-    label: "Editable",
-    title: "Inline editing",
+    label: "قابل ویرایش",
+    title: "ویرایش درون‌خطی",
     description:
-      "Click to edit text, number and select cells. Saves are toasted instantly.",
+      "برای ویرایش سلول‌های متنی، عددی و انتخابی کلیک کنید. ذخیره فوری اطلاع‌رسانی می‌شود.",
     component: <EditableTable />,
   },
   {
     value: "expandable",
-    label: "Expandable",
-    title: "Expandable rows",
+    label: "قابل گسترش",
+    title: "ردیف‌های قابل گسترش",
     description:
-      "Open a detail panel inline beneath each row with related metadata.",
+      "باز کردن یک پنل جزئیات در زیر هر ردیف به همراه فراداده‌های مرتبط.",
     component: <ExpandableTable />,
   },
   {
     value: "virtualized",
-    label: "Virtualized",
-    title: "Virtualized 10k rows",
+    label: "مجازی‌سازی‌شده",
+    title: "مجازی‌سازی ۱۰٬۰۰۰ ردیف",
     description:
-      "TanStack Virtual handles 10,000 rows with sub-millisecond scrolling.",
+      "TanStack Virtual ۱۰٬۰۰۰ ردیف را با اسکرول زیر میلی‌ثانیه مدیریت می‌کند.",
     component: <VirtualizedTable />,
   },
   {
     value: "server",
-    label: "Server-side",
-    title: "Server-side mode",
+    label: "سمت سرور",
+    title: "حالت سمت سرور",
     description:
-      "Backed by /api/customers with manual pagination, sorting and filtering.",
+      "متصل به /api/customers با صفحه‌بندی، مرتب‌سازی و فیلتر دستی.",
     component: <ServerSideTable />,
   },
   {
     value: "url",
-    label: "URL sync",
-    title: "URL-synced state",
+    label: "همگام‌سازی URL",
+    title: "وضعیت همگام با URL",
     description:
-      "Page, search and sort persist in the address bar — refresh-safe.",
+      "صفحه، جستجو و مرتب‌سازی در نوار آدرس باقی می‌ماند — مقاوم در برابر رفرش.",
     component: <UrlSyncTable />,
   },
 ];
@@ -131,14 +131,13 @@ export function DataGridShowcaseFeature() {
     <div className="space-y-6 p-4 md:p-6 lg:p-8">
       <header className="flex flex-col gap-1.5">
         <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-          Component
+          کامپوننت
         </p>
-        <h1 className="text-2xl font-semibold tracking-tight">DataGrid</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">جدول داده</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          A production-grade DataGrid built on shadcn/ui, TanStack Table, Query
-          and Virtual. Sorting, filtering, virtualization, inline editing,
-          expandable rows, server-side mode and URL sync — all in one composable
-          component.
+          یک جدول داده در سطح تولید بر پایه shadcn/ui، TanStack Table، Query و
+          Virtual. مرتب‌سازی، فیلتر، مجازی‌سازی، ویرایش درون‌خطی، ردیف‌های قابل
+          گسترش، حالت سمت سرور و همگام‌سازی URL — همه در یک کامپوننت قابل ترکیب.
         </p>
       </header>
 

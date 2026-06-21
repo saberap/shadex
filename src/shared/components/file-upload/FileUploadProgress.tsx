@@ -11,12 +11,12 @@ export function FileUploadProgress({
 }: FileUploadProgressProps) {
   const label =
     status === "success"
-      ? "Uploaded"
+      ? "آپلود شد"
       : status === "error"
-        ? "Failed"
+        ? "ناموفق"
         : status === "uploading"
           ? `${Math.round(value)}%`
-          : "Ready";
+          : "آماده";
 
   return (
     <div className={cn("flex items-center gap-2", className)}>

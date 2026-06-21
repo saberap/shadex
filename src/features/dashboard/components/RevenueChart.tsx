@@ -9,27 +9,27 @@ import {
 } from "@/shared/components/ui/chart";
 
 const data = [
-  { month: "Jan", revenue: 3200, expenses: 1800 },
-  { month: "Feb", revenue: 4800, expenses: 2200 },
-  { month: "Mar", revenue: 4500, expenses: 2100 },
-  { month: "Apr", revenue: 4700, expenses: 2400 },
-  { month: "May", revenue: 5100, expenses: 2300 },
-  { month: "Jun", revenue: 6000, expenses: 2800 },
-  { month: "Jul", revenue: 5300, expenses: 2600 },
-  { month: "Aug", revenue: 5700, expenses: 2500 },
-  { month: "Sep", revenue: 4200, expenses: 2000 },
-  { month: "Oct", revenue: 3100, expenses: 1900 },
-  { month: "Nov", revenue: 4400, expenses: 2100 },
-  { month: "Dec", revenue: 1600, expenses: 1200 },
+  { month: "ژانویه", revenue: 3200, expenses: 1800 },
+  { month: "فوریه", revenue: 4800, expenses: 2200 },
+  { month: "مارس", revenue: 4500, expenses: 2100 },
+  { month: "آوریل", revenue: 4700, expenses: 2400 },
+  { month: "مه", revenue: 5100, expenses: 2300 },
+  { month: "ژوئن", revenue: 6000, expenses: 2800 },
+  { month: "ژوئیه", revenue: 5300, expenses: 2600 },
+  { month: "اوت", revenue: 5700, expenses: 2500 },
+  { month: "سپتامبر", revenue: 4200, expenses: 2000 },
+  { month: "اکتبر", revenue: 3100, expenses: 1900 },
+  { month: "نوامبر", revenue: 4400, expenses: 2100 },
+  { month: "دسامبر", revenue: 1600, expenses: 1200 },
 ];
 
 const chartConfig = {
   revenue: {
-    label: "Revenue",
+    label: "درآمد",
     color: "var(--chart-5)",
   },
   expenses: {
-    label: "Expenses",
+    label: "هزینه‌ها",
     color: "var(--chart-2)",
   },
 } satisfies ChartConfig;

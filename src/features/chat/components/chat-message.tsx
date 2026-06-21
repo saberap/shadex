@@ -48,7 +48,7 @@ export function ChatMessage({
         )}
       >
         {showHeader && author && !isOwn && (
-          <div className="ml-3 flex items-center gap-1.5 text-[11px] text-muted-foreground">
+          <div className="ms-3 flex items-center gap-1.5 text-[11px] text-muted-foreground">
             <span className="font-medium text-foreground">{author.name}</span>
             <span aria-hidden>·</span>
             <span>{formatMessageTime(message.createdAt)}</span>
@@ -75,7 +75,7 @@ export function ChatMessage({
               )}
             >
               <Forward className="size-3" />
-              Forwarded from {message.forwardedFrom.fromConversationName}
+              هدایت‌شده از {message.forwardedFrom.fromConversationName}
             </div>
           )}
 
@@ -114,7 +114,7 @@ export function ChatMessage({
             )}
           >
             <span>{formatMessageTime(message.createdAt)}</span>
-            {message.edited && <span>· edited</span>}
+            {message.edited && <span>· ویرایش‌شده</span>}
             {isOwn && <MessageStatusIcon status={message.status} />}
           </div>
         </div>
@@ -154,7 +154,7 @@ function ImageAttachments({
           )}
         >
           <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
-          <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[11px] text-white">
+          <div className="absolute bottom-2 start-2 end-2 flex items-center justify-between text-[11px] text-white">
             <span className="truncate font-medium">{att.name}</span>
             <span className="shrink-0">{formatFileSize(att.size)}</span>
           </div>

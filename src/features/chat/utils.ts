@@ -19,12 +19,12 @@ export function formatRelativeDay(date: Date): string {
   const diffDays = Math.round(
     (today.getTime() - target.getTime()) / (1000 * 60 * 60 * 24)
   );
-  if (diffDays === 0) return "Today";
-  if (diffDays === 1) return "Yesterday";
+  if (diffDays === 0) return "امروز";
+  if (diffDays === 1) return "دیروز";
   if (diffDays < 7) {
-    return date.toLocaleDateString([], { weekday: "long" });
+    return date.toLocaleDateString("fa-IR", { weekday: "long" });
   }
-  return date.toLocaleDateString([], {
+  return date.toLocaleDateString("fa-IR", {
     month: "short",
     day: "numeric",
     year: target.getFullYear() === today.getFullYear() ? undefined : "numeric",
@@ -35,13 +35,13 @@ export function formatConversationTimestamp(date: Date): string {
   const now = new Date();
   const diff = now.getTime() - date.getTime();
   const minutes = diff / 60000;
-  if (minutes < 1) return "now";
-  if (minutes < 60) return `${Math.floor(minutes)}m`;
+  if (minutes < 1) return "اکنون";
+  if (minutes < 60) return `${Math.floor(minutes)}د`;
   const hours = minutes / 60;
-  if (hours < 24) return `${Math.floor(hours)}h`;
+  if (hours < 24) return `${Math.floor(hours)}س`;
   const days = hours / 24;
-  if (days < 7) return `${Math.floor(days)}d`;
-  return date.toLocaleDateString([], { month: "short", day: "numeric" });
+  if (days < 7) return `${Math.floor(days)}ر`;
+  return date.toLocaleDateString("fa-IR", { month: "short", day: "numeric" });
 }
 
 export function formatFileSize(bytes: number): string {
@@ -143,12 +143,12 @@ export function getConversationDisplayName(
 }
 
 export function getMessagePreview(message: Message | undefined): string {
-  if (!message) return "No messages yet";
+  if (!message) return "هنوز پیامی وجود ندارد";
   if (message.type === "system") return message.content;
-  if (message.type === "image") return "Sent a photo";
+  if (message.type === "image") return "یک تصویر ارسال شد";
   if (message.type === "file") {
     const attachment = message.attachments?.[0];
-    return attachment ? `File: ${attachment.name}` : "Sent a file";
+    return attachment ? `فایل: ${attachment.name}` : "یک فایل ارسال شد";
   }
   return message.content;
 }
@@ -161,7 +161,7 @@ export function buildReplyReference(
   return {
     messageId: message.id,
     authorId: message.authorId,
-    authorName: author?.name ?? "Unknown",
+    authorName: author?.name ?? "ناشناس",
     preview: getMessagePreview(message).slice(0, 140),
     type: message.type,
   };

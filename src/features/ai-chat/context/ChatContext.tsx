@@ -79,7 +79,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
   const createNewChat = useCallback(() => {
     const newConv: Conversation = {
       id: genId(),
-      title: "New Conversation",
+      title: "گفتگوی جدید",
       model: selectedModel,
       preview: "",
       createdAt: new Date(),
@@ -137,7 +137,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       const newConv: Conversation = {
         ...original,
         id: newId,
-        title: `${original.title} (copy)`,
+        title: `${original.title} (کپی)`,
         createdAt: new Date(),
         updatedAt: new Date(),
         pinned: false,

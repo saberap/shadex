@@ -110,7 +110,7 @@ export function DataGrid<TData>({
             onCheckedChange={(value) =>
               table.toggleAllPageRowsSelected(!!value)
             }
-            aria-label="Select all rows"
+            aria-label="انتخاب همه ردیف‌ها"
           />
         ),
         cell: ({ row }) => (
@@ -118,7 +118,7 @@ export function DataGrid<TData>({
             checked={row.getIsSelected()}
             disabled={!row.getCanSelect()}
             onCheckedChange={(value) => row.toggleSelected(!!value)}
-            aria-label="Select row"
+            aria-label="انتخاب ردیف"
           />
         ),
         enableSorting: false,
@@ -151,14 +151,14 @@ export function DataGrid<TData>({
     if (rowActions && rowActions.length > 0) {
       cols.push({
         id: "__actions__",
-        header: () => <span className="sr-only">Actions</span>,
+        header: () => <span className="sr-only">عملیات</span>,
         cell: ({ row }) => (
           <DataGridRowActions row={row} actions={rowActions} />
         ),
         enableSorting: false,
         enableHiding: false,
         size: 56,
-        meta: { className: "w-14 text-right" },
+        meta: { className: "w-14 text-end" },
       });
     }
 
@@ -309,10 +309,10 @@ export function DataGrid<TData>({
                         const align = meta?.align ?? "left";
                         const alignClass =
                           align === "right"
-                            ? "justify-end text-right"
+                            ? "justify-end text-end"
                             : align === "center"
                               ? "justify-center text-center"
-                              : "justify-start text-left";
+                              : "justify-start text-start";
 
                         return (
                           <TableHead
@@ -342,7 +342,7 @@ export function DataGrid<TData>({
                                     type="button"
                                     className="group/sort flex items-center gap-1 rounded-sm hover:text-foreground"
                                     onClick={header.column.getToggleSortingHandler()}
-                                    aria-label={`Sort by ${header.column.id}`}
+                                    aria-label={`مرتب‌سازی بر اساس ${header.column.id}`}
                                   >
                                     <span>
                                       {flexRender(
@@ -414,7 +414,7 @@ export function DataGrid<TData>({
                                 className={cn(
                                   cellPadding,
                                   "text-sm text-foreground",
-                                  align === "right" && "text-right",
+                                  align === "right" && "text-end",
                                   align === "center" && "text-center",
                                   meta?.className,
                                 )}
@@ -453,7 +453,7 @@ export function DataGrid<TData>({
                                 className={cn(
                                   cellPadding,
                                   "text-sm text-foreground",
-                                  align === "right" && "text-right",
+                                  align === "right" && "text-end",
                                   align === "center" && "text-center",
                                   meta?.className,
                                 )}

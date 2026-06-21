@@ -34,11 +34,11 @@ export function ThinkingPanel({ steps, isActive = false }: ThinkingPanelProps) {
         <span className="flex-1 text-xs font-medium text-muted-foreground">
           {isActive ? (
             <span className="flex items-center gap-1.5">
-              Thinking
+              در حال فکر کردن
               <ThinkingDots />
             </span>
           ) : (
-            `Reasoning (${steps?.length ?? 0} steps)`
+            `استدلال (${steps?.length ?? 0} مرحله)`
           )}
         </span>
         {!isActive && (

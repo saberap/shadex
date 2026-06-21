@@ -6,34 +6,41 @@ import { DataGrid } from "../data-grid";
 import type { DataGridColumnDef } from "../types";
 import { type CustomerRecord, generateCustomers } from "./mock-data";
 
+const STATUS_LABEL: Record<CustomerRecord["status"], string> = {
+  active: "فعال",
+  pending: "در انتظار",
+  suspended: "معلق",
+  churned: "ریزش‌کرده",
+};
+
 const columns: DataGridColumnDef<CustomerRecord>[] = [
   {
     accessorKey: "id",
-    header: "ID",
-    meta: { label: "ID", className: "font-mono text-xs text-muted-foreground" },
+    header: "شناسه",
+    meta: { label: "شناسه", className: "font-mono text-xs text-muted-foreground" },
     size: 130,
   },
-  { accessorKey: "name", header: "Name", meta: { label: "Name" } },
+  { accessorKey: "name", header: "نام", meta: { label: "نام" } },
   {
     accessorKey: "email",
-    header: "Email",
-    meta: { label: "Email", className: "text-muted-foreground" },
+    header: "ایمیل",
+    meta: { label: "ایمیل", className: "text-muted-foreground" },
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "وضعیت",
     cell: ({ row }) => (
       <Badge
         variant={row.original.status === "active" ? "default" : "secondary"}
         className="capitalize"
       >
-        {row.original.status}
+        {STATUS_LABEL[row.original.status]}
       </Badge>
     ),
-    meta: { label: "Status" },
+    meta: { label: "وضعیت" },
   },
-  { accessorKey: "country", header: "Country", meta: { label: "Country" } },
-  { accessorKey: "city", header: "City", meta: { label: "City" } },
+  { accessorKey: "country", header: "کشور", meta: { label: "کشور" } },
+  { accessorKey: "city", header: "شهر", meta: { label: "شهر" } },
 ];
 
 export function VirtualizedTable() {
@@ -50,7 +57,7 @@ export function VirtualizedTable() {
       enableVirtualization
       virtualHeight={560}
       virtualRowHeight={44}
-      searchPlaceholder="Search 10,000 rows…"
+      searchPlaceholder="جستجو در ۱۰٬۰۰۰ ردیف…"
       density="compact"
     />
   );

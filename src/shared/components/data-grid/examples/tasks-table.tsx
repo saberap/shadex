@@ -34,10 +34,17 @@ const PRIORITY_VARIANT: Record<
 };
 
 const STATUS_LABEL: Record<TaskRecord["status"], string> = {
-  todo: "Todo",
-  in_progress: "In progress",
-  review: "Review",
-  done: "Done",
+  todo: "انجام‌نشده",
+  in_progress: "در حال انجام",
+  review: "بررسی",
+  done: "انجام‌شده",
+};
+
+const PRIORITY_LABEL: Record<TaskRecord["priority"], string> = {
+  low: "پایین",
+  medium: "متوسط",
+  high: "بالا",
+  urgent: "فوری",
 };
 
 export function TasksTable() {
@@ -47,32 +54,32 @@ export function TasksTable() {
     () => [
       {
         accessorKey: "id",
-        header: "ID",
+        header: "شناسه",
         meta: {
-          label: "ID",
+          label: "شناسه",
           className: "font-mono text-xs text-muted-foreground",
         },
         size: 110,
       },
       {
         accessorKey: "title",
-        header: "Title",
+        header: "عنوان",
         cell: ({ row }) => (
           <span className="font-medium">{row.original.title}</span>
         ),
-        meta: { label: "Title", filterType: "text" },
+        meta: { label: "عنوان", filterType: "text" },
       },
       {
         accessorKey: "assignee",
-        header: "Assignee",
+        header: "مسئول",
         cell: ({ row }) => (
           <span className="text-muted-foreground">{row.original.assignee}</span>
         ),
-        meta: { label: "Assignee" },
+        meta: { label: "مسئول" },
       },
       {
         accessorKey: "status",
-        header: "Status",
+        header: "وضعیت",
         cell: ({ row }) => (
           <Badge
             variant={STATUS_VARIANT[row.original.status]}
@@ -86,25 +93,25 @@ export function TasksTable() {
           return value.includes(row.getValue<string>(id));
         },
         meta: {
-          label: "Status",
+          label: "وضعیت",
           filterType: "select",
           filterOptions: [
-            { label: "Todo", value: "todo" },
-            { label: "In progress", value: "in_progress" },
-            { label: "Review", value: "review" },
-            { label: "Done", value: "done" },
+            { label: "انجام‌نشده", value: "todo" },
+            { label: "در حال انجام", value: "in_progress" },
+            { label: "بررسی", value: "review" },
+            { label: "انجام‌شده", value: "done" },
           ],
         },
       },
       {
         accessorKey: "priority",
-        header: "Priority",
+        header: "اولویت",
         cell: ({ row }) => (
           <Badge
             variant={PRIORITY_VARIANT[row.original.priority]}
             className="capitalize"
           >
-            {row.original.priority}
+            {PRIORITY_LABEL[row.original.priority]}
           </Badge>
         ),
         filterFn: (row, id, value) => {
@@ -112,19 +119,19 @@ export function TasksTable() {
           return value.includes(row.getValue<string>(id));
         },
         meta: {
-          label: "Priority",
+          label: "اولویت",
           filterType: "select",
           filterOptions: [
-            { label: "Low", value: "low" },
-            { label: "Medium", value: "medium" },
-            { label: "High", value: "high" },
-            { label: "Urgent", value: "urgent" },
+            { label: "پایین", value: "low" },
+            { label: "متوسط", value: "medium" },
+            { label: "بالا", value: "high" },
+            { label: "فوری", value: "urgent" },
           ],
         },
       },
       {
         accessorKey: "labels",
-        header: "Labels",
+        header: "برچسب‌ها",
         cell: ({ row }) => (
           <div className="flex flex-wrap gap-1">
             {row.original.labels.map((label) => (
@@ -135,11 +142,11 @@ export function TasksTable() {
           </div>
         ),
         enableSorting: false,
-        meta: { label: "Labels" },
+        meta: { label: "برچسب‌ها" },
       },
       {
         accessorKey: "progress",
-        header: "Progress",
+        header: "پیشرفت",
         cell: ({ row }) => (
           <div className="flex items-center gap-2">
             <Progress value={row.original.progress} className="h-1.5 w-24" />
@@ -148,17 +155,17 @@ export function TasksTable() {
             </span>
           </div>
         ),
-        meta: { label: "Progress" },
+        meta: { label: "پیشرفت" },
       },
       {
         accessorKey: "dueAt",
-        header: "Due",
+        header: "سررسید",
         cell: ({ row }) => (
           <span className="text-muted-foreground">
             {formatDate(row.original.dueAt)}
           </span>
         ),
-        meta: { label: "Due" },
+        meta: { label: "سررسید" },
       },
     ],
     [],
@@ -166,17 +173,17 @@ export function TasksTable() {
 
   const rowActions: DataGridRowAction<TaskRecord>[] = [
     {
-      label: "View task",
+      label: "مشاهده وظیفه",
       icon: <Eye />,
-      onClick: (r) => toast(`Opening ${r.id}`),
+      onClick: (r) => toast(`در حال باز کردن ${r.id}`),
     },
     {
-      label: "Edit",
+      label: "ویرایش",
       icon: <Pencil />,
-      onClick: (r) => toast(`Editing ${r.id}`),
+      onClick: (r) => toast(`در حال ویرایش ${r.id}`),
     },
     {
-      label: "Mark done",
+      label: "علامت‌گذاری به‌عنوان انجام‌شده",
       icon: <CheckCheck />,
       onClick: (r) =>
         setData((prev) =>
@@ -186,20 +193,20 @@ export function TasksTable() {
         ),
     },
     {
-      label: "Delete",
+      label: "حذف",
       icon: <Trash2 />,
       variant: "destructive",
       separatorBefore: true,
       onClick: (r) => {
         setData((prev) => prev.filter((t) => t.id !== r.id));
-        toast.success(`${r.id} deleted`);
+        toast.success(`${r.id} حذف شد`);
       },
     },
   ];
 
   const bulkActions: DataGridBulkAction<TaskRecord>[] = [
     {
-      label: "Mark done",
+      label: "علامت‌گذاری به‌عنوان انجام‌شده",
       icon: <CheckCheck />,
       onClick: (rows) => {
         const ids = new Set(rows.map((r) => r.id));
@@ -208,17 +215,17 @@ export function TasksTable() {
             ids.has(t.id) ? { ...t, status: "done", progress: 100 } : t,
           ),
         );
-        toast.success(`Marked ${rows.length} tasks as done`);
+        toast.success(`${rows.length} وظیفه به‌عنوان انجام‌شده علامت‌گذاری شد`);
       },
     },
     {
-      label: "Delete",
+      label: "حذف",
       icon: <Trash2 />,
       variant: "destructive",
       onClick: (rows) => {
         const ids = new Set(rows.map((r) => r.id));
         setData((prev) => prev.filter((t) => !ids.has(t.id)));
-        toast.success(`Deleted ${rows.length} tasks`);
+        toast.success(`${rows.length} وظیفه حذف شد`);
       },
     },
   ];
@@ -230,7 +237,7 @@ export function TasksTable() {
       getRowId={(row) => row.id}
       rowActions={rowActions}
       bulkActions={bulkActions}
-      searchPlaceholder="Search tasks…"
+      searchPlaceholder="جستجوی وظایف…"
       density="compact"
     />
   );

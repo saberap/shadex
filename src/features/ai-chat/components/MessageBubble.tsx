@@ -61,7 +61,7 @@ function renderMarkdown(text: string) {
   const flushList = () => {
     if (listItems.length > 0) {
       result.push(
-        <ul key={key++} className="my-1.5 ml-4 space-y-0.5 list-disc">
+        <ul key={key++} className="my-1.5 ms-4 space-y-0.5 list-disc">
           {listItems}
         </ul>
       );
@@ -143,7 +143,7 @@ function renderMarkdown(text: string) {
 function StreamingCursor() {
   return (
     <motion.span
-      className="inline-block ml-0.5 translate-y-0.5 text-primary text-sm"
+      className="inline-block ms-0.5 translate-y-0.5 text-primary text-sm"
       animate={{ opacity: [1, 0] }}
       transition={{ repeat: Infinity, duration: 0.6, repeatType: "reverse" }}
     >
@@ -291,7 +291,7 @@ function AssistantActions({ content }: { content: string }) {
         size="icon"
         className="size-6 text-muted-foreground hover:text-foreground"
         onClick={handleCopy}
-        aria-label="Copy response"
+        aria-label="کپی پاسخ"
       >
         {copied ? <Check className="size-3 text-green-500" /> : <Copy className="size-3" />}
       </Button>
@@ -300,7 +300,7 @@ function AssistantActions({ content }: { content: string }) {
         size="icon"
         className={cn("size-6 text-muted-foreground hover:text-foreground", liked === true && "text-green-500")}
         onClick={() => setLiked((p) => (p === true ? null : true))}
-        aria-label="Good response"
+        aria-label="پاسخ خوب"
       >
         <ThumbsUp className="size-3" />
       </Button>
@@ -309,7 +309,7 @@ function AssistantActions({ content }: { content: string }) {
         size="icon"
         className={cn("size-6 text-muted-foreground hover:text-foreground", liked === false && "text-destructive")}
         onClick={() => setLiked((p) => (p === false ? null : false))}
-        aria-label="Bad response"
+        aria-label="پاسخ بد"
       >
         <ThumbsDown className="size-3" />
       </Button>
@@ -317,7 +317,7 @@ function AssistantActions({ content }: { content: string }) {
         variant="ghost"
         size="icon"
         className="size-6 text-muted-foreground hover:text-foreground"
-        aria-label="Regenerate response"
+        aria-label="تولید مجدد پاسخ"
       >
         <RefreshCw className="size-3" />
       </Button>
@@ -340,7 +340,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       >
         <div className="flex max-w-[80%] flex-col items-end gap-1.5">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] text-muted-foreground">You</span>
+            <span className="text-[10px] text-muted-foreground">شما</span>
             <Avatar size="sm" className="size-6">
               <AvatarFallback className="text-[9px] font-semibold bg-primary/10 text-primary">
                 <User className="size-3" />
