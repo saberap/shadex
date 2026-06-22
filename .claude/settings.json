@@ -34,7 +34,13 @@
       "Bash(rmdir /s /q empty_tmp)",
       "PowerShell(Get-ChildItem \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\" -Name | Sort-Object | ForEach-Object { \"  $_\" })",
       "Bash(Get-ChildItem \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\apps\\\\web\" -Force)",
-      "Bash(Format-Table Name, Mode, Length)"
+      "Bash(Format-Table Name, Mode, Length)",
+      "Bash(pnpm biome *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git check-ignore *)",
+      "Bash(git ls-tree *)",
+      "Bash(dir /b /a .turbo)"
     ]
   }
 }
