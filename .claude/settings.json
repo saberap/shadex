@@ -17,7 +17,24 @@
       "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"http://localhost:3000/components/data-grid\" --max-time 30)",
       "Bash(echo \"exit:$?\")",
       "Bash(echo \"exit=$?\")",
-      "Bash(npx eslint *)"
+      "Bash(npx eslint *)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\features\\\\ai-chat\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\features\\\\chat\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\features\\\\dashboard\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\features\\\\data-grid-showcase\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\features\\\\file-upload-showcase\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\features\\\\login\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\features\\\\pricing\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\features\\\\text-editor\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\app\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\shared\\\\components\\\\data-grid\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\src\\\\shared\\\\components\\\\file-upload\\\\\" -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object -ExpandProperty FullName)",
+      "Bash(robocopy empty_tmp node_modules /mir /njh /njs /ndl /nc /ns)",
+      "Bash(rmdir /s /q node_modules)",
+      "Bash(rmdir /s /q empty_tmp)",
+      "PowerShell(Get-ChildItem \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\" -Name | Sort-Object | ForEach-Object { \"  $_\" })",
+      "Bash(Get-ChildItem \"d:\\\\Projects\\\\samples\\\\shadcn-panel\\\\shadcn-panel\\\\apps\\\\web\" -Force)",
+      "Bash(Format-Table Name, Mode, Length)"
     ]
   }
 }
